@@ -13,7 +13,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title :to="localePath('/')" v-text="item.title" />
+            <v-list-item-title :to="localePath('/')" v-text="$t(item.title)" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -62,17 +62,17 @@ export default {
       items: [
         {
           icon: 'mdi-home',
-          title: 'Home',
+          title: 'home',
           to: '/',
         },
         {
           icon: 'mdi-post',
-          title: 'Blogs',
+          title: 'blogs',
           to: '/blogs',
         },
         {
           icon: 'mdi-information',
-          title: 'About',
+          title: 'about',
           to: '/about',
         },
       ],

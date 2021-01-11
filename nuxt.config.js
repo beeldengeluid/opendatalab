@@ -1,4 +1,5 @@
 import colors from 'vuetify/es5/util/colors'
+import i18n from './config/i18n'
 
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
@@ -51,18 +52,16 @@ export default {
 
   // i18n module configuration (https://i18n.nuxtjs.org/options-reference/)
   i18n: {
-    locales: ['en', 'nl'],
+    locales: [
+      { code: 'en', iso: 'en-US' },
+      { code: 'nl', iso: 'nl-NL' },
+    ],
     defaultLocale: 'en',
-    vueI18n: {
-      fallbackLocale: 'en',
-      messages: {
-        en: {
-          welcome: 'Welcome',
-        },
-        nl: {
-          welcome: 'Welkom',
-        },
-      },
+    vueI18n: i18n,
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      onlyOnRoot: true, // recommended
     },
   },
 

@@ -4,11 +4,17 @@
 
 <script>
 import Blogs from '../components/Blogs'
+import { getLocalePath } from '../util/contentFallback'
 
 export default {
   components: { Blogs },
-  async asyncData({ $content, params }) {
-    const articles = await $content('articles')
+  async asyncData({ $content, params, app }) {
+    const articlesPath = await getLocalePath({
+      $content,
+      app,
+      path: 'articles',
+    })
+    const articles = await $content(articlesPath)
       .sortBy('createdAt', 'asc')
       .fetch()
 

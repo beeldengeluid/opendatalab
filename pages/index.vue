@@ -5,10 +5,10 @@
       <v-divider class="my-5" />
       <Counter />
       <v-divider class="my-5" />
-      <h2>Datasets</h2>
+      <h2>{{ $t('datasets') }}</h2>
       <Datasets :datasets="datasets.datasets" />
       <v-divider class="my-5" />
-      <h2>Blogs</h2>
+      <h2>{{ $t('blogs') }}</h2>
       <Blogs :articles="articles" />
       <v-divider class="my-5" />
       <nuxt-content :document="page" />
@@ -20,20 +20,29 @@
 import Counter from '../components/Counter'
 import Datasets from '../components/Datasets'
 import Blogs from '../components/Blogs'
+import { getLocalePath } from '../util/contentFallback'
+
 export default {
   components: {
     Counter,
     Datasets,
     Blogs,
   },
-  async asyncData({ $content }) {
-    const page = await $content('home').fetch()
-    const datasets = await $content('datasets').fetch()
-    const articles = await $content('articles')
+  async asyncData({ $content, app }) {
+    const homePath = await getLocalePath({ $content, app, path: 'home' })
+    const page = await $content(homePath).fetch()
+
+    const articlesPath = await getLocalePath({
+      $content,
+      app,
+      path: 'articles',
+    })
+    const articles = await $content(articlesPath)
       .sortBy('createdAt', 'asc')
       .limit(5)
       .fetch()
 
+    const datasets = await $content('datasets').fetch()
     return {
       page,
       datasets,

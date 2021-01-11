@@ -21,10 +21,25 @@
 </template>
 
 <script>
+import { getLocalePath } from '../../util/contentFallback'
+
 export default {
-  async asyncData({ $content, params }) {
-    const article = await $content('articles', params.slug).fetch()
-    const [prev, next] = await $content('articles')
+  async asyncData({ $content, params, app }) {
+    // current article
+    const articlePath = await getLocalePath({
+      $content,
+      app,
+      path: `articles/${params.slug}`,
+    })
+    const article = await $content(articlePath).fetch()
+
+    // prev/next articles
+    const articlesPath = await getLocalePath({
+      $content,
+      app,
+      path: `articles`,
+    })
+    const [prev, next] = await $content(articlesPath)
       .only(['title', 'slug'])
       .sortBy('createdAt', 'asc')
       .surround(params.slug)
