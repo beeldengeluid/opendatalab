@@ -6,7 +6,7 @@
       <Counter />
       <v-divider class="my-5" />
       <h2>Datasets</h2>
-      <Datasets :items="datasets.items" />
+      <Datasets :datasets="datasets.datasets" />
       <v-divider class="my-5" />
       <h2>Blogs</h2>
       <Blogs :articles="articles" />

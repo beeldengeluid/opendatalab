@@ -1,17 +1,25 @@
 <template>
-  <v-card class="mx-auto" max-width="400" tile>
-    <v-list-item two-line v-for="item in items" :key="item.id">
-      <v-list-item-content>
-        <v-list-item-title>{{ item.name }}</v-list-item-title>
-        <v-list-item-subtitle>#{{ item.records }}</v-list-item-subtitle>
-      </v-list-item-content>
-    </v-list-item>
-  </v-card>
+  <v-list>
+    <v-list-item-group>
+      <v-list-item
+        v-for="dataset in datasets"
+        :key="dataset.id"
+        :to="{ name: 'dataset-slug', params: { slug: dataset.id } }"
+      >
+        <v-list-item-icon>
+          <v-icon v-text="'mdi-database'"></v-icon>
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title v-text="dataset.name" />
+        </v-list-item-content>
+      </v-list-item>
+    </v-list-item-group>
+  </v-list>
 </template>
 
 <script>
 export default {
-  props: { items: { type: Array, required: true } },
+  props: { datasets: { type: Array, required: true } },
 }
 </script>
 

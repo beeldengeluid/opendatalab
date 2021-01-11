@@ -1,8 +1,28 @@
 {
-  "items": [
-    { "name": "Openbeelden", "id": "openbeelden", "records": 1100 },
-    { "name": "Natuurbeelden", "id": "natuurbeelden", "records": 500 },
-    { "name": "Radioarchief", "id": "radioarchief", "records": 750 },
-    { "name": "Oorlogsbronnen", "id": "oorlogsbronnen", "records": 800 }
+  "datasets": [
+    {
+      "id": "openbeelden",
+      "name": "Openbeelden",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
+      "records": 1100
+    },
+    {
+      "id": "natuurbeelden",
+      "name": "Natuurbeelden",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
+      "records": 500
+    },
+    {
+      "id": "radioarchief",
+      "name": "Radioarchief",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
+      "records": 750
+    },
+    {
+      "id": "oorlogsbronnen",
+      "name": "Oorlogsbronnen",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
+      "records": 800
+    }
   ]
 }
