@@ -13,7 +13,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" />
+            <v-list-item-title v-text="item.title" :to="index" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -21,7 +21,15 @@
 
     <v-app-bar absolute app dark class="blue-grey darken-4">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <v-toolbar-title>Open Data Lab</v-toolbar-title>
+      <nuxt-link
+        to="/"
+        :style="{
+          textDecoration: 'none',
+          color: 'white',
+        }"
+      >
+        <v-toolbar-title>Open Data Lab</v-toolbar-title>
+      </nuxt-link>
     </v-app-bar>
 
     <v-main>
@@ -66,3 +74,10 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.app-bar-title {
+  color: white;
+  text-decoration: none;
+}
+</style>
