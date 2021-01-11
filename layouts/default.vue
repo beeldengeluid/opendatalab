@@ -48,6 +48,11 @@ export default {
           to: '/',
         },
         {
+          icon: 'mdi-post',
+          title: 'Blogs',
+          to: '/blogs',
+        },
+        {
           icon: 'mdi-information',
           title: 'About',
           to: '/about',
