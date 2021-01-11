@@ -84,6 +84,13 @@ export default {
     },
   },
 
+  // Router
+  router: {
+    base: '/odl',
+  },
+
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {},
+  build: {
+    extractCSS: true,
+  },
 }
