@@ -1,0 +1,8 @@
+{
+  "items": [
+    { "name": "Openbeelden", "id": "openbeelden", "records": 1100 },
+    { "name": "Natuurbeelden", "id": "natuurbeelden", "records": 500 },
+    { "name": "Radioarchief", "id": "radioarchief", "records": 750 },
+    { "name": "Oorlogsbronnen", "id": "oorlogsbronnen", "records": 800 }
+  ]
+}
