@@ -1,12 +1,6 @@
 <template>
   <v-app light>
-    <v-navigation-drawer
-      v-model="drawer"
-      :mini-variant="miniVariant"
-      :clipped="clipped"
-      fixed
-      app
-    >
+    <v-navigation-drawer v-model="drawer" fixed app>
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -25,19 +19,18 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar :clipped-left="clipped" fixed app>
+    <v-app-bar absolute app dark class="blue-grey darken-4">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-toolbar-title>Open Data Lab</v-toolbar-title>
     </v-app-bar>
+
     <v-main>
       <v-container>
         <nuxt />
       </v-container>
     </v-main>
 
-    <v-footer :absolute="!fixed" app>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
-    </v-footer>
-    -->
+    <v-footer :absolute="!fixed" app> </v-footer>
   </v-app>
 </template>
 
@@ -50,12 +43,12 @@ export default {
       fixed: false,
       items: [
         {
-          icon: 'mdi-apps',
+          icon: 'mdi-home',
           title: 'Home',
           to: '/',
         },
         {
-          icon: 'mdi-chart-bubble',
+          icon: 'mdi-information',
           title: 'About',
           to: '/about',
         },
