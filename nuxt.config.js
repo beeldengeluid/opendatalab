@@ -86,9 +86,7 @@ export default {
   },
 
   // Router
-  router: {
-    base: '/odl',
-  },
+  router: {},
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
