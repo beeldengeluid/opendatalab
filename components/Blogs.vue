@@ -4,7 +4,7 @@
       <v-list-item
         v-for="article in articles"
         :key="article.slug"
-        :to="{ name: 'blog-slug', params: { slug: article.slug } }"
+        :to="localePath({ name: 'blog-slug', params: { slug: article.slug } })"
       >
         <v-list-item-icon>
           <v-icon v-text="'mdi-post'"></v-icon>

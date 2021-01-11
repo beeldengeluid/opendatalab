@@ -39,6 +39,8 @@ export default {
     '@nuxtjs/axios',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    // https://i18n.nuxtjs.org,
+    'nuxt-i18n',
   ],
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
@@ -46,6 +48,23 @@ export default {
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
   content: {},
+
+  // i18n module configuration (https://i18n.nuxtjs.org/options-reference/)
+  i18n: {
+    locales: ['en', 'nl'],
+    defaultLocale: 'en',
+    vueI18n: {
+      fallbackLocale: 'en',
+      messages: {
+        en: {
+          welcome: 'Welcome',
+        },
+        nl: {
+          welcome: 'Welkom',
+        },
+      },
+    },
+  },
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {

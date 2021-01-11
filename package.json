@@ -23,7 +23,8 @@
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
     "core-js": "^3.6.5",
-    "nuxt": "^2.14.6"
+    "nuxt": "^2.14.6",
+    "nuxt-i18n": "^6.17.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^11.0.0",

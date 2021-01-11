@@ -4,7 +4,7 @@
       <v-list-item
         v-for="dataset in datasets"
         :key="dataset.id"
-        :to="{ name: 'dataset-slug', params: { slug: dataset.id } }"
+        :to="localePath({ name: 'dataset-slug', params: { slug: dataset.id } })"
       >
         <v-list-item-icon>
           <v-icon v-text="'mdi-database'"></v-icon>

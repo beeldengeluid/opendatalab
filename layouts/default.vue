@@ -5,7 +5,7 @@
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
-          :to="item.to"
+          :to="localePath(item.to)"
           router
           exact
         >
@@ -13,7 +13,7 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="item.title" :to="index" />
+            <v-list-item-title :to="localePath('/')" v-text="item.title" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -21,15 +21,25 @@
 
     <v-app-bar absolute app dark class="blue-grey darken-4">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      <nuxt-link
-        to="/"
+      <NuxtLink
+        :to="localePath('/')"
         :style="{
           textDecoration: 'none',
           color: 'white',
         }"
       >
         <v-toolbar-title>Open Data Lab</v-toolbar-title>
-      </nuxt-link>
+      </NuxtLink>
+
+      <v-spacer></v-spacer>
+
+      <NuxtLink v-if="$i18n.locale != 'en'" :to="switchLocalePath('en')">
+        <v-avatar color="black" size="35" class="white--text">EN</v-avatar>
+      </NuxtLink>
+
+      <NuxtLink v-if="$i18n.locale != 'nl'" :to="switchLocalePath('nl')">
+        <v-avatar color="black" size="35" class="white--text">NL</v-avatar>
+      </NuxtLink>
     </v-app-bar>
 
     <v-main>
@@ -76,7 +86,8 @@ export default {
 </script>
 
 <style scoped>
-.app-bar-title {
+.app-bar-title,
+a {
   color: white;
   text-decoration: none;
 }

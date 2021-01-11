@@ -18,19 +18,5 @@ export default {
       dataset: datasets.datasets.find((dataset) => dataset.id === params.slug),
     }
   },
-  computed: {
-    console: () => console,
-  },
-
-  watch: {
-    dataset: () => {
-      console.log(this.dataset)
-    },
-  },
-  methods: {
-    debug: (msg) => {
-      console.log(msg)
-    },
-  },
 }
 </script>
