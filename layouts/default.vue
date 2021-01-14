@@ -28,7 +28,7 @@
           color: 'white',
         }"
       >
-        <v-toolbar-title>Open Data Lab</v-toolbar-title>
+        <v-toolbar-title>{{ title }}</v-toolbar-title>
       </NuxtLink>
 
       <v-spacer></v-spacer>
@@ -56,29 +56,25 @@
 export default {
   data() {
     return {
-      clipped: false,
       drawer: false,
       fixed: false,
       items: [
         {
           icon: 'mdi-home',
           title: 'home',
-          to: '/',
+          to: 'index',
         },
         {
           icon: 'mdi-post',
           title: 'blogs',
-          to: '/blogs',
+          to: 'blogs',
         },
         {
           icon: 'mdi-information',
           title: 'about',
-          to: '/about',
+          to: 'about',
         },
       ],
-      miniVariant: false,
-      right: true,
-      rightDrawer: false,
       title: 'Open Data Lab',
     }
   },
