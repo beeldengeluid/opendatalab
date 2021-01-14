@@ -18,5 +18,11 @@ export default {
       page,
     }
   },
+  nuxtI18n: {
+    paths: {
+      en: '/about',
+      nl: '/over-ons',
+    },
+  },
 }
 </script>
