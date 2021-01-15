@@ -7,8 +7,8 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - opendatalab',
-    title: 'opendatalab',
+    titleTemplate: '%s - Open Data Lab',
+    title: 'Beeld en Geluid',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
