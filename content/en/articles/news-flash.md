@@ -1,6 +1,6 @@
 ---
-title: 'Case #1'
-category: cases
+title: 'Newsflash'
+tags: []
 ---
 
 # Dea Asiae in Quirini subtemen potentem potest

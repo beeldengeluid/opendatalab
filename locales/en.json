@@ -4,7 +4,9 @@
 
   "blogs": "Blogs",
   "datasets": "Datasets",
+  "projects": "Projects",
   "records": "Records",
   "home": "Home",
-  "about": "About"
+  "about": "About",
+  "last_update": "Last update"
 }

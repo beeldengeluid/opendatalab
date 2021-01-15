@@ -1,6 +1,6 @@
 ---
 title: Welcome to the ODL blog
-category: news
+tags: []
 ---
 
 # Dea Asiae in Quirini subtemen potentem potest

@@ -4,7 +4,9 @@
 
   "blogs": "Artikelen",
   "datasets": "Datasets",
+  "projects": "Projecten",
   "records": "Objecten",
   "home": "Home",
-  "about": "Over ons"
+  "about": "Over ons",
+  "last_update": "Laatste wijziging"
 }

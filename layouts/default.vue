@@ -107,6 +107,16 @@ export default {
           to: 'index',
         },
         {
+          icon: 'mdi-database',
+          title: 'datasets',
+          to: 'datasets',
+        },
+        {
+          icon: 'mdi-rocket-launch',
+          title: 'projects',
+          to: 'projects',
+        },
+        {
           icon: 'mdi-post',
           title: 'blogs',
           to: 'blogs',
