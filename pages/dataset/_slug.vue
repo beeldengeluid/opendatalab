@@ -19,5 +19,11 @@ export default {
       dataset: datasets.datasets.find((dataset) => dataset.id === params.slug),
     }
   },
+  head() {
+    const title = this.dataset.name
+    return {
+      title,
+    }
+  },
 }
 </script>

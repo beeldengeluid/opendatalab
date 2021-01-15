@@ -24,5 +24,11 @@ export default {
       nl: '/over-ons',
     },
   },
+  head() {
+    const title = this.$t('about')
+    return {
+      title,
+    }
+  },
 }
 </script>

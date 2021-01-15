@@ -29,5 +29,11 @@ export default {
       return new Date(date).toLocaleDateString('en', options)
     },
   },
+  head() {
+    const title = this.$t('blogs')
+    return {
+      title,
+    }
+  },
 }
 </script>

@@ -53,5 +53,11 @@ export default {
       return new Date(date).toLocaleDateString('en', options)
     },
   },
+  head() {
+    const title = this.article.title
+    return {
+      title,
+    }
+  },
 }
 </script>

@@ -49,5 +49,11 @@ export default {
       articles,
     }
   },
+  head() {
+    const title = this.$t('home')
+    return {
+      title,
+    }
+  },
 }
 </script>
