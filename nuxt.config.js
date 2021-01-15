@@ -93,4 +93,10 @@ export default {
   build: {
     extractCSS: true,
   },
+
+  // https://nuxtjs.org/docs/2.x/features/loading/
+  loading: {
+    color: '#008adb',
+    height: '5px',
+  },
 }

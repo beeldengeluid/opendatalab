@@ -1,6 +1,28 @@
 <template>
   <v-app light>
+    <!-- drawer menu -->
     <v-navigation-drawer v-model="drawer" fixed app>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title>
+            <NuxtLink
+              :to="localePath('index')"
+              :style="{
+                textDecoration: 'none',
+              }"
+              class="black--text"
+            >
+              {{ $t('site_name') }}
+            </NuxtLink>
+          </v-list-item-title>
+          <v-list-item-subtitle>
+            {{ $t('site_author') }}
+          </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
@@ -13,26 +35,46 @@
             <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title :to="localePath('/')" v-text="$t(item.title)" />
+            <v-list-item-title v-text="$t(item.title)" />
           </v-list-item-content>
         </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
-    <v-app-bar absolute app dark class="blue-grey darken-4">
+    <v-spacer></v-spacer>
+
+    <!-- site title -->
+    <v-app-bar
+      fixed
+      app
+      dark
+      elevate-on-scroll
+      class="blue-grey darken-4 white--text"
+    >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+
+      <v-spacer></v-spacer>
+
       <NuxtLink
-        :to="localePath('/')"
+        :to="localePath('index')"
         :style="{
           textDecoration: 'none',
           color: 'white',
         }"
       >
-        <v-toolbar-title>{{ title }}</v-toolbar-title>
+        <v-toolbar-title
+          class="d-none d-md-flex align-items-center text-uppercase"
+          :style="{ letterSpacing: '0.07em' }"
+        >
+          <strong>{{ $t('site_name') }}</strong>
+          <div class="title-dot" />
+          <strong>{{ $t('site_author') }}</strong>
+        </v-toolbar-title>
       </NuxtLink>
 
       <v-spacer></v-spacer>
 
+      <!-- Language selector -->
       <NuxtLink v-if="$i18n.locale != 'en'" :to="switchLocalePath('en')">
         <v-avatar color="black" size="35" class="white--text">EN</v-avatar>
       </NuxtLink>
@@ -75,16 +117,21 @@ export default {
           to: 'about',
         },
       ],
-      title: 'Open Data Lab',
     }
   },
 }
 </script>
 
-<style scoped>
-.app-bar-title,
-a {
-  color: white;
-  text-decoration: none;
+<style lang="scss" scoped>
+@import '~assets/variables.scss';
+
+$dotSize: 25px;
+
+.title-dot {
+  margin: 0 10px;
+  width: $dotSize;
+  height: $dotSize;
+  background-color: $primary;
+  border-radius: $dotSize;
 }
 </style>
