@@ -2,3 +2,8 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+// In order to change the font, add to nuxt.config.js
+// vuetify.defaultAssets.font.family = 'Open Sans Condensed'
+// vuetify.treeShake = true
+// $body-font-family: 'Open Sans Condensed', sans-serif;
