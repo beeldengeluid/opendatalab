@@ -7,7 +7,7 @@
         :cols="card.flex"
         class="mt-2"
       >
-        <Card :card="card" />
+        <Card :card="card" path="blog-slug" />
       </v-col>
     </v-row>
   </v-container>

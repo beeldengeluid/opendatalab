@@ -6,7 +6,7 @@
     height="100%"
     :to="
       localePath({
-        name: 'blog-slug',
+        name: path,
         params: { slug: card.slug },
       })
     "
@@ -19,9 +19,9 @@
       max-height="200px"
       :src="card.image"
     >
-      <v-card-title :style="{ textShadow: '1px 1px 5px rgba(0,0,0,0.3)' }">{{
-        card.title
-      }}</v-card-title>
+      <v-card-title :style="{ textShadow: '1px 1px 5px rgba(0,0,0,0.3)' }">
+        {{ card.title }}
+      </v-card-title>
     </v-img>
 
     <v-card-subtitle> {{ card.subtitle }} </v-card-subtitle>
@@ -53,6 +53,11 @@ export default {
       type: Object,
       required: true,
       default: () => ({ title: 'Empty card' }),
+    },
+    path: {
+      type: String,
+      required: true,
+      default: '',
     },
   },
   methods: {

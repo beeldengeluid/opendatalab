@@ -7,14 +7,13 @@
         :cols="card.flex"
         class="mt-2"
       >
-        <Card :card="card" />
+        <Card :card="card" path="project-slug" />
       </v-col>
     </v-row>
   </v-container>
 </template>
 <script>
 import { getLocalePath } from '../util/contentFallback'
-import { formatDate } from '../util/date'
 
 export default {
   async asyncData({ $content, params, app }) {
@@ -34,9 +33,6 @@ export default {
     return {
       title,
     }
-  },
-  methods: {
-    formatDate,
   },
 }
 </script>
