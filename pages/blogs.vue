@@ -1,28 +1,24 @@
 <template>
-  <v-list>
-    <v-list-item-group>
-      <v-list-item
-        v-for="article in articles"
-        :key="article.slug"
-        :to="localePath({ name: 'blog-slug', params: { slug: article.slug } })"
+  <v-container fluid>
+    <v-row dense>
+      <v-col
+        v-for="card in cards"
+        :key="card.slug"
+        :cols="card.flex"
+        class="mt-2"
       >
-        <v-list-item-icon>
-          <v-icon>mdi-post</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title v-text="article.title" />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list-item-group>
-  </v-list>
+        <Card :card="card" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import Blogs from '../components/Blogs'
+import Card from '../components/Card'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
-  components: { Blogs },
+  components: { Card },
   async asyncData({ $content, params, app }) {
     const articlesPath = await getLocalePath({
       $content,
@@ -33,7 +29,7 @@ export default {
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    return { articles }
+    return { cards: articles }
   },
   computed: {
     console: () => console,
@@ -43,12 +39,6 @@ export default {
     return {
       title,
     }
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
   },
 }
 </script>

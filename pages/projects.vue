@@ -1,24 +1,17 @@
 <template>
-  <v-list>
-    <v-list-item-group>
-      <v-list-item
-        v-for="project in projects"
-        :key="project.slug"
-        :to="
-          localePath({ name: 'project-slug', params: { slug: project.slug } })
-        "
+  <v-container fluid>
+    <v-row dense>
+      <v-col
+        v-for="card in cards"
+        :key="card.slug"
+        :cols="card.flex"
+        class="mt-2"
       >
-        <v-list-item-icon>
-          <v-icon>mdi-rocket-launch</v-icon>
-        </v-list-item-icon>
-        <v-list-item-content>
-          <v-list-item-title v-text="project.title" />
-        </v-list-item-content>
-      </v-list-item>
-    </v-list-item-group>
-  </v-list>
+        <Card :card="card" />
+      </v-col>
+    </v-row>
+  </v-container>
 </template>
-
 <script>
 import { getLocalePath } from '../util/contentFallback'
 import { formatDate } from '../util/date'
@@ -34,7 +27,7 @@ export default {
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    return { projects }
+    return { cards: projects }
   },
   head() {
     const title = this.$t('projects')

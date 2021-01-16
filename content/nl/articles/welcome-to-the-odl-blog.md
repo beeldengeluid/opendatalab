@@ -1,6 +1,9 @@
 ---
 title: Welkom bij het Open Data Lab
-category: news
+subtitle: 'Longum annis Tartara hastilia.'
+image: https://picsum.photos/id/1016/200/300
+tags: []
+datasets: []
 ---
 
 # Dea Asiae in Quirini subtemen potentem potest

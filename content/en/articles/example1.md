@@ -1,7 +1,7 @@
 ---
-title: Welcome to the ODL blog
-subtitle: 'Longum annis Tartara hastilia.'
-image: https://picsum.photos/id/1016/200/300
+title: 'Example 1'
+subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
+image: https://picsum.photos/id/100/200/300
 tags: []
 datasets: []
 ---
