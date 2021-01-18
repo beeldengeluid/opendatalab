@@ -11,7 +11,7 @@
       </div>
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
-      <CardGrid :cards="blogs" path="blog-slug" rowClass="justify-center" />
+      <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
       <v-divider class="my-5" />
       <article>
         <nuxt-content :document="page" />
