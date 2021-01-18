@@ -134,7 +134,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '~assets/variables.scss';
+@import '~assets/scss/vuetify/variables.scss';
 
 $dotSize: 25px;
 

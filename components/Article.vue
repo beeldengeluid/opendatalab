@@ -8,7 +8,7 @@
         v-for="dataset of article.datasets"
         :key="dataset.slug"
         class="ma-2"
-        color="pink"
+        color="primary"
         label
         link
         :to="
@@ -20,7 +20,7 @@
         text-color="white"
       >
         <v-icon left> mdi-database </v-icon>
-        {{ dataset.title }}
+        <strong>{{ dataset.title }}</strong>
       </v-chip>
       <v-divider class="my-5" />
     </div>
