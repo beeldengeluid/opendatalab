@@ -1,7 +1,14 @@
 <template>
   <v-app light>
     <!-- drawer menu -->
-    <v-navigation-drawer v-model="drawer" fixed app disable-resize-watcher>
+    <v-navigation-drawer
+      v-model="drawer"
+      fixed
+      app
+      disable-resize-watcher
+      temporary
+      floating
+    >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title :style="{ paddingBottom: '2px' }">
@@ -62,11 +69,15 @@
       >
         <v-toolbar-title
           class="d-none d-md-flex align-items-center text-uppercase"
-          :style="{ letterSpacing: '0.1rem', fontSize: '1.23rem' }"
+          :style="{
+            letterSpacing: '0.05rem',
+            fontSize: '1.20rem',
+            fontWeight: '500',
+          }"
         >
-          <strong>{{ $t('site_name') }}</strong>
+          {{ $t('site_name') }}
           <div class="title-dot" />
-          <strong>{{ $t('site_author') }}</strong>
+          {{ $t('site_author') }}
         </v-toolbar-title>
       </NuxtLink>
 
