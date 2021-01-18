@@ -5,7 +5,7 @@
         <h2 class="mb-3">{{ $t('datasets') }}</h2>
         <LinkList
           :links="datasets.datasets"
-          icon="mdi-database"
+          :icon="icons.dataset"
           path="dataset-slug"
         />
       </div>
@@ -34,6 +34,7 @@
 import LinkList from '../components/LinkList'
 import CardGrid from '../components/CardGrid'
 import { getLocalePath } from '../util/contentFallback'
+import icons from '../util/icons'
 
 export default {
   components: {
@@ -74,6 +75,7 @@ export default {
       projects,
     }
   },
+  data: () => ({ icons }),
   head() {
     const title = this.$t('home')
     return {

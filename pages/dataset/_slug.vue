@@ -16,7 +16,7 @@
           :chips="projects"
           color="secondary"
           path="project-slug"
-          icon="mdi-rocket-launch"
+          :icon="icons.project"
         />
         <v-divider class="my-5" />
       </div>
@@ -27,7 +27,7 @@
           :chips="blogs"
           color="tertiary"
           path="blog-slug"
-          icon="mdi-post"
+          :icon="icons.blog"
         />
 
         <v-divider class="my-5" />
@@ -39,7 +39,7 @@
           :chips="relatedDatasets"
           color="primary"
           path="dataset-slug"
-          icon="mdi-database"
+          :icon="icons.dataset"
         />
 
         <v-divider class="my-5" />
@@ -51,6 +51,7 @@
 <script>
 import { Fragment } from 'vue-fragment'
 import { getLocalePath } from '../../util/contentFallback'
+import icons from '../../util/icons'
 
 export default {
   components: { Fragment },
@@ -108,6 +109,7 @@ export default {
       relatedDatasets,
     }
   },
+  data: () => ({ icons }),
   head() {
     const title = this.dataset.title
     return {

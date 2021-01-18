@@ -8,7 +8,7 @@
         :chips="article.datasets"
         color="primary"
         path="dataset-slug"
-        icon="mdi-database"
+        :icon="icons.dataset"
       />
       <v-divider class="my-5" />
     </div>
@@ -31,6 +31,7 @@
 
 <script>
 import { formatDate } from '../util/date'
+import icons from '../util/icons'
 import ChipList from './ChipList'
 
 export default {
@@ -59,6 +60,7 @@ export default {
       default: null,
     },
   },
+  data: () => ({ icons }),
   methods: {
     formatDate,
   },

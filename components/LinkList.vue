@@ -22,7 +22,7 @@ export default {
   props: {
     links: { type: Array, required: true, default: () => [] },
     path: { type: String, required: true, default: '' },
-    icon: { type: String, required: true, default: 'mdi-post' },
+    icon: { type: String, required: true, default: '' },
   },
 }
 </script>

@@ -107,40 +107,40 @@
 </template>
 
 <script>
+import icons from '../util/icons'
+
 export default {
-  data() {
-    return {
-      drawer: false,
-      fixed: false,
-      items: [
-        {
-          icon: 'mdi-home',
-          title: 'home',
-          to: 'index',
-        },
-        {
-          icon: 'mdi-database',
-          title: 'datasets',
-          to: 'datasets',
-        },
-        {
-          icon: 'mdi-rocket-launch',
-          title: 'projects',
-          to: 'projects',
-        },
-        {
-          icon: 'mdi-post',
-          title: 'blogs',
-          to: 'blogs',
-        },
-        {
-          icon: 'mdi-information',
-          title: 'about',
-          to: 'about',
-        },
-      ],
-    }
-  },
+  data: () => ({
+    drawer: false,
+    fixed: false,
+    items: [
+      {
+        icon: icons.home,
+        title: 'home',
+        to: 'index',
+      },
+      {
+        icon: icons.dataset,
+        title: 'datasets',
+        to: 'datasets',
+      },
+      {
+        icon: icons.project,
+        title: 'projects',
+        to: 'projects',
+      },
+      {
+        icon: icons.blog,
+        title: 'blogs',
+        to: 'blogs',
+      },
+      {
+        icon: icons.about,
+        title: 'about',
+        to: 'about',
+      },
+    ],
+  }),
 }
 </script>
 
