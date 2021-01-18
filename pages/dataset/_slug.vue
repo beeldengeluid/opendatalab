@@ -1,7 +1,7 @@
 <template>
   <v-row v-if="dataset">
     <v-col>
-      <h1>{{ dataset.name }}</h1>
+      <h1>{{ dataset.title }}</h1>
       <v-divider class="my-5" />
       <p>{{ dataset.description }}</p>
       <h4>{{ $t('records') }}: {{ dataset.records }}</h4>
@@ -20,7 +20,7 @@ export default {
     }
   },
   head() {
-    const title = this.dataset.name
+    const title = this.dataset.title
     return {
       title,
     }

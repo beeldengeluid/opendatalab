@@ -20,7 +20,7 @@
         text-color="white"
       >
         <v-icon left> mdi-database </v-icon>
-        {{ dataset.name }}
+        {{ dataset.title }}
       </v-chip>
       <v-divider class="my-5" />
     </div>

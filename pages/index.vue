@@ -6,10 +6,14 @@
       <Counter />
       <v-divider class="my-5" />
       <h2>{{ $t('datasets') }}</h2>
-      <Datasets :datasets="datasets.datasets" />
+      <List
+        :links="datasets.datasets"
+        icon="mdi-database"
+        path="dataset-slug"
+      />
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
-      <Blogs :articles="blogs" />
+      <List :links="blogs" icon="mdi-post" path="blog-slug" />
       <v-divider class="my-5" />
       <nuxt-content :document="page" />
     </v-col>
@@ -18,15 +22,13 @@
 
 <script>
 import Counter from '../components/Counter'
-import Datasets from '../components/Datasets'
-import Blogs from '../components/Blogs'
+import List from '../components/List'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
   components: {
     Counter,
-    Datasets,
-    Blogs,
+    List,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
