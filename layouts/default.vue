@@ -1,7 +1,7 @@
 <template>
   <v-app light>
     <!-- drawer menu -->
-    <v-navigation-drawer v-model="drawer" fixed app>
+    <v-navigation-drawer v-model="drawer" fixed app disable-resize-watcher>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title :style="{ paddingBottom: '2px' }">
