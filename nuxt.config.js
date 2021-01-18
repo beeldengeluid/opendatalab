@@ -1,4 +1,4 @@
-import colors from 'vuetify/es5/util/colors'
+import theme from './config/theme'
 import i18n from './config/i18n'
 
 export default {
@@ -48,7 +48,9 @@ export default {
   axios: {},
 
   // Content module configuration (https://go.nuxtjs.dev/config-content)
-  content: {},
+  content: {
+    nestedProperties: ['datasets.slug'],
+  },
 
   // i18n module configuration (https://i18n.nuxtjs.org/options-reference/)
   i18n: {
@@ -72,15 +74,8 @@ export default {
     theme: {
       dark: false,
       themes: {
-        dark: {
-          primary: colors.blue.darken2,
-          accent: colors.grey.darken3,
-          secondary: colors.amber.darken3,
-          info: colors.teal.lighten1,
-          warning: colors.amber.base,
-          error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
-        },
+        light: theme,
+        dark: theme,
       },
     },
   },
