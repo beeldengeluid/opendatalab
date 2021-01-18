@@ -13,7 +13,9 @@
       <h2>{{ $t('blogs') }}</h2>
       <CardGrid :cards="blogs" path="blog-slug" rowClass="justify-center" />
       <v-divider class="my-5" />
-      <nuxt-content :document="page" />
+      <article>
+        <nuxt-content :document="page" />
+      </article>
     </v-col>
   </v-row>
 </template>
