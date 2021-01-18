@@ -1,5 +1,9 @@
 <template>
-  <CardGrid :cards="cards" path="blog-slug" />
+  <v-container fluid>
+    <h1>{{ $t('blogs') }}</h1>
+    <v-divider class="my-5" />
+    <CardGrid :cards="cards" path="blog-slug" />
+  </v-container>
 </template>
 
 <script>
