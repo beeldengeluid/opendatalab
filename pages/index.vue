@@ -1,7 +1,10 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <div class="grey lighten-4 px-3 py-3">
+      <div
+        class="todo grey lighten-4 px-3 py-3 mb-7"
+        :style="{ height: '80vh' }"
+      >
         <h2 class="mb-3">{{ $t('datasets') }}</h2>
         <LinkList
           :links="datasets.datasets"
@@ -31,6 +34,7 @@
             max-height="400"
             max-width="700"
             src="https://picsum.photos/id/1016/700/400"
+            class="float-right"
           ></v-img>
         </v-col>
         <v-col cols="6">
@@ -48,7 +52,7 @@ import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
 import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
-import icons from '../util/icons'
+import icons from '../config/icons'
 
 export default {
   components: {

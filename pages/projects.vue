@@ -10,7 +10,7 @@
 import { Fragment } from 'vue-fragment'
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
-import icons from '../util/icons'
+import icons from '../config/icons'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {

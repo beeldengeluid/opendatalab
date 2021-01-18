@@ -51,7 +51,7 @@
 <script>
 import { Fragment } from 'vue-fragment'
 import { getLocalePath } from '../../util/contentFallback'
-import icons from '../../util/icons'
+import icons from '../../config/icons'
 
 export default {
   components: { Fragment },

@@ -32,7 +32,7 @@
 
       <v-list>
         <v-list-item
-          v-for="(item, i) in items"
+          v-for="(item, i) in menu"
           :key="i"
           :to="localePath(item.to)"
           router
@@ -102,44 +102,27 @@
       </v-container>
     </v-main>
 
-    <v-footer :absolute="!fixed" app> </v-footer>
+    <v-spacer class="my-5"></v-spacer>
+
+    <v-footer
+      :absolute="!fixed"
+      class="grey lighten-4 todo"
+      app
+      :style="{ height: '400px' }"
+    >
+    </v-footer>
   </v-app>
 </template>
 
 <script>
-import icons from '../util/icons'
+import icons from '../config/icons'
+import menu from '../config/menu'
 
 export default {
   data: () => ({
     drawer: false,
     fixed: false,
-    items: [
-      {
-        icon: icons.home,
-        title: 'home',
-        to: 'index',
-      },
-      {
-        icon: icons.dataset,
-        title: 'datasets',
-        to: 'datasets',
-      },
-      {
-        icon: icons.project,
-        title: 'projects',
-        to: 'projects',
-      },
-      {
-        icon: icons.blog,
-        title: 'blogs',
-        to: 'blogs',
-      },
-      {
-        icon: icons.about,
-        title: 'about',
-        to: 'about',
-      },
-    ],
+    menu,
   }),
 }
 </script>

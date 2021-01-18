@@ -2,8 +2,11 @@
   <v-card
     class="mx-auto d-flex flex-column"
     max-width="100%"
-    width="300px"
+    width="270px"
     height="100%"
+    link
+    nuxt
+    outlined
     :to="
       localePath({
         name: path,
@@ -13,7 +16,7 @@
   >
     <v-img
       class="white--text align-end"
-      width="300px"
+      width="270px"
       height="200px"
       max-width="100%"
       max-height="200px"
@@ -29,12 +32,12 @@
     <v-spacer></v-spacer>
 
     <v-card-actions>
-      <v-card-text
+      <!-- <v-card-text
         class="text-caption grey--text"
         :style="{ marginLeft: '-8px' }"
       >
         {{ formatDate(card.updatedAt) }}
-      </v-card-text>
+      </v-card-text> -->
 
       <v-spacer></v-spacer>
 

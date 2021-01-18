@@ -31,7 +31,7 @@
 
 <script>
 import { formatDate } from '../util/date'
-import icons from '../util/icons'
+import icons from '../config/icons'
 import ChipList from './ChipList'
 
 export default {
