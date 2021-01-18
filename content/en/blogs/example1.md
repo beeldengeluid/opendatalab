@@ -1,9 +1,10 @@
 ---
-title: 'Example 2'
+title: 'Example 1'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/1002/200/300
-tags: []
-datasets: []
+image: https://picsum.photos/id/100/200/300
+tags:
+datasets:
+  - openbeelden
 ---
 
 # Dea Asiae in Quirini subtemen potentem potest

@@ -41,8 +41,6 @@
       </v-list>
     </v-navigation-drawer>
 
-    <v-spacer></v-spacer>
-
     <!-- site title -->
     <v-app-bar
       fixed
@@ -64,7 +62,7 @@
       >
         <v-toolbar-title
           class="d-none d-md-flex align-items-center text-uppercase"
-          :style="{ letterSpacing: '0.07em' }"
+          :style="{ letterSpacing: '0.1rem', fontSize: '1.23rem' }"
         >
           <strong>{{ $t('site_name') }}</strong>
           <div class="title-dot" />
@@ -75,11 +73,19 @@
       <v-spacer></v-spacer>
 
       <!-- Language selector -->
-      <NuxtLink v-if="$i18n.locale != 'en'" :to="switchLocalePath('en')">
+      <NuxtLink
+        v-if="$i18n.locale != 'en'"
+        :to="switchLocalePath('en')"
+        class="text-decoration-none"
+      >
         <v-avatar color="black" size="35" class="white--text">EN</v-avatar>
       </NuxtLink>
 
-      <NuxtLink v-if="$i18n.locale != 'nl'" :to="switchLocalePath('nl')">
+      <NuxtLink
+        v-if="$i18n.locale != 'nl'"
+        :to="switchLocalePath('nl')"
+        class="text-decoration-none"
+      >
         <v-avatar color="black" size="35" class="white--text">NL</v-avatar>
       </NuxtLink>
     </v-app-bar>

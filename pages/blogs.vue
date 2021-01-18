@@ -23,16 +23,13 @@ export default {
     const articlesPath = await getLocalePath({
       $content,
       app,
-      path: 'articles',
+      path: 'blogs',
     })
     const articles = await $content(articlesPath)
       .sortBy('createdAt', 'asc')
       .fetch()
 
     return { cards: articles }
-  },
-  computed: {
-    console: () => console,
   },
   head() {
     const title = this.$t('blogs')

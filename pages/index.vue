@@ -9,7 +9,7 @@
       <Datasets :datasets="datasets.datasets" />
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
-      <Blogs :articles="articles" />
+      <Blogs :articles="blogs" />
       <v-divider class="my-5" />
       <nuxt-content :document="page" />
     </v-col>
@@ -32,12 +32,12 @@ export default {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
     const page = await $content(homePath).fetch()
 
-    const articlesPath = await getLocalePath({
+    const blogsPath = await getLocalePath({
       $content,
       app,
-      path: 'articles',
+      path: 'blogs',
     })
-    const articles = await $content(articlesPath)
+    const blogs = await $content(blogsPath)
       .sortBy('createdAt', 'asc')
       .limit(5)
       .fetch()
@@ -46,7 +46,7 @@ export default {
     return {
       page,
       datasets,
-      articles,
+      blogs,
     }
   },
   head() {

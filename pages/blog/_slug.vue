@@ -1,63 +1,13 @@
 <template>
-  <div>
-    <article>
-      <h1>{{ article.title }}</h1>
-      <v-divider class="my-5" />
-      <nav>
-        <ul>
-          <li v-for="link of article.toc" :key="link.id">
-            <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
-          </li>
-        </ul>
-      </nav>
-      <v-divider class="my-5" />
-      <nuxt-content :document="article" />
-      <v-divider class="my-5" />
-      <p>{{ $t('last_update') }}: {{ formatDate(article.updatedAt) }}</p>
-
-      <prev-next :prev="prev" :next="next" />
-    </article>
-  </div>
+  <Article :article="article" />
 </template>
 
 <script>
-import { getLocalePath } from '../../util/contentFallback'
+import Article from '../../components/Article'
+import { createArticleSlugPage } from '../../util/articleSlugPage'
 
-export default {
-  async asyncData({ $content, params, app }) {
-    // current article
-    const articlePath = await getLocalePath({
-      $content,
-      app,
-      path: `articles/${params.slug}`,
-    })
-    const article = await $content(articlePath).fetch()
-
-    // prev/next articles
-    const articlesPath = await getLocalePath({
-      $content,
-      app,
-      path: `articles`,
-    })
-    const [prev, next] = await $content(articlesPath)
-      .only(['title', 'slug'])
-      .sortBy('createdAt', 'asc')
-      .surround(params.slug)
-      .fetch()
-
-    return { article, prev, next }
-  },
-  head() {
-    const title = this.article.title
-    return {
-      title,
-    }
-  },
-  methods: {
-    formatDate(date) {
-      const options = { year: 'numeric', month: 'long', day: 'numeric' }
-      return new Date(date).toLocaleDateString('en', options)
-    },
-  },
-}
+export default createArticleSlugPage({
+  source: 'blogs',
+  components: { Article },
+})
 </script>
