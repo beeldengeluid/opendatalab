@@ -35,6 +35,7 @@ export const createArticleSlugPage = ({ source, components }) => ({
 
     return { article, prev, next }
   },
+  components,
   head() {
     const title = this.article.title
     return {
@@ -43,5 +44,25 @@ export const createArticleSlugPage = ({ source, components }) => ({
   },
   methods: {
     formatDate,
+    createBreadCrumbs() {
+      const base = this.$router.options.base
+      return [
+        {
+          text: this.$t('home'),
+          disabled: false,
+          href: base + this.localePath('index').slice(1),
+        },
+        {
+          text: this.$t(source),
+          disabled: false,
+          href: base + this.localePath(source).slice(1),
+        },
+        {
+          text: this.article.title,
+          disabled: true,
+          href: '#',
+        },
+      ]
+    },
   },
 })
