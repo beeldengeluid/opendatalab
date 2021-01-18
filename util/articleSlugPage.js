@@ -29,7 +29,7 @@ export const createArticleSlugPage = ({ source, components }) => ({
     // populate datasets on article with dataset object
     article.datasets = article.datasets
       .map((datasetId) =>
-        datasets.datasets.find((dataset) => dataset.id === datasetId)
+        datasets.datasets.find((dataset) => dataset.slug === datasetId)
       )
       .filter((d) => d)
 

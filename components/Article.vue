@@ -6,7 +6,7 @@
     <div v-if="article.datasets && article.datasets.length > 0">
       <v-chip
         v-for="dataset of article.datasets"
-        :key="dataset.id"
+        :key="dataset.slug"
         class="ma-2"
         color="pink"
         label
@@ -14,7 +14,7 @@
         :to="
           localePath({
             name: 'dataset-slug',
-            params: { slug: dataset.id },
+            params: { slug: dataset.slug },
           })
         "
         text-color="white"

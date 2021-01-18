@@ -16,7 +16,9 @@ export default {
     const datasets = await $content('datasets').fetch()
     return {
       datasets,
-      dataset: datasets.datasets.find((dataset) => dataset.id === params.slug),
+      dataset: datasets.datasets.find(
+        (dataset) => dataset.slug === params.slug
+      ),
     }
   },
   head() {
