@@ -4,24 +4,12 @@
     <v-divider class="my-5" />
 
     <div v-if="article.datasets && article.datasets.length > 0">
-      <v-chip
-        v-for="dataset of article.datasets"
-        :key="dataset.slug"
-        class="ma-2"
+      <ChipList
+        :chips="article.datasets"
         color="primary"
-        label
-        link
-        :to="
-          localePath({
-            name: 'dataset-slug',
-            params: { slug: dataset.slug },
-          })
-        "
-        text-color="white"
-      >
-        <v-icon left> mdi-database </v-icon>
-        <strong>{{ dataset.title }}</strong>
-      </v-chip>
+        path="dataset-slug"
+        icon="mdi-database"
+      />
       <v-divider class="my-5" />
     </div>
 
@@ -42,9 +30,11 @@
 </template>
 
 <script>
+import ChipList from './ChipList'
 import { formatDate } from '../util/date'
 
 export default {
+  components: { ChipList },
   props: {
     article: {
       type: Object,
