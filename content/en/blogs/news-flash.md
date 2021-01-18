@@ -1,7 +1,7 @@
 ---
 title: 'Newsflash'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/1006/200/300
+image: https://picsum.photos/id/1006/300/200
 tags:
 datasets:
   - openbeelden
