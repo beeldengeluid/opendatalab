@@ -1,16 +1,14 @@
 <template>
   <v-row justify="center" align="center">
     <v-col cols="12">
-      <h1>{{ page.title }}</h1>
-      <v-divider class="my-5" />
-      <Counter />
-      <v-divider class="my-5" />
-      <h2>{{ $t('datasets') }}</h2>
-      <List
-        :links="datasets.datasets"
-        icon="mdi-database"
-        path="dataset-slug"
-      />
+      <div class="grey lighten-4 px-3 py-3">
+        <h2 class="mb-3">{{ $t('datasets') }}</h2>
+        <List
+          :links="datasets.datasets"
+          icon="mdi-database"
+          path="dataset-slug"
+        />
+      </div>
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
       <List :links="blogs" icon="mdi-post" path="blog-slug" />
@@ -21,13 +19,11 @@
 </template>
 
 <script>
-import Counter from '../components/Counter'
 import List from '../components/List'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
   components: {
-    Counter,
     List,
   },
   async asyncData({ $content, app }) {
