@@ -10,12 +10,13 @@
         />
       </div>
 
-      <v-divider class="my-5" />
-      <h2>{{ $t('blogs') }}</h2>
-      <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
+      <Heading :title="$t('blogs')" :icon="icons.blog" />
 
       <v-divider class="my-5" />
-      <h2>{{ $t('projects') }}</h2>
+      <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
+
+      <Heading :title="$t('projects')" :icon="icons.project" />
+      <v-divider class="my-5" />
       <CardGrid
         :cards="projects"
         path="project-slug"
@@ -23,23 +24,37 @@
       />
 
       <v-divider class="my-5" />
-      <article>
-        <nuxt-content :document="page" />
-      </article>
+      <v-row>
+        <v-col cols="6">
+          <v-img
+            lazy-src="https://picsum.photos/id/1016/7/4"
+            max-height="400"
+            max-width="700"
+            src="https://picsum.photos/id/1016/700/400"
+          ></v-img>
+        </v-col>
+        <v-col cols="6">
+          <article>
+            <nuxt-content :document="page" />
+          </article>
+        </v-col>
+      </v-row>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import LinkList from '../components/LinkList'
 import CardGrid from '../components/CardGrid'
+import Heading from '../components/Heading'
+import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../util/icons'
 
 export default {
   components: {
-    LinkList,
     CardGrid,
+    Heading,
+    LinkList,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })

@@ -1,6 +1,6 @@
 <template>
   <Fragment>
-    <h1>{{ $t('projects') }}</h1>
+    <Heading :title="$t('projects')" :icon="icons.project" />
     <v-divider class="my-5" />
     <CardGrid :cards="cards" path="project-slug" />
   </Fragment>
@@ -9,10 +9,12 @@
 <script>
 import { Fragment } from 'vue-fragment'
 import CardGrid from '../components/CardGrid'
+import Heading from '../components/Heading'
+import icons from '../util/icons'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
-  components: { CardGrid, Fragment },
+  components: { CardGrid, Fragment, Heading },
   async asyncData({ $content, params, app }) {
     const projectsPath = await getLocalePath({
       $content,
@@ -25,6 +27,7 @@ export default {
 
     return { cards: projects }
   },
+  data: () => ({ icons }),
   head() {
     const title = this.$t('projects')
     return {
