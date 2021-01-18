@@ -1,11 +1,11 @@
 <template>
   <v-container fluid>
-    <v-row dense :class="rowClass">
+    <v-row :class="rowClass">
       <v-col
         v-for="card in cards"
         :key="card.slug"
         :cols="card.flex"
-        class="mt-2"
+        class="mt-2 flex-grow-0"
       >
         <Card :card="card" :path="path" />
       </v-col>
@@ -21,7 +21,7 @@ export default {
   props: {
     cards: { type: Array, required: true, default: () => [] },
     path: { type: String, required: true, default: '' },
-    rowClass: { type: String, required: false, default: '' },
+    rowClass: { type: String, required: false, default: 'justify-center' },
   },
 }
 </script>

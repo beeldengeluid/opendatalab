@@ -11,7 +11,7 @@
       </div>
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
-      <LinkList :links="blogs" icon="mdi-post" path="blog-slug" />
+      <CardGrid :cards="blogs" path="blog-slug" rowClass="justify-center" />
       <v-divider class="my-5" />
       <nuxt-content :document="page" />
     </v-col>
@@ -20,11 +20,13 @@
 
 <script>
 import LinkList from '../components/LinkList'
+import CardGrid from '../components/CardGrid'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
   components: {
     LinkList,
+    CardGrid,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })

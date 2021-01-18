@@ -4,7 +4,7 @@
     <v-navigation-drawer v-model="drawer" fixed app>
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title>
+          <v-list-item-title :style="{ paddingBottom: '2px' }">
             <NuxtLink
               :to="localePath('index')"
               :style="{
