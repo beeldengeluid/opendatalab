@@ -1,8 +1,8 @@
 <template>
-  <v-container>
+  <Fragment>
     <v-breadcrumbs :items="createBreadCrumbs(article)" />
     <Article :article="article" />
-  </v-container>
+  </Fragment>
 </template>
 
 <script>

@@ -1,16 +1,14 @@
 <template>
-  <v-container fluid>
-    <v-row :class="rowClass">
-      <v-col
-        v-for="card in cards"
-        :key="card.slug"
-        :cols="card.flex"
-        class="mt-2 flex-grow-0"
-      >
-        <Card :card="card" :path="path" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <v-row :class="rowClass">
+    <v-col
+      v-for="card in cards"
+      :key="card.slug"
+      :cols="card.flex"
+      class="mt-2 flex-grow-0"
+    >
+      <Card :card="card" :path="path" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>

@@ -1,5 +1,5 @@
 <template>
-  <v-container v-if="dataset">
+  <Fragment v-if="dataset">
     <v-breadcrumbs :items="createBreadCrumbs()" />
     <article>
       <h1>{{ dataset.title }}</h1>
@@ -10,7 +10,7 @@
 
       <v-divider class="my-5" />
 
-      <div v-if="projects">
+      <div v-if="projects.length">
         <ChipList
           :chips="projects"
           color="secondary"
@@ -20,7 +20,7 @@
         <v-divider class="my-5" />
       </div>
 
-      <div v-if="blogs">
+      <div v-if="blogs.length">
         <ChipList
           :chips="blogs"
           color="tertiary"
@@ -31,7 +31,7 @@
         <v-divider class="my-5" />
       </div>
     </article>
-  </v-container>
+  </Fragment>
 </template>
 
 <script>

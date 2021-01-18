@@ -1,9 +1,9 @@
 <template>
-  <v-container fluid>
+  <Fragment>
     <h1>{{ $t('projects') }}</h1>
     <v-divider class="my-5" />
     <CardGrid :cards="cards" path="project-slug" />
-  </v-container>
+  </Fragment>
 </template>
 
 <script>
