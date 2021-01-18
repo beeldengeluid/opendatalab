@@ -10,6 +10,7 @@
 
       <v-divider class="my-5" />
 
+      <!-- projects -->
       <div v-if="projects.length">
         <ChipList
           :chips="projects"
@@ -20,12 +21,25 @@
         <v-divider class="my-5" />
       </div>
 
+      <!-- blogs -->
       <div v-if="blogs.length">
         <ChipList
           :chips="blogs"
           color="tertiary"
           path="blog-slug"
           icon="mdi-post"
+        />
+
+        <v-divider class="my-5" />
+      </div>
+
+      <!-- related datasets -->
+      <div v-if="relatedDatasets.length">
+        <ChipList
+          :chips="relatedDatasets"
+          color="primary"
+          path="dataset-slug"
+          icon="mdi-database"
         />
 
         <v-divider class="my-5" />
@@ -70,13 +84,28 @@ export default {
       .where({ datasets: { $contains: dataset.slug } })
       .fetch()
 
-    // TODO: related datasets
+    // Related datasets, excluding current
+    const datasetCount = {}
+    projects.concat(blogs).forEach((article) => {
+      article.datasets &&
+        article.datasets
+          .filter((dataset) => dataset !== params.slug)
+          .forEach((dataset) => {
+            dataset in datasetCount
+              ? datasetCount[dataset]++
+              : (datasetCount[dataset] = 1)
+          })
+    })
+
+    const relatedDatasets = datasets.datasets
+      .filter((dataset) => dataset.slug in datasetCount)
+      .sort((a, b) => datasetCount[b.slug] - datasetCount[a.slug])
 
     return {
       dataset,
       blogs,
       projects,
-      // dataset:
+      relatedDatasets,
     }
   },
   head() {
