@@ -1,9 +1,11 @@
 <template>
   <v-row>
     <v-col>
-      <h1>{{ page.title }}</h1>
-      <v-divider class="my-5" />
-      <nuxt-content :document="page" />
+      <article>
+        <h1>{{ page.title }}</h1>
+        <v-divider class="my-5" />
+        <nuxt-content :document="page" />
+      </article>
     </v-col>
   </v-row>
 </template>
