@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <Fragment>
     <v-chip
       v-for="chip of chips"
       :key="chip.slug"
       class="ma-2"
-      color="primary"
+      :color="color"
       label
       link
       :to="
@@ -18,7 +18,7 @@
       <v-icon v-if="icon" left v-text="icon"></v-icon>
       <strong>{{ chip.title }}</strong>
     </v-chip>
-  </div>
+  </Fragment>
 </template>
 
 <script>

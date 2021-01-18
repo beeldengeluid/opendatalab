@@ -4,22 +4,76 @@
     <article>
       <h1>{{ dataset.title }}</h1>
       <v-divider class="my-5" />
+
       <p>{{ dataset.description }}</p>
       <h4>{{ $t('records') }}: {{ dataset.records }}</h4>
+
+      <v-divider class="my-5" />
+
+      <div v-if="projects">
+        <ChipList
+          :chips="projects"
+          color="secondary"
+          path="project-slug"
+          icon="mdi-rocket-launch"
+        />
+        <v-divider class="my-5" />
+      </div>
+
+      <div v-if="blogs">
+        <ChipList
+          :chips="blogs"
+          color="tertiary"
+          path="blog-slug"
+          icon="mdi-post"
+        />
+
+        <v-divider class="my-5" />
+      </div>
     </article>
   </v-container>
 </template>
 
 <script>
+import { getLocalePath } from '../../util/contentFallback'
+
 export default {
-  async asyncData({ $content, params }) {
-    // datasets are not localized yet
+  async asyncData({ $content, app, params }) {
+    // datasets are not localized (yet)
     const datasets = await $content('datasets').fetch()
+    const dataset = datasets.datasets.find(
+      (dataset) => dataset.slug === params.slug
+    )
+
+    // blogs
+    const blogsPath = await getLocalePath({
+      $content,
+      app,
+      path: 'blogs',
+    })
+
+    const blogs = await $content(blogsPath)
+      .where({ datasets: { $contains: dataset.slug } })
+      .fetch()
+
+    // projects
+    const projectsPath = await getLocalePath({
+      $content,
+      app,
+      path: 'projects',
+    })
+
+    const projects = await $content(projectsPath)
+      .where({ datasets: { $contains: dataset.slug } })
+      .fetch()
+
+    // TODO: related datasets
+
     return {
-      datasets,
-      dataset: datasets.datasets.find(
-        (dataset) => dataset.slug === params.slug
-      ),
+      dataset,
+      blogs,
+      projects,
+      // dataset:
     }
   },
   head() {
