@@ -9,9 +9,19 @@
           path="dataset-slug"
         />
       </div>
+
       <v-divider class="my-5" />
       <h2>{{ $t('blogs') }}</h2>
       <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
+
+      <v-divider class="my-5" />
+      <h2>{{ $t('projects') }}</h2>
+      <CardGrid
+        :cards="projects"
+        path="project-slug"
+        row-class="justify-center"
+      />
+
       <v-divider class="my-5" />
       <article>
         <nuxt-content :document="page" />
@@ -34,6 +44,7 @@ export default {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
     const page = await $content(homePath).fetch()
 
+    // blogs
     const blogsPath = await getLocalePath({
       $content,
       app,
@@ -44,11 +55,23 @@ export default {
       .limit(5)
       .fetch()
 
+    // projects
+    const projectsPath = await getLocalePath({
+      $content,
+      app,
+      path: 'projects',
+    })
+    const projects = await $content(projectsPath)
+      .sortBy('createdAt', 'asc')
+      .limit(5)
+      .fetch()
+
     const datasets = await $content('datasets').fetch()
     return {
       page,
       datasets,
       blogs,
+      projects,
     }
   },
   head() {
