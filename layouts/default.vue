@@ -74,19 +74,14 @@
 
       <!-- Language selector -->
       <NuxtLink
-        v-if="$i18n.locale != 'en'"
-        :to="switchLocalePath('en')"
+        v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
+        :key="locale.code"
+        :to="switchLocalePath(locale.code)"
         class="text-decoration-none"
       >
-        <v-avatar color="black" size="35" class="white--text">EN</v-avatar>
-      </NuxtLink>
-
-      <NuxtLink
-        v-if="$i18n.locale != 'nl'"
-        :to="switchLocalePath('nl')"
-        class="text-decoration-none"
-      >
-        <v-avatar color="black" size="35" class="white--text">NL</v-avatar>
+        <v-avatar color="black" size="35" class="white--text text-uppercase">
+          {{ locale.code }}
+        </v-avatar>
       </NuxtLink>
     </v-app-bar>
 
