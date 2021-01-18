@@ -1,12 +1,13 @@
 <template>
-  <v-row v-if="dataset">
-    <v-col>
+  <v-container v-if="dataset">
+    <v-breadcrumbs :items="createBreadCrumbs()" />
+    <article>
       <h1>{{ dataset.title }}</h1>
       <v-divider class="my-5" />
       <p>{{ dataset.description }}</p>
       <h4>{{ $t('records') }}: {{ dataset.records }}</h4>
-    </v-col>
-  </v-row>
+    </article>
+  </v-container>
 </template>
 
 <script>
@@ -26,6 +27,28 @@ export default {
     return {
       title,
     }
+  },
+  methods: {
+    createBreadCrumbs() {
+      const base = this.$router.options.base
+      return [
+        {
+          text: this.$t('home'),
+          disabled: false,
+          href: base + this.localePath('index').slice(1),
+        },
+        {
+          text: this.$t('datasets'),
+          disabled: false,
+          href: base + this.localePath('datasets').slice(1),
+        },
+        {
+          text: this.dataset.title,
+          disabled: true,
+          href: '#',
+        },
+      ]
+    },
   },
 }
 </script>
