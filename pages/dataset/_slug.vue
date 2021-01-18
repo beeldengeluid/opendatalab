@@ -35,9 +35,12 @@
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import { getLocalePath } from '../../util/contentFallback'
 
 export default {
+  components: { Fragment },
+
   async asyncData({ $content, app, params }) {
     // datasets are not localized (yet)
     const datasets = await $content('datasets').fetch()

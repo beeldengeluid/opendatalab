@@ -7,11 +7,12 @@
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import CardGrid from '../components/CardGrid'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
-  components: { CardGrid },
+  components: { CardGrid, Fragment },
   async asyncData({ $content, params, app }) {
     const articlesPath = await getLocalePath({
       $content,

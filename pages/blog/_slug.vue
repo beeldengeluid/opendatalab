@@ -6,11 +6,12 @@
 </template>
 
 <script>
+import { Fragment } from 'vue-fragment'
 import Article from '../../components/Article'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
 
 export default createArticleSlugPage({
   source: 'blogs',
-  components: { Article },
+  components: { Article, Fragment },
 })
 </script>

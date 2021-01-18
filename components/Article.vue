@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import ChipList from './ChipList'
 import { formatDate } from '../util/date'
+import ChipList from './ChipList'
 
 export default {
   components: { ChipList },
