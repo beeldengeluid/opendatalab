@@ -1,24 +1,13 @@
 <template>
-  <v-container fluid>
-    <v-row dense>
-      <v-col
-        v-for="card in cards"
-        :key="card.slug"
-        :cols="card.flex"
-        class="mt-2"
-      >
-        <Card :card="card" path="blog-slug" />
-      </v-col>
-    </v-row>
-  </v-container>
+  <CardGrid :cards="cards" path="blog-slug" />
 </template>
 
 <script>
-import Card from '../components/Card'
+import CardGrid from '../components/CardGrid'
 import { getLocalePath } from '../util/contentFallback'
 
 export default {
-  components: { Card },
+  components: { CardGrid },
   async asyncData({ $content, params, app }) {
     const articlesPath = await getLocalePath({
       $content,
