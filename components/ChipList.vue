@@ -31,7 +31,6 @@ import { getImageOverlayCSS } from '../util/color'
 
 export default {
   components: { Fragment },
-  data: () => ({ theme }),
   props: {
     chips: {
       type: Array,
@@ -52,6 +51,7 @@ export default {
       default: '',
     },
   },
+  data: () => ({ theme }),
   methods: {
     getImageOverlayCSS,
   },

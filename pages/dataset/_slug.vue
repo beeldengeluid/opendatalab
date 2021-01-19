@@ -4,8 +4,8 @@
     <article>
       <h1>
         <v-icon
-          v-text="icons.dataset"
           :style="{ marginTop: '-3px', marginRight: '5px' }"
+          v-text="icons.dataset"
         />{{ dataset.title }}
       </h1>
       <v-divider class="my-5" />
@@ -15,51 +15,25 @@
 
       <v-divider class="my-5" />
 
-      <!-- projects -->
-      <div v-if="projects.length">
-        <ChipList
-          :chips="projects"
-          color="secondary"
-          path="project-slug"
-          :icon="icons.project"
-        />
-        <v-divider class="my-5" />
-      </div>
+      <Relations
+        :projects="projects"
+        :blogs="blogs"
+        :datasets="relatedDatasets"
+      />
 
-      <!-- blogs -->
-      <div v-if="blogs.length">
-        <ChipList
-          :chips="blogs"
-          color="tertiary"
-          path="blog-slug"
-          :icon="icons.blog"
-        />
-
-        <v-divider class="my-5" />
-      </div>
-
-      <!-- related datasets -->
-      <div v-if="relatedDatasets.length">
-        <ChipList
-          :chips="relatedDatasets"
-          color="primary"
-          path="dataset-slug"
-          :icon="icons.dataset"
-        />
-
-        <v-divider class="my-5" />
-      </div>
+      <v-divider class="my-5" />
     </article>
   </Fragment>
 </template>
 
 <script>
 import { Fragment } from 'vue-fragment'
+import Relations from '../../components/Relations'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 
 export default {
-  components: { Fragment },
+  components: { Fragment, Relations },
 
   async asyncData({ $content, app, params }) {
     // datasets are not localized (yet)

@@ -3,8 +3,8 @@
     <h1>
       <v-icon
         v-if="icon"
-        v-text="icon"
         :style="{ marginTop: '-3px', marginRight: '5px' }"
+        v-text="icon"
       />
       {{ article.title }}
     </h1>
@@ -28,27 +28,20 @@
 
     <v-divider class="my-5" />
 
-    <!-- datasets -->
-    <div v-if="article.datasets && article.datasets.length > 0">
-      <ChipList
-        :chips="article.datasets"
-        color="primary"
-        path="dataset-slug"
-        :icon="icons.dataset"
-      />
-    </div>
+    <!-- relations -->
+    <Relations :datasets="article.datasets" />
 
     <prev-next :prev="prev" :next="next" />
   </article>
 </template>
 
 <script>
-import { formatDate } from '../util/date'
 import icons from '../config/icons'
-import ChipList from './ChipList'
+import { formatDate } from '../util/date'
+import Relations from './Relations'
 
 export default {
-  components: { ChipList },
+  components: { Relations },
   props: {
     article: {
       type: Object,
