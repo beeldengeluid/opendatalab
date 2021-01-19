@@ -115,7 +115,6 @@
 </template>
 
 <script>
-import icons from '../config/icons'
 import menu from '../config/menu'
 
 export default {
