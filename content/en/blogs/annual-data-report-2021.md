@@ -1,5 +1,5 @@
 ---
-title: 'Example 1'
+title: 'Annual data report 2021'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
 image: https://picsum.photos/id/1079/300/200
 tags:

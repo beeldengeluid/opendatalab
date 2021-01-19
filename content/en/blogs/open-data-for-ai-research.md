@@ -1,5 +1,5 @@
 ---
-title: 'Example 2'
+title: 'Open Data for AI research'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
 image: https://picsum.photos/id/1033/300/200
 tags:
