@@ -40,6 +40,9 @@
         <v-col cols="6">
           <article>
             <nuxt-content :document="page" />
+            <v-btn color="primary" :to="localePath('about')">{{
+              $t('read_more')
+            }}</v-btn>
           </article>
         </v-col>
       </v-row>
