@@ -2,7 +2,11 @@ import { getLocalePath } from './contentFallback'
 import { formatDate } from './date'
 
 // Generic article slug page creator from given article source, e.g. blogs, projects
-export const createArticleSlugPage = ({ source, components }) => ({
+export const createArticleSlugPage = ({
+  source,
+  components = {},
+  data = {},
+}) => ({
   async asyncData({ $content, params, app }) {
     const path = await getLocalePath({
       $content,
@@ -36,6 +40,7 @@ export const createArticleSlugPage = ({ source, components }) => ({
     return { article, prev, next }
   },
   components,
+  data,
   head() {
     const title = this.article.title
     return {

@@ -1,6 +1,13 @@
 <template>
   <article>
-    <h1>{{ article.title }}</h1>
+    <h1>
+      <v-icon
+        v-if="icon"
+        v-text="icon"
+        :style="{ marginTop: '-3px', marginRight: '5px' }"
+      />
+      {{ article.title }}
+    </h1>
     <v-divider class="my-5" />
 
     <div v-if="article.datasets && article.datasets.length > 0">
@@ -58,6 +65,11 @@ export default {
       type: Object,
       required: false,
       default: null,
+    },
+    icon: {
+      type: String,
+      required: true,
+      default: '',
     },
   },
   data: () => ({ icons }),
