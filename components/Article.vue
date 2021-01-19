@@ -9,6 +9,17 @@
       {{ article.title }}
     </h1>
 
+    <p>{{ article.subtitle }}</p>
+
+    <v-img
+      v-if="article.image"
+      width="800px"
+      height="400px"
+      max-height="66vw"
+      class="header-image"
+      :src="article.image"
+    />
+
     <!-- Optional article navigation -->
     <!-- <nav>
       <ul>
@@ -18,7 +29,7 @@
       </ul>
     </nav> -->
 
-    <v-divider class="my-5" />
+    <!-- <v-divider class="my-5" /> -->
 
     <nuxt-content :document="article" />
 
@@ -77,3 +88,17 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.header-image {
+  max-width: calc(100% + 100px);
+  margin: 20px -50px;
+  border-radius: 5px;
+
+  @media (max-width: 800px) {
+    margin: 20px 0;
+    max-height: 66vw;
+    width: 100%;
+  }
+}
+</style>
