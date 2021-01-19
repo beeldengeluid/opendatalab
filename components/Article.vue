@@ -8,8 +8,27 @@
       />
       {{ article.title }}
     </h1>
+
+    <!-- Optional article navigation -->
+    <!-- <nav>
+      <ul>
+        <li v-for="link of article.toc" :key="link.id">
+          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
+        </li>
+      </ul>
+    </nav> -->
+
     <v-divider class="my-5" />
 
+    <nuxt-content :document="article" />
+
+    <p class="caption">
+      {{ $t('last_update') }}: {{ formatDate(article.updatedAt) }}
+    </p>
+
+    <v-divider class="my-5" />
+
+    <!-- datasets -->
     <div v-if="article.datasets && article.datasets.length > 0">
       <ChipList
         :chips="article.datasets"
@@ -17,20 +36,7 @@
         path="dataset-slug"
         :icon="icons.dataset"
       />
-      <v-divider class="my-5" />
     </div>
-
-    <nav>
-      <ul>
-        <li v-for="link of article.toc" :key="link.id">
-          <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
-        </li>
-      </ul>
-    </nav>
-    <v-divider class="my-5" />
-    <nuxt-content :document="article" />
-    <v-divider class="my-5" />
-    <p>{{ $t('last_update') }}: {{ formatDate(article.updatedAt) }}</p>
 
     <prev-next :prev="prev" :next="next" />
   </article>
