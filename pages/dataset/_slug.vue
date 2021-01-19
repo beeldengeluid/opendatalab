@@ -2,7 +2,12 @@
   <Fragment v-if="dataset">
     <v-breadcrumbs :items="createBreadCrumbs()" />
     <article>
-      <h1>{{ dataset.title }}</h1>
+      <h1>
+        <v-icon
+          v-text="icons.dataset"
+          :style="{ marginTop: '-3px', marginRight: '5px' }"
+        />{{ dataset.title }}
+      </h1>
       <v-divider class="my-5" />
 
       <p>{{ dataset.description }}</p>
