@@ -3,7 +3,7 @@
     <h1>
       <v-icon
         v-if="icon"
-        :style="{ marginTop: '-3px', marginRight: '5px' }"
+        :style="{ marginTop: '-3px', marginRight: '10px' }"
         v-text="icon"
       />
       {{ article.title }}

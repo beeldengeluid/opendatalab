@@ -4,7 +4,7 @@
     <article>
       <h1>
         <v-icon
-          :style="{ marginTop: '-3px', marginRight: '5px' }"
+          :style="{ marginTop: '-3px', marginRight: '10px' }"
           v-text="icons.dataset"
         />{{ dataset.title }}
       </h1>
