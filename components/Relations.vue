@@ -1,7 +1,7 @@
 <template>
   <v-row class="relations">
     <!-- projects -->
-    <v-col v-if="projects">
+    <v-col v-if="projects && projects.length > 0">
       <h4><v-icon dense>mdi-link-variant</v-icon> {{ $t('projects') }}</h4>
       <ChipList
         :chips="projects"
@@ -12,7 +12,7 @@
     </v-col>
 
     <!-- blogs -->
-    <v-col v-if="blogs">
+    <v-col v-if="blogs && blogs.length > 0">
       <h4><v-icon dense>mdi-link-variant</v-icon> {{ $t('blogs') }}</h4>
       <ChipList
         :chips="blogs"
@@ -23,7 +23,7 @@
     </v-col>
 
     <!-- related datasets -->
-    <v-col v-if="datasets">
+    <v-col v-if="datasets && datasets.length > 0">
       <h4><v-icon dense>mdi-link-variant</v-icon> {{ $t('datasets') }}</h4>
       <ChipList
         :chips="datasets"
