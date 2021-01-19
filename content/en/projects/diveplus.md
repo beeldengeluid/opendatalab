@@ -1,7 +1,7 @@
 ---
 title: 'Clariah: DIVE+'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/399/300/200
+image: https://picsum.photos/id/1078/300/200
 tags:
 datasets:
   - openbeelden
