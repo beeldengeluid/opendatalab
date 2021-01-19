@@ -31,11 +31,13 @@ export const createArticleSlugPage = ({
     const datasets = await $content('datasets').fetch()
 
     // populate datasets on article with dataset object
-    article.datasets = article.datasets
-      .map((datasetId) =>
-        datasets.datasets.find((dataset) => dataset.slug === datasetId)
-      )
-      .filter((d) => d)
+    article.datasets =
+      article.datasets &&
+      article.datasets
+        .map((datasetId) =>
+          datasets.datasets.find((dataset) => dataset.slug === datasetId)
+        )
+        .filter((d) => d)
 
     return { article, prev, next }
   },
