@@ -3,7 +3,7 @@
     <v-col v-if="icon" class="flex-grow-0">
       <v-icon :style="{ marginTop: '5px' }">{{ icon }}</v-icon>
     </v-col>
-    <v-col>
+    <v-col :style="{ marginLeft: '-15px' }">
       <h2>{{ title }}</h2>
     </v-col>
     <v-spacer />
