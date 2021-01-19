@@ -90,14 +90,18 @@
         :to="switchLocalePath(locale.code)"
         class="text-decoration-none"
       >
-        <v-avatar color="black" size="35" class="white--text text-uppercase">
+        <v-avatar
+          color="blue-grey darken-4"
+          size="35"
+          class="white--text text-uppercase"
+        >
           {{ locale.code }}
         </v-avatar>
       </NuxtLink>
     </v-app-bar>
 
     <v-main>
-      <v-container fluid>
+      <v-container>
         <nuxt />
       </v-container>
     </v-main>
