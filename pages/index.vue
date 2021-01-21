@@ -12,7 +12,12 @@
     <Heading :title="$t('blogs')" :icon="icons.blog" />
 
     <v-divider class="my-5" />
-    <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
+    <CardGrid
+      :cards="blogs"
+      path="blog-slug"
+      row-class="justify-center"
+      :color="classColors.blog"
+    />
 
     <Heading :title="$t('projects')" :icon="icons.project" />
     <v-divider class="my-5" />
@@ -20,6 +25,7 @@
       :cards="projects"
       path="project-slug"
       row-class="justify-center"
+      :color="classColors.project"
     />
 
     <v-divider class="my-5" />
@@ -52,6 +58,7 @@ import CardGrid from '../components/CardGrid'
 import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
+import { classColors } from '../config/theme'
 
 export default {
   components: {
@@ -96,6 +103,7 @@ export default {
   },
   data: () => ({
     icons,
+    classColors,
   }),
   head() {
     const title = this.$t('home')

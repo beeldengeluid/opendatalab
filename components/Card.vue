@@ -20,7 +20,15 @@
       height="200px"
       max-width="100%"
       max-height="200px"
-      :src="require(`~/assets/images/${card.image}?size=300`).src"
+      :src="require(`~/assets/images/${card.image}?size=400`).src"
+      :gradient="
+        color
+          ? 'to top right, ' +
+            getRGBAColor(color, 0.85) +
+            ', ' +
+            getRGBAColor(color, 0.3)
+          : null
+      "
     >
       <v-card-title :style="{ textShadow: '1px 1px 5px rgba(0,0,0,0.3)' }">
         {{ card.title }}
@@ -41,7 +49,7 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn fab color="blue lighten-2" text>
+      <v-btn fab :color="color || 'blue lighten-2'" text>
         <v-icon>mdi-arrow-right</v-icon>
       </v-btn>
     </v-card-actions>
@@ -50,6 +58,8 @@
 
 <script>
 import { formatDate } from '../util/date'
+import { getRGBAColor } from '../util/color'
+
 export default {
   props: {
     card: {
@@ -62,9 +72,15 @@ export default {
       required: true,
       default: '',
     },
+    color: {
+      type: String,
+      required: false,
+      default: '',
+    },
   },
   methods: {
     formatDate,
+    getRGBAColor,
   },
 }
 </script>

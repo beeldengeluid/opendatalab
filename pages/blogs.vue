@@ -2,7 +2,7 @@
   <Fragment>
     <Heading :title="$t('blogs')" :icon="icons.blog" />
     <v-divider class="my-5" />
-    <CardGrid :cards="cards" path="blog-slug" />
+    <CardGrid :cards="cards" path="blog-slug" :color="color" />
   </Fragment>
 </template>
 
@@ -12,6 +12,7 @@ import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
 import icons from '../config/icons'
 import { getLocalePath } from '../util/contentFallback'
+import { classColors } from '../config/theme'
 
 export default {
   components: { CardGrid, Fragment, Heading },
@@ -27,7 +28,7 @@ export default {
 
     return { cards: articles }
   },
-  data: () => ({ icons }),
+  data: () => ({ icons, color: classColors.blog }),
   head() {
     const title = this.$t('blogs')
     return {
