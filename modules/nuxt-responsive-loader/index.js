@@ -6,7 +6,7 @@ const DEFAULT_RESPONSIVE_LOADER_OPTIONS = {
   max: 1920,
   steps: 5,
   placeholder: false,
-  quality: 65,
+  quality: 90,
   adapter: require('responsive-loader/sharp'),
 }
 
