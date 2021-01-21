@@ -53,19 +53,20 @@
       </v-row>
 
       <!-- About -->
-      <v-row class="justify-center my-3 pb-3">
+      <v-row class="justify-center grey lighten-5 my-3 pb-3">
         <v-col class="limit-width px-3 py-3 mb-4">
-          <v-row>
-            <v-col cols="6">
+          <v-row class="white mx-4 my-4 flex-column flex-md-row">
+            <v-col md="6" class="px-0">
               <v-img
-                lazy-src="https://picsum.photos/id/1016/7/4"
                 max-height="400"
-                max-width="700"
-                src="https://picsum.photos/id/1016/700/400"
+                max-width="100%"
+                width="100%"
+                :src="require(`~/assets/images/about.jpg?size=700`).src"
                 class="float-right"
+                gradient="to top right, rgba(0,138,219,0.85), rgba(0,138,219,0.2)"
               ></v-img>
             </v-col>
-            <v-col cols="6">
+            <v-col md="6" class="pl-5">
               <article>
                 <nuxt-content :document="page" />
                 <v-btn color="primary" :to="localePath('about')">

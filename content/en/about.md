@@ -2,8 +2,6 @@
 title: About
 ---
 
-# This is the about markdown
-
 ## Loqui sine adulter augusta et deceat
 
 Lorem markdownum perdidit ad loco occallescere dextrum more est, pabula

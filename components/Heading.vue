@@ -2,7 +2,7 @@
   <NuxtLink :to="to" :style="{ textDecoration: 'none', color: 'inherit' }">
     <v-row class="justify-start align-center">
       <v-col v-if="icon" class="flex-grow-0">
-        <v-avatar :color="color" size="50">
+        <v-avatar :color="color" size="45">
           <v-icon dark>
             {{ icon }}
           </v-icon>
