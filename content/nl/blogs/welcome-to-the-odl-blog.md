@@ -1,7 +1,7 @@
 ---
 title: Welkom bij het Open Data Lab
 subtitle: 'Longum annis Tartara hastilia.'
-image: https://picsum.photos/id/1016/900/600
+image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
   - openbeelden

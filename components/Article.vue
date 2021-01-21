@@ -17,7 +17,11 @@
       height="400px"
       max-height="66vw"
       class="header-image"
-      :src="article.image"
+      :src="require(`~/assets/images/${article.image}?size=800`).src"
+      :srcset="
+        require(`~/assets/images/${article.image}?{sizes:[400,800,1200,1600]}`)
+          .srcSet
+      "
     />
 
     <!-- Optional article navigation -->

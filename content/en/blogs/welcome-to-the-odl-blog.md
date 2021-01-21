@@ -1,7 +1,7 @@
 ---
 title: Welcome to the ODL blog
 subtitle: 'Longum annis Tartara hastilia.'
-image: https://picsum.photos/id/1054/900/600
+image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
   - openbeelden

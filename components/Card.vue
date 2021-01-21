@@ -20,7 +20,7 @@
       height="200px"
       max-width="100%"
       max-height="200px"
-      :src="card.image"
+      :src="require(`~/assets/images/${card.image}?size=300`).src"
     >
       <v-card-title :style="{ textShadow: '1px 1px 5px rgba(0,0,0,0.3)' }">
         {{ card.title }}

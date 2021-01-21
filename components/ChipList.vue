@@ -15,7 +15,12 @@
       "
       text-color="white"
       :style="{
-        backgroundImage: getImageOverlayCSS(chip.image, theme[color]),
+        backgroundImage: getImageOverlayCSS(
+          chip.image
+            ? require(`~/assets/images/${chip.image}?size=300`).src
+            : '',
+          theme[color]
+        ),
       }"
     >
       <v-icon v-if="icon" left v-text="icon"></v-icon>
