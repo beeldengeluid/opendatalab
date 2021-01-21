@@ -1,7 +1,7 @@
 <template>
   <Fragment>
-    <Heading :title="$t('blogs')" :icon="icons.blog" />
-    <v-divider class="my-5" />
+    <Heading :title="$t('blogs')" :icon="icon" :color="color" />
+
     <CardGrid :cards="cards" path="blog-slug" :color="color" />
   </Fragment>
 </template>
@@ -28,7 +28,7 @@ export default {
 
     return { cards: articles }
   },
-  data: () => ({ icons, color: classColors.blog }),
+  data: () => ({ icon: icons.blog, color: classColors.blog }),
   head() {
     const title = this.$t('blogs')
     return {
