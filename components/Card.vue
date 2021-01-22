@@ -4,9 +4,10 @@
     max-width="100%"
     width="270px"
     height="100%"
+    hover
     link
     nuxt
-    outlined
+    xoutlined
     :to="
       localePath({
         name: path,
