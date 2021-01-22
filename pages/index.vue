@@ -18,7 +18,7 @@
 
       <!-- Blogs -->
       <v-row class="justify-center grey lighten-5 my-3 pb-3">
-        <v-col class="limit-width px-3 py-3 mb-4">
+        <v-col class="limit-width px-3 py-4 mb-2">
           <Heading
             :title="$t('blogs')"
             :icon="icons.blog"
@@ -36,7 +36,7 @@
 
       <!-- Projects -->
       <v-row class="justify-center my-3 pb-3">
-        <v-col class="limit-width px-3 py-3 mb-4">
+        <v-col class="limit-width px-3 py-3 mb-2">
           <Heading
             :title="$t('projects')"
             :icon="icons.project"
