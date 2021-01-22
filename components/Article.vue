@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h1>
+    <h1 class="mb-3">
       <v-avatar
         :color="color"
         size="35"

@@ -2,7 +2,7 @@
   <Fragment v-if="dataset">
     <v-breadcrumbs :items="createBreadCrumbs()" />
     <article>
-      <h1>
+      <h1 class="mb-3">
         <v-avatar
           :color="color"
           size="35"
