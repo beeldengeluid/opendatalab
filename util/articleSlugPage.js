@@ -7,13 +7,21 @@ export const createArticleSlugPage = ({
   components = {},
   data = {},
 }) => ({
-  async asyncData({ $content, params, app }) {
+  async asyncData({ $content, params, app, error }) {
     const path = await getLocalePath({
       $content,
       app,
       path: `${source}/${params.slug}`,
     })
-    const article = await $content(path).fetch()
+    const article = await $content(path)
+      .fetch()
+      .catch(() => {
+        error({ statusCode: 404, message: 'Article not found' })
+      })
+
+    if (!article) {
+      return
+    }
 
     // prev/next article
     const articles = await getLocalePath({

@@ -42,12 +42,18 @@ import { classColors } from '../../config/theme'
 export default {
   components: { Fragment, Relations },
 
-  async asyncData({ $content, app, params }) {
+  async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
     const datasets = await $content('datasets').fetch()
+
     const dataset = datasets.datasets.find(
       (dataset) => dataset.slug === params.slug
     )
+
+    if (!dataset) {
+      error({ statusCode: 404, message: 'Dataset not found' })
+      return
+    }
 
     // blogs
     const blogsPath = await getLocalePath({
