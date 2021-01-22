@@ -8,7 +8,7 @@
           </v-icon>
         </v-avatar>
       </v-col>
-      <v-col :style="{ marginLeft: '-15px' }">
+      <v-col :style="{ marginLeft: '-10px' }">
         <h2>{{ title }}</h2>
       </v-col>
       <v-spacer />

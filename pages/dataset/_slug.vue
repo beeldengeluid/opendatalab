@@ -3,10 +3,16 @@
     <v-breadcrumbs :items="createBreadCrumbs()" />
     <article>
       <h1>
-        <v-icon
-          :style="{ marginTop: '-3px', marginRight: '10px' }"
-          v-text="icons.dataset"
-        />{{ dataset.title }}
+        <v-avatar
+          :color="color"
+          size="35"
+          :style="{ marginTop: '-3px', marginRight: '5px' }"
+        >
+          <v-icon dark size="20">
+            {{ icon }}
+          </v-icon>
+        </v-avatar>
+        {{ dataset.title }}
       </h1>
       <v-divider class="my-5" />
 
@@ -31,6 +37,7 @@ import { Fragment } from 'vue-fragment'
 import Relations from '../../components/Relations'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
+import { classColors } from '../../config/theme'
 
 export default {
   components: { Fragment, Relations },
@@ -88,7 +95,7 @@ export default {
       relatedDatasets,
     }
   },
-  data: () => ({ icons }),
+  data: () => ({ icon: icons.dataset, color: classColors.dataset }),
   head() {
     const title = this.dataset.title
     return {

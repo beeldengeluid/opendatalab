@@ -1,11 +1,15 @@
 <template>
   <article>
     <h1>
-      <v-icon
-        v-if="icon"
-        :style="{ marginTop: '-3px', marginRight: '10px' }"
-        v-text="icon"
-      />
+      <v-avatar
+        :color="color"
+        size="35"
+        :style="{ marginTop: '-3px', marginRight: '5px' }"
+      >
+        <v-icon dark size="20">
+          {{ icon }}
+        </v-icon>
+      </v-avatar>
       {{ article.title }}
     </h1>
 
@@ -85,6 +89,11 @@ export default {
       required: true,
       default: '',
     },
+    color: {
+      type: String,
+      required: true,
+      default: '',
+    },
   },
   data: () => ({ icons }),
   methods: {
@@ -103,6 +112,7 @@ export default {
     margin: 20px 0;
     max-height: 66vw;
     width: 100%;
+    max-width: 100%;
   }
 }
 </style>
