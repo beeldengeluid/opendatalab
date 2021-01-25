@@ -4,8 +4,8 @@ subtitle: 'Longum annis Tartara hastilia.'
 image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
-  - openbeelden
-  - oorlogsbronnen
+  - https://www.openbeelden.nl/users/beeldengeluid
+  - https://www.openbeelden.nl/users/stichting_natuurbeelden
 ---
 
 ## Loqui sine adulter augusta et deceat

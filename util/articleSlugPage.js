@@ -1,4 +1,5 @@
 import { getLocalePath } from './contentFallback'
+import { enrichDatasets } from './dataset'
 import { formatDate } from './date'
 
 // Generic article slug page creator from given article source, e.g. blogs, projects
@@ -36,14 +37,16 @@ export const createArticleSlugPage = ({
       .surround(params.slug)
       .fetch()
 
-    const datasets = await $content('datasets').fetch()
+    const data = await $content('datasets').fetch()
+
+    const datasets = enrichDatasets(data.datasets)
 
     // populate datasets on article with dataset object
     article.datasets =
       article.datasets &&
       article.datasets
         .map((datasetId) =>
-          datasets.datasets.find((dataset) => dataset.slug === datasetId)
+          datasets.find((dataset) => dataset.identifier === datasetId)
         )
         .filter((d) => d)
 

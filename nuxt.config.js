@@ -97,37 +97,5 @@ export default {
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {
     extractCSS: true,
-    extend(config, { isDev, isClient }) {
-      // Default block
-      // if (isDev && isClient) {
-      //   config.module.rules.push({
-      //     enforce: 'pre',
-      //     test: /\.(js|vue)$/,
-      //     loader: 'eslint-loader',
-      //     exclude: /(node_modules)/,
-      //   })
-      // }
-      // Default block end
-
-      // here I tell webpack not to include jpgs and pngs
-      // as base64 as an inline image
-      // config.module.rules.find(
-      //   rule => rule.loader === "url-loader"
-      // ).exclude = /\.(jpe?g|png)$/;
-
-      // Configure the responsive-loader
-      config.module.rules.push({
-        test: /\.(jpe?g|png)$/i,
-        loader: 'responsive-loader',
-        options: {
-          min: 575,
-          max: 1140,
-          steps: 7,
-          placeholder: false,
-          quality: 60,
-          adapter: require('responsive-loader/sharp'),
-        },
-      })
-    },
   },
 }

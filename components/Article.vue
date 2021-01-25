@@ -17,6 +17,7 @@
 
     <v-img
       v-if="article.image"
+      position="top center"
       width="800px"
       height="400px"
       max-height="66vw"

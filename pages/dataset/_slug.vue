@@ -17,18 +17,21 @@
       <v-divider class="my-5" />
 
       <p>{{ dataset.description }}</p>
-      <h4>{{ $t('records') }}: {{ dataset.records }}</h4>
-
-      <v-divider class="my-5" />
-
-      <Relations
-        :projects="projects"
-        :blogs="blogs"
-        :datasets="relatedDatasets"
-      />
+      <!-- Retrieve per distribution -->
+      <!-- <h4>{{ $t('records') }}: {{ dataset.records }}</h4> -->
 
       <v-divider class="my-5" />
     </article>
+
+    <v-row class="justify-center my-3 pb-3">
+      <v-col class="limit-width px-3 py-3 mb-2">
+        <Relations
+          :projects="projects"
+          :blogs="blogs"
+          :datasets="relatedDatasets"
+        />
+      </v-col>
+    </v-row>
   </Fragment>
 </template>
 
@@ -38,17 +41,17 @@ import Relations from '../../components/Relations'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
+import { enrichDatasets } from '~/util/dataset'
 
 export default {
   components: { Fragment, Relations },
 
   async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
-    const datasets = await $content('datasets').fetch()
+    const data = await $content('datasets').fetch()
+    const datasets = enrichDatasets(data.datasets)
 
-    const dataset = datasets.datasets.find(
-      (dataset) => dataset.slug === params.slug
-    )
+    const dataset = datasets.find((dataset) => dataset.slug === params.slug)
 
     if (!dataset) {
       error({ statusCode: 404, message: 'Dataset not found' })
@@ -63,7 +66,7 @@ export default {
     })
 
     const blogs = await $content(blogsPath)
-      .where({ datasets: { $contains: dataset.slug } })
+      .where({ datasets: { $contains: dataset.identifier } })
       .fetch()
 
     // projects
@@ -74,7 +77,7 @@ export default {
     })
 
     const projects = await $content(projectsPath)
-      .where({ datasets: { $contains: dataset.slug } })
+      .where({ datasets: { $contains: dataset.identifier } })
       .fetch()
 
     // Related datasets, excluding current
@@ -82,17 +85,15 @@ export default {
     projects.concat(blogs).forEach((article) => {
       article.datasets &&
         article.datasets
-          .filter((dataset) => dataset !== params.slug)
-          .forEach((dataset) => {
-            dataset in datasetCount
-              ? datasetCount[dataset]++
-              : (datasetCount[dataset] = 1)
+          .filter((ds) => ds !== dataset.identifier)
+          .forEach((ds) => {
+            ds in datasetCount ? datasetCount[ds]++ : (datasetCount[ds] = 1)
           })
     })
 
-    const relatedDatasets = datasets.datasets
-      .filter((dataset) => dataset.slug in datasetCount)
-      .sort((a, b) => datasetCount[b.slug] - datasetCount[a.slug])
+    const relatedDatasets = datasets
+      .filter((ds) => ds.identifier in datasetCount)
+      .sort((a, b) => datasetCount[b.identifier] - datasetCount[a.identifier])
 
     return {
       dataset,

@@ -9,7 +9,7 @@
         >
           <h2 class="mb-3">{{ $t('datasets') }}</h2>
           <LinkList
-            :links="datasets.datasets"
+            :links="datasets"
             :icon="icons.dataset"
             path="dataset-slug"
           />
@@ -90,6 +90,7 @@ import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
 import { classColors } from '../config/theme'
+import { enrichDatasets } from '~/util/dataset'
 
 export default {
   components: {
@@ -123,7 +124,9 @@ export default {
       .limit(5)
       .fetch()
 
-    const datasets = await $content('datasets').fetch()
+    const data = await $content('datasets').fetch()
+    const datasets = enrichDatasets(data.datasets)
+
     return {
       page,
       datasets,

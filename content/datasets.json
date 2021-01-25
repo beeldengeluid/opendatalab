@@ -1,32 +1,84 @@
 {
   "datasets": [
     {
-      "id": "openbeelden",
-      "slug": "openbeelden",
-      "title": "Openbeelden",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
-      "records": 1100
+      "@context": {
+        "@vocab": "http://schema.org/"
+      },
+      "@type": "Dataset",
+      "@id": "https://www.openbeelden.nl/users/beeldengeluid",
+      "identifier": "https://www.openbeelden.nl/users/beeldengeluid",
+      "name": "Open video op Open Beelden",
+      "description": "Een verzameling van videomateriaal dat Beeld en Geluid onder een Creative Commons licentie vrijgeeft, of reeds in het Publiek Domein valt.",
+      "license": "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+      "inLanguage": "nl-NL",
+      "creator": {
+        "@type": "Organization",
+        "name": "Nederlands Instituut voor Beeld en Geluid",
+        "url": "https://data.overheid.nl/organisatie/NLPO:12345678"
+      },
+      "publisher": {
+        "@id": "https://data.overheid.nl/organisatie/NLPO:12345678",
+        "@type": "Organization",
+        "name": "Nederlands Instituut voor Beeld en Geluid"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://www.openbeelden.nl/feeds/oai/",
+          "encodingFormat": [
+            "http://publications.europa.eu/resource/authority/file-type/XML"
+          ],
+          "name": "http://netwerkdigitaalerfgoed.nl/def/soort#oai-pmh",
+          "license": "http://creativecommons.org/publicdomain/zero/1.0/deed.nl",
+          "description": "OAI-PMH Data Provider van het Open Beelden platform. Gebruik voor deze dataset \"set=beeldengeluid\".",
+          "inLanguage": [
+            "nl-NL"
+          ],
+          "datePublished": "2010-01-01T08:51",
+          "dateModified": "2021-01-19T08:52",
+          "contentSize": 12345
+        }
+      ]
     },
     {
-      "id": "natuurbeelden",
-      "slug": "natuurbeelden",
-      "title": "Natuurbeelden",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
-      "records": 500
-    },
-    {
-      "id": "radioarchief",
-      "slug": "radioarchief",
-      "title": "Radioarchief",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
-      "records": 750
-    },
-    {
-      "id": "oorlogsbronnen",
-      "slug": "oorlogsbronnen",
-      "title": "Oorlogsbronnen",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam eu est ultricies arcu sagittis mattis ultricies ut risus. Maecenas pharetra eget velit vitae molestie. Curabitur sodales egestas orci, quis bibendum nunc tempor at. Ut egestas arcu vel semper sollicitudin. Aliquam mattis facilisis consectetur. Vestibulum consectetur ultricies massa, sit amet ultricies sapien gravida nec. Donec posuere eros ut nisl condimentum, nec pulvinar diam finibus. Curabitur sodales tellus non nisi ornare consequat. Etiam tempor orci in erat varius, et ultricies ligula blandit. Curabitur ultrices erat tempor erat dictum, at condimentum justo feugiat. Vivamus id quam turpis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Duis vestibulum massa at lectus tincidunt, et fermentum ante volutpat.",
-      "records": 800
+      "@context": {
+        "@vocab": "http://schema.org/"
+      },
+      "@type": "Dataset",
+      "@id": "https://www.openbeelden.nl/users/stichting_natuurbeelden",
+      "identifier": "https://www.openbeelden.nl/users/stichting_natuurbeelden",
+      "name": "Natuurbeelden op Open Beelden",
+      "description": "Een verzameling van ruwe videoregistraties van Nederlandse flora en fauna onder een Creative Commons licentie, afkomstig van Stichting Natuurbeelden.",
+      "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+      "inLanguage": "nl-NL",
+      "creator": {
+        "@type": "Organization",
+        "name": "Stichting Natuurbeelden",
+        "url": "https://data.overheid.nl/organisatie/NLPO:1337"
+      },
+      "publisher": {
+        "@id": "https://data.overheid.nl/organisatie/NLPO:12345678",
+        "@type": "Organization",
+        "name": "Nederlands Instituut voor Beeld en Geluid"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://www.openbeelden.nl/feeds/oai/",
+          "encodingFormat": [
+            "http://publications.europa.eu/resource/authority/file-type/XML"
+          ],
+          "name": "http://netwerkdigitaalerfgoed.nl/def/soort#oai-pmh",
+          "license": "https://creativecommons.org/licenses/by-sa/3.0/",
+          "description": "OAI-PMH Data Provider van het Open Beelden platform. Gebruik voor deze dataset \"set=natuurbeelden\".",
+          "inLanguage": [
+            "nl-NL"
+          ],
+          "datePublished": "2010-01-01T08:51",
+          "dateModified": "2021-01-19T08:52",
+          "contentSize": 1234
+        }
+      ]
     }
   ]
 }
