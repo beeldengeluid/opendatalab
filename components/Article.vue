@@ -18,13 +18,13 @@
     <v-img
       v-if="article.image"
       position="top center"
-      width="800px"
-      height="400px"
+      width="930px"
+      height="420px"
       max-height="66vw"
       class="header-image"
-      :src="require(`~/assets/images/${article.image}?size=800`).src"
+      :src="require(`~/assets/images/${article.image}?size=930`).src"
       :srcset="
-        require(`~/assets/images/${article.image}?{sizes:[400,800,1200,1600]}`)
+        require(`~/assets/images/${article.image}?{sizes:[620,930,1200,1600]}`)
           .srcSet
       "
     />

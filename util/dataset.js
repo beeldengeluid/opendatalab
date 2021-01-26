@@ -4,7 +4,7 @@ import { datasetStyle, randomDatasetStyle } from '../config/datasets'
 export const enrichDataset = (dataset) => {
   // fields
   dataset.title = dataset.name
-  dataset.slug = slugify(dataset.identifier.replace(/[.:\/]/g, ' '), {
+  dataset.slug = slugify(dataset.identifier.replace(/[.:/]/g, ' '), {
     lower: true,
     strict: true,
   })

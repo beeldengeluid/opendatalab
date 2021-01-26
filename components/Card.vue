@@ -1,6 +1,6 @@
 <template>
   <v-card
-    class="mx-auto d-flex flex-column"
+    class="mx-auto d-flex flex-column white"
     max-width="100%"
     width="270px"
     height="100%"

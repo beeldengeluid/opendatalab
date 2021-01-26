@@ -70,7 +70,7 @@
         <v-toolbar-title
           class="d-none d-md-flex align-items-center text-uppercase"
           :style="{
-            letterSpacing: '0.05rem',
+            letterSpacing: '0.02rem',
             fontSize: '1.20rem',
             fontWeight: '500',
           }"

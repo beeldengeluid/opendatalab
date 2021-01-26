@@ -14,3 +14,9 @@
 .limit-width {
   max-width: 1400px;
 }
+
+.light-background,
+.light-background-children,
+.light-background-children .theme--light.v-card {
+  background-color: $lightBackground;
+}

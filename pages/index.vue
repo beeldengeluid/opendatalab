@@ -17,7 +17,7 @@
       </v-row>
 
       <!-- Blogs -->
-      <v-row class="justify-center grey lighten-5 my-3 pb-3">
+      <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-4 mb-2">
           <Heading
             :title="$t('blogs')"
@@ -53,10 +53,10 @@
       </v-row>
 
       <!-- About -->
-      <v-row class="justify-center grey lighten-5 my-3 pb-3">
+      <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-3 mb-4">
           <v-row class="white mx-4 my-4 flex-column flex-md-row">
-            <v-col md="6" class="px-0">
+            <v-col md="6" class="px-0 py-0">
               <v-img
                 max-height="400"
                 max-width="100%"
