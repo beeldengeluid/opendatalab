@@ -43,20 +43,23 @@
           <!-- Overview -->
           <v-tab-item key="overview" value="overview">
             <v-card flat>
-              <!-- Blogs -->
-              <v-row class="justify-center my-3 pb-3 light-background-children">
+              <!-- Projects -->
+              <v-row
+                v-if="projects && projects.length"
+                class="justify-center my-3 pb-3 light-background-children"
+              >
                 <v-col class="px-3 py-4 mb-2">
                   <Heading
-                    :title="$t('blogs')"
-                    :icon="icons.blog"
-                    :to="localePath('blogs')"
-                    :color="classColors.blog"
+                    :title="$t('projects')"
+                    :icon="icons.project"
+                    :to="localePath('projects')"
+                    :color="classColors.project"
                   />
                   <CardGrid
-                    :cards="blogs"
-                    path="blog-slug"
+                    :cards="projects"
+                    path="project-slug"
                     row-class="justify-center"
-                    :color="classColors.blog"
+                    :color="classColors.project"
                   />
                 </v-col>
               </v-row>
@@ -65,11 +68,7 @@
 
               <v-row class="justify-center my-3 pb-3">
                 <v-col class="limit-width px-3 py-3 mb-2">
-                  <Relations
-                    :projects="projects"
-                    :blogs="blogs"
-                    :datasets="relatedDatasets"
-                  />
+                  <Relations :blogs="blogs" />
                 </v-col>
               </v-row>
             </v-card>
