@@ -177,10 +177,10 @@ export default {
     submenu: ['overview', 'metadata'],
     activeSubmenu: null,
   }),
-  created() {
-    // Set default submenu anchor to hash
+  mounted() {
+    // Set default submenu to hash
     if (!this.$route.hash) {
-      this.$router.replace('#' + this.submenu[0])
+      window.history.replaceState(null,window.title,  this.$route.path + '#' + this.submenu[0]);
     }
   },
   head() {
