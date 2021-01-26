@@ -2,7 +2,18 @@
   <v-row>
     <v-col>
       <article>
-        <Heading :title="page.title" :icon="icon" :color="color" />
+        <h1 class="mb-3">
+          <v-avatar
+            :color="color"
+            size="35"
+            :style="{ marginTop: '-3px', marginRight: '5px' }"
+          >
+            <v-icon dark size="20">
+              {{ icon }}
+            </v-icon>
+          </v-avatar>
+          {{ page.title }}
+        </h1>
         <v-divider class="my-5" />
 
         <nuxt-content :document="page" />
