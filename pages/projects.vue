@@ -1,13 +1,14 @@
 <template>
-  <Fragment>
-    <Heading :title="$t('projects')" :icon="icon" :color="color" />
-
-    <CardGrid :cards="cards" path="project-slug" :color="color" />
-  </Fragment>
+  <v-row class="justify-center">
+    <v-col class="limit-width py-4">
+      <Heading :title="$t('projects')" :icon="icon" :color="color" />
+      <v-divider class="my-5" />
+      <CardGrid :cards="cards" path="project-slug" :color="color" />
+    </v-col>
+  </v-row>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
 import icons from '../config/icons'
@@ -15,7 +16,7 @@ import { getLocalePath } from '../util/contentFallback'
 import { classColors } from '../config/theme'
 
 export default {
-  components: { CardGrid, Fragment, Heading },
+  components: { CardGrid, Heading },
   async asyncData({ $content, params, app }) {
     const projectsPath = await getLocalePath({
       $content,
