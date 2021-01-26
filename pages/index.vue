@@ -16,27 +16,9 @@
         </v-col>
       </v-row>
 
-      <!-- Blogs -->
+      <!-- Projects -->
       <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading
-            :title="$t('blogs')"
-            :icon="icons.blog"
-            :to="localePath('blogs')"
-            :color="classColors.blog"
-          />
-          <CardGrid
-            :cards="blogs"
-            path="blog-slug"
-            row-class="justify-center"
-            :color="classColors.blog"
-          />
-        </v-col>
-      </v-row>
-
-      <!-- Projects -->
-      <v-row class="justify-center my-3 pb-3">
-        <v-col class="limit-width px-3 py-3 mb-2">
           <Heading
             :title="$t('projects')"
             :icon="icons.project"
@@ -48,6 +30,24 @@
             path="project-slug"
             row-class="justify-center"
             :color="classColors.project"
+          />
+        </v-col>
+      </v-row>
+
+      <!-- Blogs -->
+      <v-row class="justify-center my-3 pb-3">
+        <v-col class="limit-width px-3 py-3 mb-2">
+          <Heading
+            :title="$t('blogs')"
+            :icon="icons.blog"
+            :to="localePath('blogs')"
+            :color="classColors.blog"
+          />
+          <CardGrid
+            :cards="blogs"
+            path="blog-slug"
+            row-class="justify-center"
+            :color="classColors.blog"
           />
         </v-col>
       </v-row>
