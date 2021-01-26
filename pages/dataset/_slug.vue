@@ -27,7 +27,7 @@
         <v-tabs v-model="activeSubmenu">
           <v-tabs-slider color="primary" />
 
-          <v-tab v-for="(item, index) in submenu" :key="item" :to="'#' + item">
+          <v-tab v-for="item in submenu" :key="item" :to="'#' + item">
             {{ item }}
           </v-tab>
         </v-tabs>
@@ -83,7 +83,7 @@
                 <Metadata :object="dataset" :exclude-props="excludeProps" />
               </article>
             </v-card>
-          </v-tab-item></v-tabs-slider>
+          </v-tab-item>
         </v-tabs-items>
       </v-col>
     </v-row>
@@ -177,16 +177,20 @@ export default {
     submenu: ['overview', 'metadata'],
     activeSubmenu: null,
   }),
-  mounted() {
-    // Set default submenu to hash
-    if (!this.$route.hash) {
-      window.history.replaceState(null,window.title,  this.$route.path + '#' + this.submenu[0]);
-    }
-  },
   head() {
     const title = this.dataset.title
     return {
       title,
+    }
+  },
+  mounted() {
+    // Set default submenu to hash
+    if (!this.$route.hash) {
+      window.history.replaceState(
+        null,
+        window.title,
+        this.$route.path + '#' + this.submenu[0]
+      )
     }
   },
   methods: {

@@ -58,8 +58,8 @@
       class="blue-grey darken-4 white--text"
     >
       <v-app-bar-nav-icon
-        @click.stop="drawer = !drawer"
         class="d-sm-flex d-md-none"
+        @click.stop="drawer = !drawer"
       />
 
       <v-spacer></v-spacer>
@@ -87,7 +87,7 @@
 
       <v-spacer></v-spacer>
       <!-- Tab menu -->
-      <v-tabs class="d-none d-lg-flex" right center-active>
+      <v-tabs class="d-none d-md-flex" right center-active>
         <v-tabs-slider
           v-if="$route.slug !== home.to"
           color="primary"
@@ -147,7 +147,7 @@ export default {
     fixed: false,
     home: menu[0],
     menu,
-    tabMenu: menu.filter((m) => m.title != 'home'),
+    tabMenu: menu.filter((m) => m.title !== 'home'),
   }),
 }
 </script>

@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { isUrl } from '../util/url'
 import { Fragment } from 'vue-fragment'
 
 export default {
@@ -24,17 +25,7 @@ export default {
     },
   },
   methods: {
-    isUrl(string) {
-      let url
-
-      try {
-        url = new URL(string)
-      } catch (_) {
-        return false
-      }
-
-      return url.protocol === 'http:' || url.protocol === 'https:'
-    },
+    isUrl,
   },
 }
 </script>

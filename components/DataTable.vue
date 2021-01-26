@@ -5,14 +5,19 @@
         <th>{{ key }}</th>
         <td>
           <!-- String -->
-          <span v-if="typeof value == 'string'"
-            ><LinkText :value="value"
-          /></span>
+          <span v-if="typeof value == 'string'">
+            <LinkText :value="value" />
+          </span>
 
           <!-- Number -->
-          <span v-else-if="typeof value == 'number'"
-            ><LinkText :value="value"
-          /></span>
+          <span v-else-if="typeof value == 'number'">
+            <LinkText :value="value" />
+          </span>
+
+          <!-- Typed URI -->
+          <span v-else-if="isObjectLink(value)">
+            <ObjectLink :value="value" />
+          </span>
 
           <!-- Array of non-objects -->
           <ul
@@ -40,18 +45,23 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
+import isObjectLink from '../util/objectLink'
 import DataTable from './DataTable'
 import LinkText from './LinkText'
+import ObjectLink from './ObjectLink'
 
 export default {
   name: 'DataTable',
-  components: { DataTable, Fragment, LinkText },
+  components: { DataTable, Fragment, LinkText, ObjectLink },
   props: {
     object: {
       type: Object,
       required: true,
       default: null,
     },
+  },
+  methods: {
+    isObjectLink,
   },
 }
 </script>
