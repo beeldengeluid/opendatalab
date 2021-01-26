@@ -18,7 +18,6 @@ export default {
     },
   },
   data() {
-    console.log(this.value['@type'].toLowerCase())
     return {
       icon: icons[this.value['@type'].toLowerCase()] || icons.link,
       href: this.value['@id'],
