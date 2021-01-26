@@ -1,8 +1,10 @@
 <template>
   <v-row>
     <v-col>
-      <Heading :title="page.title" :icon="icon" :color="color" />
       <article>
+        <Heading :title="page.title" :icon="icon" :color="color" />
+        <v-divider class="my-5" />
+
         <nuxt-content :document="page" />
       </article>
     </v-col>

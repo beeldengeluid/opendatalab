@@ -110,7 +110,7 @@ export default {
     })
     const blogs = await $content(blogsPath)
       .sortBy('createdAt', 'asc')
-      .limit(5)
+      .limit(4)
       .fetch()
 
     // projects
@@ -121,7 +121,7 @@ export default {
     })
     const projects = await $content(projectsPath)
       .sortBy('createdAt', 'asc')
-      .limit(5)
+      .limit(4)
       .fetch()
 
     const data = await $content('datasets').fetch()
