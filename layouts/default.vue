@@ -8,6 +8,7 @@
       disable-resize-watcher
       temporary
       floating
+      class="d-sm-flex d-md-none"
     >
       <v-list-item>
         <v-list-item-content>
@@ -56,7 +57,10 @@
       elevate-on-scroll
       class="blue-grey darken-4 white--text"
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon
+        @click.stop="drawer = !drawer"
+        class="d-sm-flex d-md-none"
+      />
 
       <v-spacer></v-spacer>
 
@@ -82,22 +86,38 @@
       </NuxtLink>
 
       <v-spacer></v-spacer>
+      <!-- Tab menu -->
+      <v-tabs class="d-none d-lg-flex" right center-active>
+        <v-tabs-slider
+          v-if="$route.slug !== home.to"
+          color="primary"
+          class="v-tabs-slider-wrapper"
+        />
+        <v-tab :to="localePath(home.to)" class="v-tab--home d-none">
+          <v-icon>{{ home.icon }}</v-icon>
+        </v-tab>
+        <v-tab v-for="(item, i) in tabMenu" :key="i" :to="localePath(item.to)">
+          {{ item.title }}
+        </v-tab>
+      </v-tabs>
 
       <!-- Language selector -->
-      <NuxtLink
-        v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
-        :key="locale.code"
-        :to="switchLocalePath(locale.code)"
-        class="text-decoration-none"
-      >
-        <v-avatar
-          color="blue-grey darken-4"
-          size="35"
-          class="white--text text-uppercase"
+      <div class="language-selector">
+        <NuxtLink
+          v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+          class="text-decoration-none"
         >
-          {{ locale.code }}
-        </v-avatar>
-      </NuxtLink>
+          <v-avatar
+            color="blue-grey darken-3"
+            size="35"
+            class="white--text text-uppercase"
+          >
+            {{ locale.code }}
+          </v-avatar>
+        </NuxtLink>
+      </div>
     </v-app-bar>
 
     <v-main>
@@ -125,7 +145,9 @@ export default {
   data: () => ({
     drawer: false,
     fixed: false,
+    home: menu[0],
     menu,
+    tabMenu: menu.filter((m) => m.title != 'home'),
   }),
 }
 </script>
@@ -141,5 +163,17 @@ $dotSize: 25px;
   height: $dotSize;
   background-color: $primary;
   border-radius: $dotSize;
+}
+
+.v-tabs-slider-wrapper {
+  height: 4px !important;
+}
+
+.v-tab--home {
+  min-width: 5px;
+}
+
+.language-selector {
+  margin-left: 10px;
 }
 </style>

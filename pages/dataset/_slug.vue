@@ -25,7 +25,7 @@
 
         <!-- Tabs -->
         <v-tabs v-model="activeSubmenu">
-          <v-tabs-slider color="primary"></v-tabs-slider>
+          <v-tabs-slider color="primary" />
 
           <v-tab v-for="(item, index) in submenu" :key="item" :to="'#' + item">
             {{ item }}
@@ -83,7 +83,7 @@
                 <Metadata :object="dataset" :exclude-props="excludeProps" />
               </article>
             </v-card>
-          </v-tab-item>
+          </v-tab-item></v-tabs-slider>
         </v-tabs-items>
       </v-col>
     </v-row>

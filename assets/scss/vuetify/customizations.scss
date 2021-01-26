@@ -4,11 +4,17 @@
 }
 
 .v-breadcrumbs {
+  padding-top: 0;
+  padding-bottom: 0;
   // remove breadcrumb padding on small screens
   @media (max-width: 540px) {
     padding-left: 0 !important;
     padding-right: 0 !important;
   }
+}
+
+.v-tabs--right {
+  justify-content: flex-end;
 }
 
 .limit-width {
