@@ -43,6 +43,11 @@
           <!-- Overview -->
           <v-tab-item key="overview" value="overview">
             <v-card flat>
+              <!-- Description -->
+              <article>
+                <nuxt-content :document="page" />
+              </article>
+
               <!-- Projects -->
               <v-row
                 v-if="projects && projects.length"
@@ -150,11 +155,24 @@ export default {
       .filter((ds) => ds.identifier in datasetCount)
       .sort((a, b) => datasetCount[b.identifier] - datasetCount[a.identifier])
 
+    // Custom markdown content for dataset
+    const mdPath = await getLocalePath({
+      $content,
+      app,
+      path: 'datasets/' + dataset.slug,
+    })
+    const page = await $content(mdPath)
+      .fetch()
+      .catch((e) => {
+        // ignore error of missing page
+      })
+
     return {
       dataset,
       blogs,
       projects,
       relatedDatasets,
+      page,
     }
   },
   data: () => ({
