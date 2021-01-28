@@ -35,7 +35,7 @@
       </v-row>
 
       <!-- Blogs -->
-      <v-row class="justify-center my-3 pb-3">
+      <v-row class="justify-center light-background pb-3">
         <v-col class="limit-width px-3 py-3 mb-2">
           <Heading
             :title="$t('blogs')"

@@ -1,5 +1,5 @@
 <template>
-  <v-row class="justify-center">
+  <v-row class="justify-center light-background">
     <v-col class="limit-width py-4">
       <Heading :title="$t('blogs')" :icon="icon" :color="color" />
       <v-divider class="my-5" />
