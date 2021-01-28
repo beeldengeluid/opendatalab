@@ -1,5 +1,9 @@
 <template>
   <v-breadcrumbs :items="breadCrumbs">
+    <template #divider>
+      <v-icon>mdi-chevron-right</v-icon>
+    </template>
+
     <template #item="{ item }">
       <v-breadcrumbs-item
         :to="localePath(item.to)"

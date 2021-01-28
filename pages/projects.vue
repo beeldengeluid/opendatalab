@@ -1,23 +1,26 @@
 <template>
-  <v-row class="justify-center light-background">
-    <v-col class="limit-width py-4">
-      <Heading :title="$t('projects')" :icon="icon" :color="color" />
-      <v-divider class="my-5" />
-      <CardGrid :cards="cards" path="project-slug" :color="color" />
-    </v-col>
-  </v-row>
+  <div>
+    <v-row class="justify-center pb-4">
+      <v-col class="limit-width">
+        <Heading :title="$t('projects')" :icon="icon" :color="color" />
+      </v-col>
+    </v-row>
+    <v-row class="justify-center light-background">
+      <v-col class="limit-width py-4">
+        <CardGrid :cards="cards" path="project-slug" :data-class="dataClass" />
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
-import icons from '../config/icons'
 import { getLocalePath } from '../util/contentFallback'
-import { classColors } from '../config/theme'
 
 export default {
   components: { CardGrid, Heading },
-  async asyncData({ $content, params, app }) {
+  async asyncData({ $content, app }) {
     const projectsPath = await getLocalePath({
       $content,
       app,
@@ -29,7 +32,7 @@ export default {
 
     return { cards: projects }
   },
-  data: () => ({ icon: icons.project, color: classColors.project }),
+  data: () => ({ dataClass: 'project' }),
   head() {
     const title = this.$t('projects')
     return {

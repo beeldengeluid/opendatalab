@@ -29,7 +29,7 @@
             :cards="projects"
             path="project-slug"
             row-class="justify-center"
-            :color="classColors.project"
+            data-class="project"
           />
         </v-col>
       </v-row>
@@ -47,7 +47,7 @@
             :cards="blogs"
             path="blog-slug"
             row-class="justify-center"
-            :color="classColors.blog"
+            data-class="blog"
           />
         </v-col>
       </v-row>

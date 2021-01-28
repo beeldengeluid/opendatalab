@@ -11,10 +11,16 @@ const theme = {
   success: colors.green.accent3,
 }
 
+export const classColorIndex = {
+  dataset: 'primary',
+  project: 'secondary',
+  blog: 'tertiary',
+}
+
 export const classColors = {
-  dataset: theme.primary,
-  project: theme.secondary,
-  blog: theme.tertiary,
+  dataset: theme[classColorIndex.dataset],
+  project: theme[classColorIndex.project],
+  blog: theme[classColorIndex.blog],
 }
 
 export default theme

@@ -79,7 +79,7 @@ export default {
     treeShake: true,
     defaultAssets: {
       font: {
-        family: 'Open Sans',
+        family: 'Roboto',
       },
     },
     theme: {

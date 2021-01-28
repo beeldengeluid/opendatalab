@@ -9,10 +9,15 @@
 // $body-font-family: 'Open Sans Condensed', sans-serif;
 
 $primary: #008adb;
-$lightBackground: rgba(248, 253, 255);
+$lightBackground: rgba(244, 249, 253);
 
-$heading-font-family: 'Open Sans Condensed';
 $font-size-root: 15.5px;
+$card-elevation: 1;
+$card-hover-elevation: 4;
+$border-radius-root: 5px;
+
+$breadcrumbs-padding: 0 7px;
+$breadcrumbs-even-child-padding: 0 7px;
 
 $material-light: (
   'states': (
