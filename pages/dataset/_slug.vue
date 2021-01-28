@@ -17,14 +17,27 @@
             </v-avatar>
             {{ dataset.title }}
           </h1>
-        </article>
 
-        <article>
           <p>{{ dataset.description }}</p>
+
+          <!-- Stats -->
+          <v-row
+            :style="{ fontSize: '0.8em' }"
+            class="justify-start text-uppercase grey--text darken-4"
+          >
+            <!-- Records -->
+            <v-col v-if="dataset.distribution.length">
+              <v-icon size="17" class="pb-0">mdi-file-document-multiple</v-icon>
+              <strong>
+                {{ dataset.distribution[0].contentSize }}
+                {{ $t('records') }}
+              </strong>
+            </v-col>
+          </v-row>
         </article>
 
         <!-- Tabs -->
-        <v-tabs v-model="activeSubmenu">
+        <v-tabs v-model="activeSubmenu" class="mt-5">
           <v-tabs-slider color="primary" />
 
           <v-tab v-for="item in submenu" :key="item" :to="'#' + item">
