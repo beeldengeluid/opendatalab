@@ -12,6 +12,7 @@
 
 <script>
 import DataTable from './DataTable'
+import { filterObject } from '../util/objects'
 
 export default {
   components: { DataTable },
@@ -33,13 +34,9 @@ export default {
     },
   },
   data() {
+    const activeObjects = filterObject(this.object, this.excludeProps)
     return {
-      activeObjects: Object.keys(this.object).reduce((result, key) => {
-        if (!this.excludeProps.includes(key)) {
-          result[key] = this.object[key]
-        }
-        return result
-      }, {}),
+      activeObjects,
     }
   },
 }

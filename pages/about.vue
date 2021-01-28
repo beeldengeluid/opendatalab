@@ -23,12 +23,10 @@
 </template>
 
 <script>
-import Heading from '../components/Heading'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
 
 export default {
-  components: { Heading },
   async asyncData({ $content, app }) {
     const aboutPath = await getLocalePath({ $content, app, path: 'about' })
     const page = await $content(aboutPath).fetch()

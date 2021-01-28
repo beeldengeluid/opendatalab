@@ -1,5 +1,6 @@
 import slugify from 'slugify'
 import { datasetStyle, randomDatasetStyle } from '../config/datasets'
+import { filterObject } from './objects'
 
 export const enrichDataset = (dataset) => {
   // fields
@@ -22,3 +23,6 @@ export const enrichDataset = (dataset) => {
 export const enrichDatasets = (datasets) => {
   return datasets.map((dataset) => enrichDataset(dataset))
 }
+
+export const stripEnrichments = (dataset) =>
+  filterObject(dataset, ['title', 'slug', 'image', 'color'])

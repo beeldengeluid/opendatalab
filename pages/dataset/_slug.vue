@@ -37,57 +37,13 @@
     </v-row>
 
     <!-- Content -->
-    <v-row class="justify-center light-background-children mb-3 pt-3 mt-0">
+    <v-row class="justify-center mb-3 pt-3 mt-0">
       <v-col class="limit-width px-3 py-3 mb-3">
-        <v-tabs-items v-model="activeSubmenu" class="light-background-children">
+        <v-tabs-items v-model="activeSubmenu">
           <!-- Overview -->
-          <v-tab-item key="overview" value="overview">
-            <v-card flat>
-              <!-- Description -->
-              <article>
-                <nuxt-content :document="page" />
-              </article>
-
-              <!-- Projects -->
-              <v-row
-                v-if="projects && projects.length"
-                class="justify-center my-3 pb-3 light-background-children"
-              >
-                <v-col class="px-3 py-4 mb-2">
-                  <Heading
-                    :title="$t('projects')"
-                    :icon="icons.project"
-                    :to="localePath('projects')"
-                    :color="classColors.project"
-                  />
-                  <CardGrid
-                    :cards="projects"
-                    path="project-slug"
-                    row-class="justify-center"
-                    :color="classColors.project"
-                  />
-                </v-col>
-              </v-row>
-
-              <!-- Chiplist -->
-
-              <v-row class="justify-center my-3 pb-3">
-                <v-col class="limit-width px-3 py-3 mb-2">
-                  <Relations :blogs="blogs" />
-                </v-col>
-              </v-row>
-            </v-card>
-          </v-tab-item>
-
+          <TabOverview :page="page" :projects="projects" :blogs="blogs" />
           <!-- Metadata -->
-          <v-tab-item key="metadata" value="metadata">
-            <v-card flat>
-              <!-- All metadata -->
-              <article>
-                <Metadata :object="dataset" :exclude-props="excludeProps" />
-              </article>
-            </v-card>
-          </v-tab-item>
+          <TabMetadata :dataset="dataset" />
         </v-tabs-items>
       </v-col>
     </v-row>
@@ -96,15 +52,15 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
-import Relations from '../../components/Relations'
-import Metadata from '../../components/Metadata'
+import TabOverview from '../../components/dataset/TabOverview'
+import TabMetadata from '../../components/dataset/TabMetadata'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
 import { enrichDatasets } from '~/util/dataset'
 
 export default {
-  components: { Fragment, Relations, Metadata },
+  components: { Fragment, TabOverview, TabMetadata },
 
   async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
@@ -180,17 +136,7 @@ export default {
     classColors,
     icon: icons.dataset,
     color: classColors.dataset,
-    excludeProps: [
-      'title',
-      'slug',
-      'image',
-      'color',
-      '@context',
-      '@type',
-      '@id',
-      'name',
-      'description',
-    ],
+
     submenu: ['overview', 'metadata'],
     activeSubmenu: null,
   }),
