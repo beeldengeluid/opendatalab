@@ -18,7 +18,7 @@
             {{ dataset.title }}
           </h1>
         </article>
-        <v-divider class="my-5" />
+
         <article>
           <p>{{ dataset.description }}</p>
         </article>
@@ -32,7 +32,7 @@
           </v-tab>
         </v-tabs>
 
-        <!-- <v-divider /> -->
+        <v-divider />
       </v-col>
     </v-row>
 

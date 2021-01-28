@@ -14,8 +14,6 @@
           </v-avatar>
           {{ page.title }}
         </h1>
-        <v-divider class="my-5" />
-
         <nuxt-content :document="page" />
       </article>
     </v-col>

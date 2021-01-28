@@ -7,12 +7,12 @@
       </article>
 
       <!-- Chiplist -->
-      <v-row class="justify-center my-3 pb-3">
+      <v-row class="justify-center mt-5 pb-3">
         <v-col class="limit-width px-3 py-3 mb-2">
           <Relations :projects="projects" />
         </v-col>
       </v-row>
-      <v-row class="justify-center my-3 pb-3">
+      <v-row class="justify-center pb-3">
         <v-col class="limit-width px-3 py-3 mb-2">
           <Relations :blogs="blogs" />
         </v-col>
