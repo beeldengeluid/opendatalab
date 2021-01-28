@@ -177,19 +177,13 @@ export default {
     createBreadCrumbs() {
       return [
         {
-          text: this.$t('home'),
-          disabled: false,
-          to: '/',
-        },
-        {
-          text: this.$t('datasets'),
-          disabled: false,
+          text: 'datasets',
           to: '/datasets',
         },
         {
           text: this.dataset.title,
           disabled: true,
-          to: '#',
+          to: '',
         },
       ]
     },

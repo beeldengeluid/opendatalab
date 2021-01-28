@@ -1,9 +1,9 @@
 <template>
-  <v-breadcrumbs :items="items">
+  <v-breadcrumbs :items="breadCrumbs">
     <template #item="{ item }">
       <v-breadcrumbs-item
         :to="localePath(item.to)"
-        :disabled="item.disabled"
+        :disabled="item.disabled === true"
         nuxt
       >
         <v-icon v-if="item.to == '/'">{{ homeIcon }}</v-icon>
@@ -19,6 +19,17 @@ export default {
   props: {
     items: { type: Array, required: true, default: () => [] },
   },
-  data: () => ({ homeIcon: icons.home }),
+  data() {
+    return {
+      homeIcon: icons.home,
+      breadCrumbs: [
+        {
+          text: 'home',
+          to: '/',
+        },
+        ...this.items,
+      ],
+    }
+  },
 }
 </script>

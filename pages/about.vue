@@ -1,6 +1,7 @@
 <template>
   <v-row>
     <v-col>
+      <BreadCrumbs :items="createBreadCrumbs()" />
       <article>
         <h1 class="mb-3">
           <v-avatar
@@ -23,8 +24,10 @@
 <script>
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
+import BreadCrumbs from '../components/BreadCrumbs'
 
 export default {
+  components: { BreadCrumbs },
   async asyncData({ $content, app }) {
     const aboutPath = await getLocalePath({ $content, app, path: 'about' })
     const page = await $content(aboutPath).fetch()
@@ -44,6 +47,15 @@ export default {
     return {
       title,
     }
+  },
+  methods: {
+    createBreadCrumbs: () => [
+      {
+        text: 'about',
+        disabled: true,
+        to: '',
+      },
+    ],
   },
 }
 </script>

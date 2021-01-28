@@ -161,6 +161,9 @@ export default {
       this.updateActiveTab()
     },
   },
+  mounted() {
+    this.updateActiveTab()
+  },
   methods: {
     updateActiveTab() {
       // Active menu for slug paths
@@ -177,9 +180,6 @@ export default {
           break
       }
     },
-  },
-  mounted() {
-    this.updateActiveTab()
   },
 }
 </script>

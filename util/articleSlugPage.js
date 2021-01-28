@@ -65,13 +65,7 @@ export const createArticleSlugPage = ({
     createBreadCrumbs() {
       return [
         {
-          text: this.$t('home'),
-          disabled: false,
-          to: '/',
-        },
-        {
           text: this.$t(source),
-          disabled: false,
           to: '/' + source,
         },
         {
