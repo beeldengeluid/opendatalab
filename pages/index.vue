@@ -5,7 +5,7 @@
       <v-row class="justify-center my-3">
         <v-col
           class="limit-width todo grey lighten-4 px-3 py-3 mb-3"
-          :style="{ height: '80vh' }"
+          :style="{ height: '80vh', maxHeight: '220px' }"
         >
           <h2 class="mb-3">{{ $t('datasets') }}</h2>
           <LinkList
