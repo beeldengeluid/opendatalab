@@ -5,6 +5,7 @@ import { filterObject } from './objects'
 export const enrichDataset = (dataset) => {
   // fields
   dataset.title = dataset.name
+  dataset.subtitle = dataset.description
   dataset.slug = slugify(dataset.identifier.replace(/[.:/]/g, ' '), {
     lower: true,
     strict: true,
@@ -25,4 +26,4 @@ export const enrichDatasets = (datasets) => {
 }
 
 export const stripEnrichments = (dataset) =>
-  filterObject(dataset, ['title', 'slug', 'image', 'color'])
+  filterObject(dataset, ['title', 'subtitle', 'slug', 'image', 'color'])
