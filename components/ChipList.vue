@@ -1,11 +1,12 @@
 <template>
-  <Fragment>
+  <div class="mt-3">
     <v-chip
       v-for="chip of chips"
       :key="chip.slug"
       class="ma-2 color-chip"
       :color="color"
       label
+      large
       link
       :to="
         localePath({
@@ -23,19 +24,17 @@
         ),
       }"
     >
-      <v-icon v-if="icon" left v-text="icon"></v-icon>
-      <strong>{{ chip.title }}</strong>
+      <v-icon v-if="icon" left size="24" v-text="icon"></v-icon>
+      {{ chip.title }}
     </v-chip>
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
 import theme from '../config/theme'
 import { getImageOverlayCSS } from '../util/color'
 
 export default {
-  components: { Fragment },
   props: {
     chips: {
       type: Array,
@@ -63,11 +62,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .v-chip {
-  padding: 20px 20px;
+  padding: 13px;
   background-position: center center !important;
   background-size: cover !important;
   background-repeat: no-repeat !important;
+  max-height: 42px;
 }
 </style>

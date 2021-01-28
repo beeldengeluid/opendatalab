@@ -23,41 +23,45 @@
           <!-- Stats -->
           <v-row
             :style="{ fontSize: '0.8em' }"
-            class="justify-start text-uppercase grey--text darken-4"
+            class="justify-start text-uppercase grey--text darken-4 title-font"
           >
             <!-- Records -->
             <v-col v-if="dataset.distribution.length">
-              <v-icon size="17" class="pb-0">mdi-file-document-multiple</v-icon>
+              <v-icon size="17" class="pb-0 mr-2"
+                >mdi-file-document-multiple</v-icon
+              >
               <strong>
                 {{ dataset.distribution[0].contentSize }}
                 {{ $t('records') }}
               </strong>
             </v-col>
           </v-row>
+
+          <!-- Tabs -->
+          <v-tabs v-model="activeSubmenu" class="mt-5">
+            <v-tabs-slider color="primary" />
+
+            <v-tab v-for="item in submenu" :key="item" :to="'#' + item">
+              {{ item }}
+            </v-tab>
+          </v-tabs>
+
+          <v-divider />
         </article>
-
-        <!-- Tabs -->
-        <v-tabs v-model="activeSubmenu" class="mt-5">
-          <v-tabs-slider color="primary" />
-
-          <v-tab v-for="item in submenu" :key="item" :to="'#' + item">
-            {{ item }}
-          </v-tab>
-        </v-tabs>
-
-        <v-divider />
       </v-col>
     </v-row>
 
     <!-- Content -->
     <v-row class="justify-center mb-3 pt-3 mt-0">
       <v-col class="limit-width px-3 py-3 mb-3">
-        <v-tabs-items v-model="activeSubmenu">
-          <!-- Overview -->
-          <TabOverview :page="page" :projects="projects" :blogs="blogs" />
-          <!-- Metadata -->
-          <TabMetadata :dataset="dataset" />
-        </v-tabs-items>
+        <article>
+          <v-tabs-items v-model="activeSubmenu">
+            <!-- Overview -->
+            <TabOverview :page="page" :projects="projects" :blogs="blogs" />
+            <!-- Metadata -->
+            <TabMetadata :dataset="dataset" />
+          </v-tabs-items>
+        </article>
       </v-col>
     </v-row>
   </Fragment>
@@ -195,10 +199,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-article {
-  margin: 0 20px;
-  @media (max-width: 540px) {
-    margin: 0;
-  }
-}
+// article {
+//   margin: 0 20px;
+//   @media (max-width: 540px) {
+//     margin: 0;
+//   }
+// }
 </style>

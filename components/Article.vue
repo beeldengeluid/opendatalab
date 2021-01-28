@@ -51,7 +51,7 @@
     <!-- relations -->
     <Relations :datasets="article.datasets" />
 
-    <prev-next :prev="prev" :next="next" />
+    <PrevNext :prev="prev" :next="next" />
   </article>
 </template>
 
@@ -59,9 +59,10 @@
 import icons from '../config/icons'
 import { formatDate } from '../util/date'
 import Relations from './Relations'
+import PrevNext from './PrevNext'
 
 export default {
-  components: { Relations },
+  components: { Relations, PrevNext },
   props: {
     article: {
       type: Object,

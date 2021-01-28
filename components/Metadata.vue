@@ -11,8 +11,8 @@
 </template>
 
 <script>
-import DataTable from './DataTable'
 import { filterObject } from '../util/objects'
+import DataTable from './DataTable'
 
 export default {
   components: { DataTable },

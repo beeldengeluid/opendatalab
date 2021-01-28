@@ -1,30 +1,32 @@
 <template>
   <v-tab-item key="overview" value="overview">
     <v-card flat>
-      <!-- Description -->
-      <article v-if="page">
+      <article class="mt-0">
+        <!-- Description -->
         <nuxt-content :document="page" />
-      </article>
 
-      <!-- Chiplist -->
-      <v-row class="justify-center mt-5 pb-3">
-        <v-col class="limit-width px-3 py-3 mb-2">
-          <Relations :projects="projects" />
-        </v-col>
-      </v-row>
-      <v-row class="justify-center pb-3">
-        <v-col class="limit-width px-3 py-3 mb-2">
-          <Relations :blogs="blogs" />
-        </v-col>
-      </v-row>
+        <!-- Chiplist -->
+        <v-row class="justify-center mt-5">
+          <v-col class="limit-width px-3 py-3 mb-2">
+            <Relations :projects="projects" />
+          </v-col>
+        </v-row>
+        <v-row class="justify-center">
+          <v-col class="limit-width px-3 py-3 mb-2">
+            <Relations :blogs="blogs" />
+          </v-col>
+        </v-row>
+      </article>
     </v-card>
   </v-tab-item>
 </template>
 <script>
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
+import Relations from '../Relations'
 
 export default {
+  components: { Relations },
   props: {
     projects: { type: Array, required: false, default: () => [] },
     blogs: { type: Array, required: false, default: () => [] },
