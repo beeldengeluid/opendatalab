@@ -69,7 +69,7 @@
             <v-col md="6" class="pl-5">
               <article>
                 <nuxt-content :document="page" />
-                <v-btn color="primary" :to="localePath('about')">
+                <v-btn color="primary" :to="localePath('about')" nuxt>
                   {{ $t('read_more') }}
                 </v-btn>
               </article>

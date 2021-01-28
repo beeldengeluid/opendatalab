@@ -1,6 +1,6 @@
 <template>
-  <Fragment v-if="dataset">
-    <v-breadcrumbs :items="createBreadCrumbs()" />
+  <div v-if="dataset">
+    <BreadCrumbs :items="createBreadCrumbs()" />
     <v-row class="justify-center pb-3">
       <v-col class="limit-width px-3 pt-3 mt-3 mb-0 pb-0">
         <!--Dataset header -->
@@ -41,7 +41,7 @@
           <v-tabs v-model="activeSubmenu" class="mt-5">
             <v-tabs-slider color="primary" />
 
-            <v-tab v-for="item in submenu" :key="item" :to="'#' + item">
+            <v-tab v-for="item in submenu" :key="item" :to="'#' + item" nuxt>
               {{ item }}
             </v-tab>
           </v-tabs>
@@ -64,20 +64,20 @@
         </article>
       </v-col>
     </v-row>
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
 import TabOverview from '../../components/dataset/TabOverview'
 import TabMetadata from '../../components/dataset/TabMetadata'
+import BreadCrumbs from '../../components/BreadCrumbs'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
 import { enrichDatasets } from '~/util/dataset'
 
 export default {
-  components: { Fragment, TabOverview, TabMetadata },
+  components: { TabOverview, TabMetadata, BreadCrumbs },
 
   async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
@@ -175,22 +175,21 @@ export default {
   },
   methods: {
     createBreadCrumbs() {
-      const base = this.$router.options.base
       return [
         {
           text: this.$t('home'),
           disabled: false,
-          href: base + this.localePath('index').slice(1),
+          to: '/',
         },
         {
           text: this.$t('datasets'),
           disabled: false,
-          href: base + this.localePath('datasets').slice(1),
+          to: '/datasets',
         },
         {
           text: this.dataset.title,
           disabled: true,
-          href: '#',
+          to: '#',
         },
       ]
     },

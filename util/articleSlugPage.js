@@ -63,22 +63,21 @@ export const createArticleSlugPage = ({
   methods: {
     formatDate,
     createBreadCrumbs() {
-      const base = this.$router.options.base
       return [
         {
           text: this.$t('home'),
           disabled: false,
-          href: base + this.localePath('index').slice(1),
+          to: '/',
         },
         {
           text: this.$t(source),
           disabled: false,
-          href: base + this.localePath(source).slice(1),
+          to: '/' + source,
         },
         {
           text: this.article.title,
           disabled: true,
-          href: '#',
+          to: '#',
         },
       ]
     },

@@ -31,11 +31,12 @@
 
       <v-divider></v-divider>
 
-      <v-list>
+      <v-list v-model="activeMenu">
         <v-list-item
-          v-for="(item, i) in menu"
-          :key="i"
+          v-for="item in menu"
+          :key="item.to"
           :to="localePath(item.to)"
+          nuxt
           router
           exact
         >
@@ -86,18 +87,22 @@
       </NuxtLink>
 
       <v-spacer></v-spacer>
+
       <!-- Tab menu -->
-      <v-tabs class="d-none d-md-flex" right center-active>
+      <v-tabs v-model="activeMenu" class="d-none d-md-flex" right center-active>
         <v-tabs-slider
           v-if="$route.slug !== home.to"
+          :key="home.to"
           color="primary"
           class="v-tabs-slider-wrapper"
         />
-        <v-tab :to="localePath(home.to)" class="v-tab--home d-none">
-          <v-icon>{{ home.icon }}</v-icon>
-        </v-tab>
-        <v-tab v-for="(item, i) in tabMenu" :key="i" :to="localePath(item.to)">
-          {{ item.title }}
+        <v-tab
+          v-for="item in tabMenu"
+          :key="item.to"
+          :to="localePath(item.to)"
+          nuxt
+        >
+          {{ $t(item.title) }}
         </v-tab>
       </v-tabs>
 
@@ -148,7 +153,34 @@ export default {
     home: menu[0],
     menu,
     tabMenu: menu.filter((m) => m.title !== 'home'),
+    activeMenu: 'blogs',
   }),
+  watch: {
+    // Listen for route change
+    $route() {
+      this.updateActiveTab()
+    },
+  },
+  methods: {
+    updateActiveTab() {
+      // Active menu for slug paths
+      const slug = this.$route.name
+      switch (true) {
+        case slug.startsWith('blog-slug'):
+          this.activeMenu = this.localePath('blogs')
+          break
+        case slug.startsWith('dataset-slug'):
+          this.activeMenu = this.localePath('datasets')
+          break
+        case slug.startsWith('project-slug'):
+          this.activeMenu = this.localePath('projects')
+          break
+      }
+    },
+  },
+  mounted() {
+    this.updateActiveTab()
+  },
 }
 </script>
 

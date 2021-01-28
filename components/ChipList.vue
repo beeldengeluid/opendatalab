@@ -8,6 +8,7 @@
       label
       large
       link
+      nuxt
       :to="
         localePath({
           name: path,

@@ -1,20 +1,20 @@
 <template>
-  <Fragment>
-    <v-breadcrumbs :items="createBreadCrumbs(article)" />
+  <div>
+    <BreadCrumbs :items="createBreadCrumbs(article)" />
     <Article :article="article" :icon="icon" :color="color" />
-  </Fragment>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
 import Article from '../../components/Article'
+import BreadCrumbs from '../../components/BreadCrumbs'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
 
 export default createArticleSlugPage({
   source: 'projects',
-  components: { Article, Fragment },
+  components: { Article, BreadCrumbs },
   data: () => ({ icon: icons.project, color: classColors.project }),
 })
 </script>

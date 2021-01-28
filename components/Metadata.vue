@@ -44,6 +44,7 @@ export default {
 
 <style lang="scss">
 .metadata-table-wrapper {
+  font-size: 0.9em;
   table {
     border-collapse: collapse;
     margin-top: 0;

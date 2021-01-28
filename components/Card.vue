@@ -7,7 +7,6 @@
     hover
     link
     nuxt
-    xoutlined
     :to="
       localePath({
         name: path,
