@@ -1,4 +1,5 @@
 <template>
+  <!-- Breadcrumbs -->
   <v-breadcrumbs :items="breadCrumbs">
     <template #divider>
       <v-icon>mdi-chevron-right</v-icon>
@@ -10,8 +11,10 @@
         :disabled="item.disabled === true"
         nuxt
       >
-        <v-icon v-if="item.to == '/'">{{ homeIcon }}</v-icon>
-        <span v-else>{{ $t(item.text) }}</span>
+        <v-icon v-if="item.to == '/'" class="grey--text lighten-3">
+          {{ homeIcon }}
+        </v-icon>
+        <span v-else class="grey--text lighten-3">{{ $t(item.text) }}</span>
       </v-breadcrumbs-item>
     </template>
   </v-breadcrumbs>
@@ -37,3 +40,25 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.v-application {
+  .v-breadcrumbs {
+    padding: 10px 0 !important;
+  }
+
+  .v-breadcrumbs li:nth-child(even) {
+    padding: 0;
+  }
+
+  .v-breadcrumbs__divider {
+    .theme--light.v-icon {
+      color: #9e9e9e;
+    }
+  }
+
+  .v-breadcrumbs__item {
+    padding: 5px;
+  }
+}
+</style>

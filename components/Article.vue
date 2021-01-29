@@ -1,15 +1,6 @@
 <template>
-  <article>
+  <section class="markdown-style">
     <h1 class="mb-3">
-      <v-avatar
-        :color="color"
-        size="35"
-        :style="{ marginTop: '-3px', marginRight: '5px' }"
-      >
-        <v-icon dark size="20">
-          {{ icon }}
-        </v-icon>
-      </v-avatar>
       {{ article.title }}
     </h1>
 
@@ -52,7 +43,7 @@
     <Relations :datasets="article.datasets" />
 
     <PrevNext :prev="prev" :next="next" />
-  </article>
+  </section>
 </template>
 
 <script>

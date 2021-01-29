@@ -19,12 +19,8 @@
       <!-- Projects -->
       <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading
-            :title="$t('projects')"
-            :icon="icons.project"
-            :to="localePath('blogs')"
-            :color="classColors.project"
-          />
+          <h1>{{ $t('projects') }}</h1>
+          <p class="description">{{ $t('projects_description') }}</p>
           <CardGrid
             :cards="projects"
             path="project-slug"
@@ -37,12 +33,8 @@
       <!-- Blogs -->
       <v-row class="justify-center light-background pb-3">
         <v-col class="limit-width px-3 py-3 mb-2">
-          <Heading
-            :title="$t('blogs')"
-            :icon="icons.blog"
-            :to="localePath('blogs')"
-            :color="classColors.blog"
-          />
+          <h1>{{ $t('blogs') }}</h1>
+          <p class="description">{{ $t('blogs_description') }}</p>
           <CardGrid
             :cards="blogs"
             path="blog-slug"
@@ -66,13 +58,14 @@
                 gradient="to top right, rgba(0,138,219,0.85), rgba(0,138,219,0.2)"
               ></v-img>
             </v-col>
-            <v-col md="6" class="pl-5">
-              <article>
-                <nuxt-content :document="page" />
-                <v-btn color="primary" :to="localePath('about')" nuxt>
-                  {{ $t('read_more') }}
-                </v-btn>
-              </article>
+            <v-col
+              md="6"
+              class="pl-5 py-4 d-flex flex-column justify-center align-start"
+            >
+              <nuxt-content :document="page" />
+              <v-btn color="primary" :to="localePath('about')" nuxt>
+                {{ $t('read_more') }}
+              </v-btn>
             </v-col>
           </v-row>
         </v-col>
@@ -84,7 +77,6 @@
 </template>
 
 <script>
-import Heading from '../components/Heading'
 import CardGrid from '../components/CardGrid'
 import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
@@ -95,7 +87,6 @@ import { enrichDatasets } from '~/util/dataset'
 export default {
   components: {
     CardGrid,
-    Heading,
     LinkList,
   },
   async asyncData({ $content, app }) {
@@ -146,3 +137,9 @@ export default {
   },
 }
 </script>
+
+<style scoped lang="scss">
+.description {
+  color: rgba(black, 0.5);
+}
+</style>

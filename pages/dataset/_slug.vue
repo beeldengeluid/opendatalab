@@ -1,83 +1,99 @@
 <template>
-  <div v-if="dataset">
-    <BreadCrumbs :items="createBreadCrumbs()" />
-    <v-row class="justify-center pb-3">
-      <v-col class="limit-width px-3 pt-3 mt-3 mb-0 pb-0">
-        <!--Dataset header -->
-        <article>
-          <h1 class="mb-3">
-            <v-avatar
-              :color="color"
-              size="35"
-              :style="{ marginTop: '-3px', marginRight: '5px' }"
-            >
-              <v-icon dark size="20">
-                {{ icon }}
-              </v-icon>
-            </v-avatar>
-            {{ dataset.title }}
-          </h1>
-
-          <p>{{ dataset.description }}</p>
-
-          <!-- Stats -->
-          <v-row
-            :style="{ fontSize: '0.8em' }"
-            class="justify-start text-uppercase grey--text darken-4 title-font"
-          >
-            <!-- Records -->
-            <v-col v-if="dataset.distribution.length">
-              <v-icon size="17" class="pb-0 mr-2"
-                >mdi-file-document-multiple</v-icon
-              >
-              <strong>
-                {{ dataset.distribution[0].contentSize }}
-                {{ $t('records') }}
-              </strong>
-            </v-col>
-          </v-row>
-
-          <!-- Tabs -->
-          <v-tabs v-model="activeSubmenu" class="mt-5">
-            <v-tabs-slider color="primary" />
-
-            <v-tab v-for="item in submenu" :key="item" :to="'#' + item" nuxt>
-              {{ item }}
-            </v-tab>
-          </v-tabs>
-
-          <v-divider />
-        </article>
-      </v-col>
-    </v-row>
+  <HeaderPage v-if="dataset">
+    <!-- Heading -->
+    <template #heading>
+      <BreadCrumbs :items="createBreadCrumbs()" />
+    </template>
 
     <!-- Content -->
-    <v-row class="justify-center mb-3 pt-3 mt-0">
-      <v-col class="limit-width px-3 py-3 mb-3">
-        <article>
-          <v-tabs-items v-model="activeSubmenu">
-            <!-- Overview -->
-            <TabOverview :page="page" :projects="projects" :blogs="blogs" />
-            <!-- Metadata -->
-            <TabMetadata :dataset="dataset" />
-          </v-tabs-items>
-        </article>
+    <template #contentColumn>
+      <v-col class="py-4">
+        <!-- Dataset -->
+        <v-row class="justify-center pb-3">
+          <v-col class="limit-width px-3 pt-3 mt-3 mb-0 pb-0">
+            <section>
+              <!--Intro -->
+              <h1 class="mb-3">
+                <!-- <v-avatar
+                  :color="color"
+                  size="35"
+                  :style="{ marginTop: '-3px', marginRight: '5px' }"
+                >
+                  <v-icon dark size="20">
+                    {{ icon }}
+                  </v-icon>
+                </v-avatar> -->
+                {{ dataset.title }}
+              </h1>
+
+              <p>{{ dataset.description }}</p>
+
+              <!-- Stats -->
+              <v-row
+                :style="{ fontSize: '0.8em' }"
+                class="justify-start text-uppercase grey--text darken-4 title-font"
+              >
+                <!-- Records -->
+                <v-col v-if="dataset.distribution.length">
+                  <v-icon size="17" class="pb-0 mr-2"
+                    >mdi-file-document-multiple</v-icon
+                  >
+                  <strong>
+                    {{ dataset.distribution[0].contentSize }}
+                    {{ $t('records') }}
+                  </strong>
+                </v-col>
+              </v-row>
+
+              <!-- Tabs -->
+              <v-tabs v-model="activeSubmenu" class="mt-5 light-background">
+                <v-tabs-slider color="primary" />
+
+                <v-tab
+                  v-for="item in submenu"
+                  :key="item"
+                  :to="'#' + item"
+                  nuxt
+                >
+                  {{ item }}
+                </v-tab>
+              </v-tabs>
+
+              <!-- <v-divider /> -->
+            </section>
+          </v-col>
+        </v-row>
+
+        <!-- Tab Content -->
+        <v-row class="justify-center mb-3 pt-3 mt-0 white">
+          <v-col class="limit-width px-3 py-3 mb-3">
+            <section class="px-3">
+              <v-tabs-items v-model="activeSubmenu">
+                <!-- Overview -->
+                <TabOverview :page="page" :projects="projects" :blogs="blogs" />
+                <!-- Metadata -->
+                <TabMetadata :dataset="dataset" />
+              </v-tabs-items>
+            </section>
+          </v-col>
+        </v-row>
       </v-col>
-    </v-row>
-  </div>
+    </template>
+  </HeaderPage>
 </template>
 
 <script>
 import TabOverview from '../../components/dataset/TabOverview'
 import TabMetadata from '../../components/dataset/TabMetadata'
 import BreadCrumbs from '../../components/BreadCrumbs'
+import HeaderPage from '../../components/HeaderPage'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
 import { enrichDatasets } from '~/util/dataset'
 
 export default {
-  components: { TabOverview, TabMetadata, BreadCrumbs },
+  components: { HeaderPage, TabOverview, TabMetadata, BreadCrumbs },
 
   async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
@@ -179,11 +195,6 @@ export default {
         {
           text: 'datasets',
           to: '/datasets',
-        },
-        {
-          text: this.dataset.title,
-          disabled: true,
-          to: '',
         },
       ]
     },

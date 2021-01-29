@@ -1,10 +1,11 @@
 {
   "site_name": "Open Data Lab",
   "site_author": "Sound and Vision",
-
-  "blogs": "Blogs",
   "datasets": "Datasets",
   "projects": "Projects",
+  "projects_description": "Open data empowered showcases",
+  "blogs": "Blog",
+  "blogs_description": "Latest news and background articles",
   "records": "Records",
   "home": "Home",
   "about": "About",

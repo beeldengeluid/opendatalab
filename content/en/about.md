@@ -2,8 +2,6 @@
 title: About
 ---
 
-## Loqui sine adulter augusta et deceat
-
 Lorem markdownum perdidit ad loco occallescere dextrum more est, pabula
 tantique. Minantia tigres corpora [parvos](http://ad.io/cancer) destinat
 venabula simulavit poples ego ardentis Opheltes violentior huius natum; utque

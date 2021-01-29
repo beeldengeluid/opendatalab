@@ -1,42 +1,42 @@
 <template>
-  <div>
-    <v-row class="justify-center pb-4">
-      <v-col class="limit-width">
-        <Heading :title="$t('projects')" :icon="icon" :color="color" />
-      </v-col>
-    </v-row>
-    <v-row class="justify-center light-background">
-      <v-col class="limit-width py-4">
-        <CardGrid :cards="cards" path="project-slug" :data-class="dataClass" />
-      </v-col>
-    </v-row>
-  </div>
+  <CardPage
+    :cards="cards"
+    :title="title"
+    :card-path="cardPath"
+    :data-class="dataClass"
+  />
 </template>
 
 <script>
-import CardGrid from '../components/CardGrid'
-import Heading from '../components/Heading'
+import CardPage from '../components/CardPage'
 import { getLocalePath } from '../util/contentFallback'
 
+const dataClass = 'project'
+
 export default {
-  components: { CardGrid, Heading },
+  components: { CardPage },
   async asyncData({ $content, app }) {
-    const projectsPath = await getLocalePath({
+    const path = dataClass + 's'
+
+    const articlesPath = await getLocalePath({
       $content,
       app,
-      path: 'projects',
+      path,
     })
-    const projects = await $content(projectsPath)
+    const articles = await $content(articlesPath)
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    return { cards: projects }
+    return { cards: articles }
   },
-  data: () => ({ dataClass: 'project' }),
+  data: () => ({
+    title: dataClass + 's',
+    cardPath: dataClass + '-slug',
+    dataClass,
+  }),
   head() {
-    const title = this.$t('projects')
     return {
-      title,
+      title: this.$t(dataClass),
     }
   },
 }

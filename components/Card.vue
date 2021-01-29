@@ -2,7 +2,7 @@
   <v-card
     class="mx-auto d-flex flex-column white"
     max-width="100%"
-    width="270px"
+    width="270"
     height="100%"
     hover
     link
@@ -21,6 +21,7 @@
       height="180px"
       max-width="100%"
       max-height="180px"
+      position="top center"
       :src="require(`~/assets/images/${card.image}?size=400`).src"
       :gradient="
         color
@@ -35,7 +36,7 @@
         {{ card.title }}
       </v-card-title> -->
     </v-img>
-    <v-card-title class="pt-2 mb-2">
+    <v-card-title class="pt-4 mb-2">
       {{ card.title }}
     </v-card-title>
     <v-card-subtitle> {{ card.subtitle }} </v-card-subtitle>
@@ -96,3 +97,37 @@ export default {
   },
 }
 </script>
+
+<style lang="scss">
+.v-card {
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.05),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.035), 0px 1px 3px 0px rgba(0, 0, 0, 0.03) !important;
+  &.v-card--hover {
+    transition: opacity 0.3s ease-out;
+
+    .v-image__image {
+      transition: transform 4s ease-out;
+    }
+
+    .v-btn {
+      transition: transform 0.3s ease-out;
+    }
+
+    &:hover {
+      opacity: 0.95;
+
+      .v-image__image {
+        transform: scale(1.05);
+      }
+
+      .v-btn {
+        transform: translateX(5px);
+      }
+    }
+  }
+
+  .v-card__subtitle {
+    font-size: 0.95rem;
+  }
+}
+</style>

@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <BreadCrumbs :items="createBreadCrumbs(article)" />
-    <Article :article="article" :icon="icon" :color="color" />
-  </div>
+  <HeaderPage>
+    <!-- Heading -->
+    <template #heading>
+      <BreadCrumbs :items="createBreadCrumbs(article)" />
+    </template>
+
+    <!-- Content -->
+    <template #content>
+      <Article :article="article" :icon="icon" :color="color" />
+    </template>
+  </HeaderPage>
 </template>
 
 <script>
+import HeaderPage from '../../components/HeaderPage'
 import Article from '../../components/Article'
 import BreadCrumbs from '../../components/BreadCrumbs'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
@@ -14,7 +22,7 @@ import { classColors } from '../../config/theme'
 
 export default createArticleSlugPage({
   source: 'projects',
-  components: { Article, BreadCrumbs },
+  components: { HeaderPage, Article, BreadCrumbs },
   data: () => ({ icon: icons.project, color: classColors.project }),
 })
 </script>

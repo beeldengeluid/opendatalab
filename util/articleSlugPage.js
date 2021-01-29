@@ -68,11 +68,6 @@ export const createArticleSlugPage = ({
           text: this.$t(source),
           to: '/' + source,
         },
-        {
-          text: this.article.title,
-          disabled: true,
-          to: '#',
-        },
       ]
     },
   },

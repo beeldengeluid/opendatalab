@@ -1,33 +1,25 @@
 <template>
-  <v-row>
-    <v-col>
-      <BreadCrumbs :items="createBreadCrumbs()" />
-      <article>
-        <h1 class="mb-3">
-          <v-avatar
-            :color="color"
-            size="35"
-            :style="{ marginTop: '-3px', marginRight: '5px' }"
-          >
-            <v-icon dark size="20">
-              {{ icon }}
-            </v-icon>
-          </v-avatar>
-          {{ page.title }}
-        </h1>
+  <HeaderPage>
+    <!-- Heading -->
+    <template #heading> <Heading :title="page.title" /></template>
+
+    <!-- Content -->
+    <template #content>
+      <section>
         <nuxt-content :document="page" />
-      </article>
-    </v-col>
-  </v-row>
+      </section>
+    </template>
+  </HeaderPage>
 </template>
 
 <script>
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
-import BreadCrumbs from '../components/BreadCrumbs'
+import HeaderPage from '../components/HeaderPage'
+import Heading from '../components/Heading'
 
 export default {
-  components: { BreadCrumbs },
+  components: { HeaderPage, Heading },
   async asyncData({ $content, app }) {
     const aboutPath = await getLocalePath({ $content, app, path: 'about' })
     const page = await $content(aboutPath).fetch()
@@ -49,13 +41,7 @@ export default {
     }
   },
   methods: {
-    createBreadCrumbs: () => [
-      {
-        text: 'about',
-        disabled: true,
-        to: '',
-      },
-    ],
+    createBreadCrumbs: () => [],
   },
 }
 </script>
