@@ -8,11 +8,12 @@
       disable-resize-watcher
       temporary
       floating
+      dark
       class="d-sm-flex d-md-none"
     >
       <v-list-item>
         <v-list-item-content>
-          <v-list-item-title :style="{ paddingBottom: '2px' }">
+          <v-list-item-title class="pb-2">
             <NuxtLink
               :to="localePath('index')"
               :style="{
@@ -20,7 +21,11 @@
               }"
               class="black--text"
             >
-              {{ $t('site_name') }}
+              <img
+                width="180"
+                src="~assets/images/odl-text-logo.svg"
+                :alt="$t('site_name')"
+              />
             </NuxtLink>
           </v-list-item-title>
           <v-list-item-subtitle>
@@ -41,10 +46,12 @@
           exact
         >
           <v-list-item-action>
-            <v-icon :color="item.color">{{ item.icon }}</v-icon>
+            <v-icon>{{ item.icon }}</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title v-text="$t(item.title)" />
+            <v-list-item-title class="text-uppercase">
+              <h4>{{ $t(item.title) }}</h4>
+            </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -74,15 +81,12 @@
       >
         <v-toolbar-title
           class="d-none d-md-flex align-items-center text-uppercase"
-          :style="{
-            letterSpacing: '0.02rem',
-            fontSize: '1.20rem',
-            fontWeight: '500',
-          }"
         >
-          {{ $t('site_name') }}
-          <div class="title-dot" />
-          {{ $t('site_author') }}
+          <img
+            width="180"
+            src="~assets/images/odl-text-logo.svg"
+            :alt="$t('site_name')"
+          />
         </v-toolbar-title>
       </NuxtLink>
 
@@ -135,7 +139,7 @@
 
     <v-footer
       :absolute="!fixed"
-      class="grey lighten-4 todo"
+      class="blue-grey darken-4 white--text"
       app
       :style="{ height: '400px' }"
     >
@@ -186,16 +190,6 @@ export default {
 
 <style lang="scss" scoped>
 @import '~assets/scss/vuetify/variables.scss';
-
-$dotSize: 25px;
-
-.title-dot {
-  margin: 0 10px;
-  width: $dotSize;
-  height: $dotSize;
-  background-color: $primary;
-  border-radius: $dotSize;
-}
 
 .v-tabs-slider-wrapper {
   height: 4px !important;

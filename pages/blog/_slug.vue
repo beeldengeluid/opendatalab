@@ -7,7 +7,7 @@
 
     <!-- Content -->
     <template #content>
-      <Article :article="article" :icon="icon" :color="color" />
+      <Article :article="article" :data-class="dataClass" />
     </template>
   </HeaderPage>
 </template>
@@ -17,12 +17,9 @@ import HeaderPage from '../../components/HeaderPage'
 import Article from '../../components/Article'
 import BreadCrumbs from '../../components/BreadCrumbs'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
-import icons from '../../config/icons'
-import { classColors } from '../../config/theme'
-
 export default createArticleSlugPage({
   source: 'blogs',
   components: { HeaderPage, Article, BreadCrumbs },
-  data: () => ({ icon: icons.blog, color: classColors.blog }),
+  data: () => ({ dataClass: 'blog' }),
 })
 </script>

@@ -1,7 +1,9 @@
 <template>
   <HeaderPage>
     <!-- Heading -->
-    <template #heading> <Heading :title="page.title" /></template>
+    <template #heading>
+      <Heading :title="page.title" data-class="dataset"
+    /></template>
 
     <!-- Content -->
     <template #content>

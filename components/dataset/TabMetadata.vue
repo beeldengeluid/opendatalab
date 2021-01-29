@@ -61,12 +61,3 @@ export default {
   },
 }
 </script>
-
-<style lang="scss" scoped>
-article {
-  margin: 0 20px;
-  @media (max-width: 540px) {
-    margin: 0;
-  }
-}
-</style>

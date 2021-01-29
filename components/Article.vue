@@ -1,27 +1,24 @@
 <template>
-  <section class="markdown-style">
-    <h1 class="mb-3">
-      {{ article.title }}
-    </h1>
+  <div>
+    <ArticleHeading :article="article" :data-class="dataClass" />
 
-    <p>{{ article.subtitle }}</p>
+    <section class="markdown-style pt-5">
+      <v-img
+        v-if="article.image"
+        position="top center"
+        width="930px"
+        height="420px"
+        max-height="66vw"
+        class="header-image"
+        :src="require(`~/assets/images/${article.image}?size=930`).src"
+        :srcset="
+          require(`~/assets/images/${article.image}?{sizes:[620,930,1200,1600]}`)
+            .srcSet
+        "
+      />
 
-    <v-img
-      v-if="article.image"
-      position="top center"
-      width="930px"
-      height="420px"
-      max-height="66vw"
-      class="header-image"
-      :src="require(`~/assets/images/${article.image}?size=930`).src"
-      :srcset="
-        require(`~/assets/images/${article.image}?{sizes:[620,930,1200,1600]}`)
-          .srcSet
-      "
-    />
-
-    <!-- Optional article navigation -->
-    <!-- <nav>
+      <!-- Optional article navigation -->
+      <!-- <nav>
       <ul>
         <li v-for="link of article.toc" :key="link.id">
           <NuxtLink :to="`#${link.id}`">{{ link.text }}</NuxtLink>
@@ -29,31 +26,33 @@
       </ul>
     </nav> -->
 
-    <!-- <v-divider class="my-5" /> -->
+      <!-- <v-divider class="my-5" /> -->
 
-    <nuxt-content :document="article" />
+      <nuxt-content :document="article" />
 
-    <p class="caption">
-      {{ $t('last_update') }}: {{ formatDate(article.updatedAt) }}
-    </p>
+      <p class="caption">
+        {{ $t('last_update') }}: {{ formatDate(article.updatedAt) }}
+      </p>
 
-    <v-divider class="my-5" />
+      <v-divider class="my-5" />
 
-    <!-- relations -->
-    <Relations :datasets="article.datasets" />
+      <!-- relations -->
+      <Relations :datasets="article.datasets" />
 
-    <PrevNext :prev="prev" :next="next" />
-  </section>
+      <PrevNext :prev="prev" :next="next" />
+    </section>
+  </div>
 </template>
 
 <script>
-import icons from '../config/icons'
 import { formatDate } from '../util/date'
+import { classColorIndex } from '../config/theme'
 import Relations from './Relations'
 import PrevNext from './PrevNext'
+import ArticleHeading from './ArticleHeading'
 
 export default {
-  components: { Relations, PrevNext },
+  components: { Relations, PrevNext, ArticleHeading },
   props: {
     article: {
       type: Object,
@@ -77,18 +76,16 @@ export default {
       required: false,
       default: null,
     },
-    icon: {
-      type: String,
-      required: true,
-      default: '',
-    },
-    color: {
+
+    dataClass: {
       type: String,
       required: true,
       default: '',
     },
   },
-  data: () => ({ icons }),
+  data() {
+    return { colorClass: classColorIndex[this.dataClass] + '--text' }
+  },
   methods: {
     formatDate,
   },

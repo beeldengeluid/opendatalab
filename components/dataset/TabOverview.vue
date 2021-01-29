@@ -1,6 +1,32 @@
 <template>
   <v-tab-item key="overview" value="overview">
     <section class="mt-0">
+      <!-- Stats -->
+      <v-row
+        :style="{ fontSize: '0.8em' }"
+        class="justify-start direction-column text-uppercase grey--text darken-4 title-font pb-2"
+      >
+        <!-- Records -->
+        <v-col v-if="dataset.distribution.length">
+          <v-icon size="17" class="pb-0 mr-2">
+            mdi-file-document-multiple
+          </v-icon>
+          <strong>
+            {{ dataset.distribution[0].contentSize }}
+            {{ $t('records') }}
+          </strong>
+        </v-col>
+
+        <!-- Records -->
+        <v-col v-if="dataset && dataset.distribution.length">
+          <v-icon size="17" class="pb-0 mr-2">mdi-date-range</v-icon>
+          <strong>
+            {{ dataset.distribution[0].contentSize }}
+            {{ $t('records') }}
+          </strong>
+        </v-col>
+      </v-row>
+
       <!-- Description -->
       <nuxt-content :document="page" />
 
@@ -29,16 +55,8 @@ export default {
     projects: { type: Array, required: false, default: () => [] },
     blogs: { type: Array, required: false, default: () => [] },
     page: { type: Object, required: false, default: null },
+    dataset: { type: Object, required: true, default: null },
   },
   data: () => ({ icons, classColors }),
 }
 </script>
-
-<style lang="scss" scoped>
-article {
-  margin: 0 20px;
-  @media (max-width: 540px) {
-    margin: 0;
-  }
-}
-</style>

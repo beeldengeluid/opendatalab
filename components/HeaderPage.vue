@@ -10,7 +10,7 @@
     <!-- Content -->
     <v-row class="justify-center my-0">
       <slot name="contentColumn">
-        <v-col class="limit-width py-4">
+        <v-col>
           <slot name="content"></slot>
         </v-col>
       </slot>
@@ -27,5 +27,6 @@ export default {}
   height: 75px;
   display: flex;
   align-items: center;
+  padding: 16px;
 }
 </style>

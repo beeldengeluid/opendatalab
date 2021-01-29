@@ -2,7 +2,7 @@
   <HeaderPage>
     <!-- Heading -->
     <template #heading>
-      <Heading :title="$t(title)" />
+      <Heading :title="$t(title)" :data-class="dataClass" />
     </template>
 
     <!-- Content -->
