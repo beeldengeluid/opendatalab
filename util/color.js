@@ -9,7 +9,13 @@ export const getRGBAColor = (hex, opacity) => {
 }
 
 export const getImageOverlayCSS = (image, hex, opacity = 0.85) => {
-  return getGradientCSS(hex, opacity) + ',  url(' + image + ')'
+  return (
+    'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), ' +
+    getGradientCSS(hex, opacity) +
+    ',  url(' +
+    image +
+    ')'
+  )
 }
 
 export const getGradientCSS = (hex, opacity = 0.85) =>

@@ -76,9 +76,7 @@ export default {
       ? require(`~/assets/images/${this.article.image}?size=930`).src
       : ''
     const backgroundImageStyle = {
-      backgroundImage:
-        'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), ' +
-        getImageOverlayCSS(image, color, 0.9),
+      backgroundImage: getImageOverlayCSS(image, color, 0.9),
     }
 
     return {
@@ -92,10 +90,7 @@ export default {
   methods: {
     getImageOverlayCSS,
     getBackGroundImage(image) {
-      return (
-        'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), ' +
-        getImageOverlayCSS(image, this.color, 0.9)
-      )
+      return getImageOverlayCSS(image, this.color, 0.9)
     },
   },
 }
