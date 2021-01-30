@@ -32,11 +32,12 @@
 
       <!-- Content -->
       <section>
-        <NuxtLink class="category" :to="localePath(path)">
-          <h3>
+        <h3>
+          <NuxtLink class="category" :to="localePath(path)">
             {{ $t(dataClass) }}
-          </h3>
-        </NuxtLink>
+          </NuxtLink>
+        </h3>
+
         <h1>{{ article.title }}</h1>
         <p>{{ article.subtitle }}</p>
       </section>
@@ -97,10 +98,15 @@ h1 {
 
 a.category {
   text-decoration: none;
-  color: rgba(white, 0.9);
+  color: white;
+  opacity: 0.6;
   text-transform: uppercase;
   font-size: 0.9rem;
   letter-spacing: 0.1rem;
+  transition: opacity 0.3s ease-out;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 p {
