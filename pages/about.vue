@@ -42,8 +42,5 @@ export default {
       title,
     }
   },
-  methods: {
-    createBreadCrumbs: () => [],
-  },
 }
 </script>

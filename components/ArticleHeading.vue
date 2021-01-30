@@ -22,7 +22,11 @@
 
       <!-- Content -->
       <section>
-        <h3>{{ $t(dataClass) }}</h3>
+        <NuxtLink class="category" :to="localePath(path)">
+          <h3>
+            {{ $t(dataClass) }}
+          </h3>
+        </NuxtLink>
         <h1>{{ article.title }}</h1>
         <p>{{ article.subtitle }}</p>
       </section>
@@ -55,6 +59,7 @@ export default {
       colorClass: classColorIndex[this.dataClass],
       color: classColors[this.dataClass],
       id: 'heading-' + Math.floor(Math.random() * 100000),
+      path: this.dataClass + 's', // blog -> blogs, project -> project etc
     }
   },
   methods: {
@@ -80,7 +85,8 @@ h1 {
   padding-bottom: 15px;
 }
 
-h3 {
+a.category {
+  text-decoration: none;
   color: rgba(white, 0.9);
   text-transform: uppercase;
   font-size: 0.9rem;

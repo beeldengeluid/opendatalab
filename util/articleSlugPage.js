@@ -62,13 +62,5 @@ export const createArticleSlugPage = ({
   },
   methods: {
     formatDate,
-    createBreadCrumbs() {
-      return [
-        {
-          text: this.$t(source),
-          to: '/' + source,
-        },
-      ]
-    },
   },
 })
