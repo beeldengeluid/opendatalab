@@ -1,5 +1,9 @@
 <template>
-  <v-row :id="id" :class="'article-heading ' + colorClass">
+  <v-row
+    :id="id"
+    :class="'article-heading ' + colorClass"
+    :style="backgroundImageStyle"
+  >
     <v-col>
       <!-- Responsive background image -->
       <component :is="'style'" type="text/css">
@@ -67,11 +71,22 @@ export default {
   },
 
   data() {
+    const color = classColors[this.dataClass]
+    const image = this.article.image
+      ? require(`~/assets/images/${this.article.image}?size=930`).src
+      : ''
+    const backgroundImageStyle = {
+      backgroundImage:
+        'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), ' +
+        getImageOverlayCSS(image, color, 0.9),
+    }
+
     return {
       colorClass: classColorIndex[this.dataClass],
-      color: classColors[this.dataClass],
+      color,
       id: 'article-heading',
       path: this.dataClass + 's', // blog -> blogs, project -> project etc
+      backgroundImageStyle,
     }
   },
   methods: {
