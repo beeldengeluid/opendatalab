@@ -2,11 +2,9 @@
   <v-tab-item key="metadata" value="metadata">
     <section>
       <!-- Metadata -->
-      <Metadata
-        v-if="dataset"
-        :object="dataset"
-        :exclude-props="excludeProps"
-      />
+      <div>
+        <Metadata v-if="filteredDataset" :object="filteredDataset" />
+      </div>
 
       <!-- Download button -->
       <v-row>
@@ -23,7 +21,8 @@
 <script>
 import icons from '../../config/icons'
 import Metadata from '../Metadata'
-import { stripEnrichments } from '../../util/dataset'
+import { stripEnrichments, enrichProps } from '../../util/dataset'
+import { filterObject } from '../../util/objects'
 import { download } from '../../util/download'
 
 export default {
@@ -35,20 +34,22 @@ export default {
       default: null,
     },
   },
-  data: () => ({
-    icons,
-    excludeProps: [
-      'title',
-      'slug',
-      'image',
-      'color',
-      '@context',
-      '@type',
-      '@id',
-      'name',
-      'description',
-    ],
-  }),
+  data() {
+    return {
+      icons,
+      filteredDataset: filterObject(this.dataset, [
+        ...enrichProps,
+        '@context',
+        '@type',
+        '@id',
+        'name',
+        'description',
+      ]),
+    }
+  },
+  mounted() {
+    console.log(this.filteredDataset)
+  },
   methods: {
     downloadDataset() {
       const data = stripEnrichments(this.dataset)

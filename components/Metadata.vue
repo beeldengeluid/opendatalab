@@ -4,14 +4,13 @@
       <h3 v-if="title">{{ title }}</h3>
       <v-divider v-if="title" class="my-5" />
       <div class="metadata-table-wrapper">
-        <DataTable :object="activeObjects" />
+        <DataTable :object="object" />
       </div>
     </v-col>
   </v-row>
 </template>
 
 <script>
-import { filterObject } from '../util/objects'
 import DataTable from './DataTable'
 
 export default {
@@ -27,17 +26,6 @@ export default {
       required: false,
       default: '',
     },
-    excludeProps: {
-      type: Array,
-      required: false,
-      default: () => [],
-    },
-  },
-  data() {
-    const activeObjects = filterObject(this.object, this.excludeProps)
-    return {
-      activeObjects,
-    }
   },
 }
 </script>
