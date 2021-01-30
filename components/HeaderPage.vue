@@ -8,9 +8,9 @@
     </v-row>
 
     <!-- Content -->
-    <v-row class="justify-center my-0">
+    <v-row class="justify-center my-0 pt-3">
       <slot name="contentColumn">
-        <v-col>
+        <v-col class="limit-width">
           <slot name="content"></slot>
         </v-col>
       </slot>

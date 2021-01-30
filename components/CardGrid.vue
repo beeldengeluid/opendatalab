@@ -20,7 +20,7 @@ export default {
     cards: { type: Array, required: true, default: () => [] },
     path: { type: String, required: true, default: '' },
     dataClass: { type: String, required: true, default: '' },
-    rowClass: { type: String, required: false, default: 'justify-center' },
+    rowClass: { type: String, required: false, default: 'justify-start' },
   },
 }
 </script>

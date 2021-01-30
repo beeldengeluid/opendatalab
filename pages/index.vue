@@ -24,8 +24,8 @@
           <CardGrid
             :cards="projects"
             path="project-slug"
-            row-class="justify-center"
             data-class="project"
+            row-class="justify-start px-5"
           />
         </v-col>
       </v-row>
@@ -38,15 +38,15 @@
           <CardGrid
             :cards="blogs"
             path="blog-slug"
-            row-class="justify-center"
             data-class="blog"
+            row-class="justify-start px-5"
           />
         </v-col>
       </v-row>
 
       <!-- About -->
       <v-row class="justify-center light-background my-3 pb-3">
-        <v-col class="limit-width px-3 py-3 mb-4">
+        <v-col class="limit-width mb-4">
           <v-row class="white mx-4 my-4 flex-column flex-md-row">
             <v-col md="6" class="px-0 py-0">
               <v-img

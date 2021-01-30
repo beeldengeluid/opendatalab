@@ -7,7 +7,7 @@
 
     <!-- Content -->
     <template #content>
-      <section>
+      <section class="mt-4">
         <nuxt-content :document="page" />
       </section>
     </template>
