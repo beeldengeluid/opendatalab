@@ -65,11 +65,12 @@ export default {
       default: '',
     },
   },
+
   data() {
     return {
       colorClass: classColorIndex[this.dataClass],
       color: classColors[this.dataClass],
-      id: 'heading-' + Math.floor(Math.random() * 100000),
+      id: 'article-heading',
       path: this.dataClass + 's', // blog -> blogs, project -> project etc
     }
   },
