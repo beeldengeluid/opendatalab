@@ -47,9 +47,6 @@ export default {
       ]),
     }
   },
-  mounted() {
-    console.log(this.filteredDataset)
-  },
   methods: {
     downloadDataset() {
       const data = stripEnrichments(this.dataset)
