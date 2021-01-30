@@ -8,7 +8,7 @@ import { classColorIndex } from '../config/theme'
 export default {
   props: {
     title: { type: String, required: true, default: '' },
-    dataClass: { type: String, required: true, default: '' },
+    dataClass: { type: String, required: false, default: 'dataset' },
   },
   data() {
     return {
