@@ -4,26 +4,16 @@
       <!-- Stats -->
       <v-row
         :style="{ fontSize: '0.8em' }"
-        class="justify-start direction-column text-uppercase grey--text darken-4 title-font pb-2"
+        class="justify-start direction-column text-uppercase grey--text darken-4 title-font pb-2 mb-3 flex-wrap"
       >
-        <!-- Records -->
-        <v-col v-if="dataset.distribution.length">
-          <v-icon size="17" class="pb-0 mr-2">
-            mdi-file-document-multiple
-          </v-icon>
-          <strong>
-            {{ dataset.distribution[0].contentSize }}
-            {{ $t('records') }}
-          </strong>
-        </v-col>
-
-        <!-- Records -->
-        <v-col v-if="dataset && dataset.distribution.length">
-          <v-icon size="17" class="pb-0 mr-2">mdi-date-range</v-icon>
-          <strong>
-            {{ dataset.distribution[0].contentSize }}
-            {{ $t('records') }}
-          </strong>
+        <v-col
+          v-for="(stat, index) of stats"
+          :key="index"
+          :style="{ borderBottom: '1px solid #eee' }"
+          class="flex-shrink-0 text-no-wrap"
+        >
+          <v-icon size="17" class="pb-0 mr-2" v-text="stat.icon"> </v-icon>
+          <strong> {{ stat.text }} </strong>
         </v-col>
       </v-row>
 
@@ -57,6 +47,31 @@ export default {
     page: { type: Object, required: false, default: null },
     dataset: { type: Object, required: true, default: null },
   },
-  data: () => ({ icons, classColors }),
+  data() {
+    return {
+      icons,
+      classColors,
+      stats: [
+        {
+          icon: 'mdi-domain',
+          text: this.dataset.creator?.name,
+        },
+        {
+          icon: 'mdi-file-document-multiple',
+          text:
+            (this.dataset.distribution?.length
+              ? this.dataset.distribution[0].contentSize
+              : '-') +
+            ' ' +
+            this.$t('records'),
+        },
+        {
+          icon: 'mdi-calendar-range',
+          // TODO: replace with real data
+          text: '1899 - 1978',
+        },
+      ],
+    }
+  },
 }
 </script>
