@@ -13,7 +13,7 @@
             plain
           >
             {{ actionTitle }}
-            <v-icon size="20" v-text="actionIcon" class="ml-3" :color="color">
+            <v-icon size="20" class="ml-3" :color="color" v-text="actionIcon">
             </v-icon>
           </v-btn>
         </slot>

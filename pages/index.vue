@@ -8,8 +8,8 @@
             :title="$t('datasets')"
             :description="$t('datasets_description')"
             data-class="dataset"
-            :actionPath="'datasets'"
-            :actionTitle="$t('all_datasets')"
+            :action-path="'datasets'"
+            :action-title="$t('all_datasets')"
           />
 
           <CardGrid
@@ -28,8 +28,8 @@
             :title="$t('projects')"
             :description="$t('projects_description')"
             data-class="project"
-            :actionPath="'projects'"
-            :actionTitle="$t('all_projects')"
+            :action-path="'projects'"
+            :action-title="$t('all_projects')"
           />
 
           <CardGrid
@@ -48,8 +48,8 @@
             :title="$t('blogs')"
             :description="$t('blogs_description')"
             data-class="blog"
-            :actionPath="'blogs'"
-            :actionTitle="$t('all_blogs')"
+            :action-path="'blogs'"
+            :action-title="$t('all_blogs')"
           />
           <CardGrid
             :cards="blogs"
