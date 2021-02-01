@@ -4,8 +4,14 @@
       <!-- Datasets / Visualization -->
       <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading :title="$t('datasets')" data-class="dataset" />
-          <p class="description">{{ $t('datasets_description') }}</p>
+          <Heading
+            :title="$t('datasets')"
+            :description="$t('datasets_description')"
+            data-class="dataset"
+            :actionPath="localePath('datasets')"
+            :actionTitle="$t('all_datasets')"
+          />
+
           <CardGrid
             :cards="datasets"
             path="dataset-slug"
@@ -18,8 +24,14 @@
       <!-- Projects -->
       <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading :title="$t('projects')" data-class="project" />
-          <p class="description">{{ $t('projects_description') }}</p>
+          <Heading
+            :title="$t('projects')"
+            :description="$t('projects_description')"
+            data-class="project"
+            :actionPath="localePath('projects')"
+            :actionTitle="$t('all_projects')"
+          />
+
           <CardGrid
             :cards="projects"
             path="project-slug"
@@ -32,8 +44,13 @@
       <!-- Blogs -->
       <v-row class="justify-center light-background pb-3">
         <v-col class="limit-width px-3 py-3 mb-2">
-          <Heading :title="$t('blogs')" data-class="blog" />
-          <p class="description">{{ $t('blogs_description') }}</p>
+          <Heading
+            :title="$t('blogs')"
+            :description="$t('blogs_description')"
+            data-class="blog"
+            :actionPath="localePath('blogs')"
+            :actionTitle="$t('all_blogs')"
+          />
           <CardGrid
             :cards="blogs"
             path="blog-slug"
@@ -139,9 +156,3 @@ export default {
   },
 }
 </script>
-
-<style scoped lang="scss">
-.description {
-  color: rgba(black, 0.5);
-}
-</style>
