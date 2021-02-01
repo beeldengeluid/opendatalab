@@ -63,10 +63,12 @@
       <!-- About -->
       <v-row class="justify-center light-background my-3 pb-3">
         <v-col class="limit-width mb-4">
-          <Heading :title="$t('about')" />
-          <p class="description">{{ $t('about_description') }}</p>
+          <Heading
+            :title="$t('about')"
+            :description="$t('about_description')"
+          />
 
-          <v-row class="white mx-4 my-4 flex-column flex-md-row">
+          <v-row class="white mx-4 my-6 flex-column flex-md-row">
             <v-col md="6" class="px-0 py-0">
               <v-img
                 max-height="400"
