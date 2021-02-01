@@ -51,7 +51,7 @@
 
 <script>
 import { classColorIndex, classColors } from '../config/theme'
-import { getImageOverlayCSS } from '../util/color'
+import { getDarkenedImageOverlayCSS } from '../util/color'
 
 export default {
   props: {
@@ -76,7 +76,7 @@ export default {
       ? require(`~/assets/images/${this.article.image}?size=930`).src
       : ''
     const backgroundImageStyle = {
-      backgroundImage: getImageOverlayCSS(image, color, 0.9),
+      backgroundImage: getDarkenedImageOverlayCSS(image, color, 0.9),
     }
 
     return {
@@ -88,9 +88,8 @@ export default {
     }
   },
   methods: {
-    getImageOverlayCSS,
     getBackGroundImage(image) {
-      return getImageOverlayCSS(image, this.color, 0.9)
+      return getDarkenedImageOverlayCSS(image, this.color, 0.9)
     },
   },
 }

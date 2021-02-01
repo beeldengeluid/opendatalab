@@ -1,7 +1,7 @@
 <template>
   <HeaderPage>
     <!-- Heading -->
-    <template #heading>
+    <template #header>
       <Heading :title="$t(title)" :data-class="dataClass" />
     </template>
 

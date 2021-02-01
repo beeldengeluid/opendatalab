@@ -1,7 +1,7 @@
 <template>
   <HeaderPage>
     <!-- Heading -->
-    <template #heading>
+    <template #header>
       <Heading :title="page.title" data-class="dataset"
     /></template>
 

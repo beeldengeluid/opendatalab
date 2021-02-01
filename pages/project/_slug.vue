@@ -1,14 +1,14 @@
 <template>
-  <Article :article="article" :data-class="dataClass" />
+  <ArticlePage :article="article" :data-class="dataClass" />
 </template>
 
 <script>
-import Article from '../../components/Article'
+import ArticlePage from '../../components/ArticlePage'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
 
 export default createArticleSlugPage({
   source: 'projects',
-  components: { Article },
+  components: { ArticlePage },
   data: () => ({ dataClass: 'project' }),
 })
 </script>

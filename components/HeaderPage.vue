@@ -1,9 +1,9 @@
 <template>
   <div>
-    <!-- Heading -->
+    <!-- Header -->
     <v-row class="justify-center mb-0 white">
       <v-col class="limit-width header-bar">
-        <slot name="heading"></slot>
+        <slot name="header"></slot>
       </v-col>
     </v-row>
 

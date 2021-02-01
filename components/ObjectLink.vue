@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import isObjectLink from '../util/objectLink'
+import { isObjectLink } from '../util/objectLink'
 import icons from '../config/icons'
 
 export default {

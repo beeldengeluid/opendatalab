@@ -8,17 +8,18 @@ export const getRGBAColor = (hex, opacity) => {
   return 'rgba(' + r + ',' + g + ',' + b + ',' + opacity + ')'
 }
 
-export const getImageOverlayCSS = (image, hex, opacity = 0.85) => {
-  return (
-    'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), ' +
-    getGradientCSS(hex, opacity) +
-    ',  url(' +
-    image +
-    ')'
-  )
+export const getImageOverlayCSS = (image, hex, opacity = 0.85, extra = '') => {
+  return extra + getOverlayGradientCSS(hex, opacity) + ',  url(' + image + ')'
 }
+export const getDarkenedImageOverlayCSS = (image, hex, opacity = 0.85) =>
+  getImageOverlayCSS(
+    image,
+    hex,
+    opacity,
+    'linear-gradient( to right, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.0) 100%), '
+  )
 
-export const getGradientCSS = (hex, opacity = 0.85) =>
+export const getOverlayGradientCSS = (hex, opacity = 0.85) =>
   'linear-gradient( ' +
   getRGBAColor(hex, opacity) +
   ' 100%, ' +

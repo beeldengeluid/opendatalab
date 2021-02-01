@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ArticleHeading :article="dataset" data-class="dataset" />
+    <ArticleHeader :article="dataset" data-class="dataset" />
 
     <!-- Dataset -->
     <v-row class="justify-center pb-3">
@@ -44,7 +44,7 @@
 <script>
 import TabOverview from '../../components/dataset/TabOverview'
 import TabMetadata from '../../components/dataset/TabMetadata'
-import ArticleHeading from '../../components/ArticleHeading'
+import ArticleHeader from '../../components/ArticleHeader'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
@@ -52,7 +52,7 @@ import { enrichDatasets } from '~/util/dataset'
 
 export default {
   components: {
-    ArticleHeading,
+    ArticleHeader,
     TabMetadata,
     TabOverview,
   },

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <ArticleHeading :article="article" :data-class="dataClass" />
+    <ArticleHeader :article="article" :data-class="dataClass" />
 
     <section class="markdown-style pt-5">
       <v-img
@@ -49,10 +49,10 @@ import { formatDate } from '../util/date'
 import { classColorIndex } from '../config/theme'
 import Relations from './Relations'
 import PrevNext from './PrevNext'
-import ArticleHeading from './ArticleHeading'
+import ArticleHeader from './ArticleHeader'
 
 export default {
-  components: { Relations, PrevNext, ArticleHeading },
+  components: { Relations, PrevNext, ArticleHeader },
   props: {
     article: {
       type: Object,
