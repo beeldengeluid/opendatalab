@@ -1,0 +1,65 @@
+<template>
+  <v-row class="relations">
+    <v-col v-for="item of items" :key="item.path">
+      <h3>
+        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t(item.title) }}
+      </h3>
+      <ChipList
+        :chips="item.chips"
+        :color="item.color"
+        :path="item.path"
+        :icon="item.icon"
+      />
+    </v-col>
+  </v-row>
+</template>
+
+<script>
+import icons from '../config/icons'
+import { classColorIndex } from '../config/theme'
+import ChipList from './ChipList'
+
+export default {
+  components: { ChipList },
+  props: {
+    projects: { type: Array, required: false, default: null },
+    blogs: { type: Array, required: false, default: null },
+    datasets: { type: Array, required: false, default: null },
+  },
+  data() {
+    return {
+      icons,
+      relatedIcon: 'mdi-vector-link',
+      items: [
+        {
+          title: 'projects',
+          path: 'project-slug',
+          color: classColorIndex.project,
+          chips: this.projects,
+          icon: icons.project,
+        },
+        {
+          title: 'blogs',
+          path: 'blog-slug',
+          color: classColorIndex.blog,
+          chips: this.blogs,
+          icon: icons.blog,
+        },
+        {
+          title: 'datasets',
+          path: 'dataset-slug',
+          color: classColorIndex.dataset,
+          chips: this.datasets,
+          icon: icons.dataset,
+        },
+      ].filter((item) => item.chips && item.chips.length > 0),
+    }
+  },
+}
+</script>
+
+<style scoped>
+.v-icon {
+  margin-top: -3px;
+}
+</style>

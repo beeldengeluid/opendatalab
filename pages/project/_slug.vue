@@ -1,17 +1,14 @@
 <template>
-  <Fragment>
-    <v-breadcrumbs :items="createBreadCrumbs(article)" />
-    <Article :article="article" />
-  </Fragment>
+  <ArticlePage :article="article" :data-class="dataClass" />
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-import Article from '../../components/Article'
+import ArticlePage from '../../components/ArticlePage'
 import { createArticleSlugPage } from '../../util/articleSlugPage'
 
 export default createArticleSlugPage({
   source: 'projects',
-  components: { Article, Fragment },
+  components: { ArticlePage },
+  data: () => ({ dataClass: 'project' }),
 })
 </script>

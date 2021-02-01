@@ -1,15 +1,28 @@
 import { getLocalePath } from './contentFallback'
+import { enrichDatasets } from './dataset'
 import { formatDate } from './date'
 
 // Generic article slug page creator from given article source, e.g. blogs, projects
-export const createArticleSlugPage = ({ source, components }) => ({
-  async asyncData({ $content, params, app }) {
+export const createArticleSlugPage = ({
+  source,
+  components = {},
+  data = {},
+}) => ({
+  async asyncData({ $content, params, app, error }) {
     const path = await getLocalePath({
       $content,
       app,
       path: `${source}/${params.slug}`,
     })
-    const article = await $content(path).fetch()
+    const article = await $content(path)
+      .fetch()
+      .catch(() => {
+        error({ statusCode: 404, message: 'Article not found' })
+      })
+
+    if (!article) {
+      return
+    }
 
     // prev/next article
     const articles = await getLocalePath({
@@ -24,18 +37,23 @@ export const createArticleSlugPage = ({ source, components }) => ({
       .surround(params.slug)
       .fetch()
 
-    const datasets = await $content('datasets').fetch()
+    const data = await $content('datasets').fetch()
+
+    const datasets = enrichDatasets(data.datasets)
 
     // populate datasets on article with dataset object
-    article.datasets = article.datasets
-      .map((datasetId) =>
-        datasets.datasets.find((dataset) => dataset.slug === datasetId)
-      )
-      .filter((d) => d)
+    article.datasets =
+      article.datasets &&
+      article.datasets
+        .map((datasetId) =>
+          datasets.find((dataset) => dataset.identifier === datasetId)
+        )
+        .filter((d) => d)
 
     return { article, prev, next }
   },
   components,
+  data,
   head() {
     const title = this.article.title
     return {
@@ -44,25 +62,5 @@ export const createArticleSlugPage = ({ source, components }) => ({
   },
   methods: {
     formatDate,
-    createBreadCrumbs() {
-      const base = this.$router.options.base
-      return [
-        {
-          text: this.$t('home'),
-          disabled: false,
-          href: base + this.localePath('index').slice(1),
-        },
-        {
-          text: this.$t(source),
-          disabled: false,
-          href: base + this.localePath(source).slice(1),
-        },
-        {
-          text: this.article.title,
-          disabled: true,
-          href: '#',
-        },
-      ]
-    },
   },
 })

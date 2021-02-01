@@ -1,37 +1,42 @@
 <template>
-  <Fragment>
-    <Heading :title="$t('projects')" :icon="icons.project" />
-    <v-divider class="my-5" />
-    <CardGrid :cards="cards" path="project-slug" />
-  </Fragment>
+  <CardPage
+    :cards="cards"
+    :title="title"
+    :card-path="cardPath"
+    :data-class="dataClass"
+  />
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
-import CardGrid from '../components/CardGrid'
-import Heading from '../components/Heading'
-import icons from '../config/icons'
+import CardPage from '../components/CardPage'
 import { getLocalePath } from '../util/contentFallback'
 
+const dataClass = 'project'
+
 export default {
-  components: { CardGrid, Fragment, Heading },
-  async asyncData({ $content, params, app }) {
-    const projectsPath = await getLocalePath({
+  components: { CardPage },
+  async asyncData({ $content, app }) {
+    const path = dataClass + 's'
+
+    const articlesPath = await getLocalePath({
       $content,
       app,
-      path: 'projects',
+      path,
     })
-    const projects = await $content(projectsPath)
+    const articles = await $content(articlesPath)
       .sortBy('createdAt', 'asc')
       .fetch()
 
-    return { cards: projects }
+    return { cards: articles }
   },
-  data: () => ({ icons }),
+  data: () => ({
+    title: dataClass + 's',
+    cardPath: dataClass + '-slug',
+    dataClass,
+  }),
   head() {
-    const title = this.$t('projects')
     return {
-      title,
+      title: this.$t(dataClass),
     }
   },
 }

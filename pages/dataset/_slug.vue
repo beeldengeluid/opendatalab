@@ -1,67 +1,73 @@
 <template>
-  <Fragment v-if="dataset">
-    <v-breadcrumbs :items="createBreadCrumbs()" />
-    <article>
-      <h1>{{ dataset.title }}</h1>
-      <v-divider class="my-5" />
+  <div>
+    <ArticleHeader :article="dataset" data-class="dataset" />
 
-      <p>{{ dataset.description }}</p>
-      <h4>{{ $t('records') }}: {{ dataset.records }}</h4>
+    <!-- Dataset -->
+    <v-row class="justify-center pb-3">
+      <v-col class="limit-width px-3 pb-0">
+        <section>
+          <!-- Tabs -->
+          <v-tabs v-model="activeSubmenu" class="light-background">
+            <v-tabs-slider color="primary" />
 
-      <v-divider class="my-5" />
+            <v-tab v-for="item in submenu" :key="item" :to="'#' + item" nuxt>
+              {{ item }}
+            </v-tab>
+          </v-tabs>
 
-      <!-- projects -->
-      <div v-if="projects.length">
-        <ChipList
-          :chips="projects"
-          color="secondary"
-          path="project-slug"
-          :icon="icons.project"
-        />
-        <v-divider class="my-5" />
-      </div>
+          <!-- <v-divider /> -->
+        </section>
+      </v-col>
+    </v-row>
 
-      <!-- blogs -->
-      <div v-if="blogs.length">
-        <ChipList
-          :chips="blogs"
-          color="tertiary"
-          path="blog-slug"
-          :icon="icons.blog"
-        />
-
-        <v-divider class="my-5" />
-      </div>
-
-      <!-- related datasets -->
-      <div v-if="relatedDatasets.length">
-        <ChipList
-          :chips="relatedDatasets"
-          color="primary"
-          path="dataset-slug"
-          :icon="icons.dataset"
-        />
-
-        <v-divider class="my-5" />
-      </div>
-    </article>
-  </Fragment>
+    <!-- Tab Content -->
+    <v-row class="justify-center mb-3 pt-3 mt-0 white">
+      <v-col class="limit-width px-3 py-3 mb-3">
+        <section class="px-3">
+          <v-tabs-items v-model="activeSubmenu">
+            <!-- Overview -->
+            <TabOverview
+              :dataset="dataset"
+              :page="page"
+              :projects="projects"
+              :blogs="blogs"
+            />
+            <!-- Metadata -->
+            <TabMetadata :dataset="dataset" />
+          </v-tabs-items>
+        </section>
+      </v-col>
+    </v-row>
+  </div>
 </template>
 
 <script>
-import { Fragment } from 'vue-fragment'
+import TabOverview from '../../components/dataset/TabOverview'
+import TabMetadata from '../../components/dataset/TabMetadata'
+import ArticleHeader from '../../components/ArticleHeader'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
+import { classColors } from '../../config/theme'
+import { enrichDatasets } from '~/util/dataset'
 
 export default {
-  components: { Fragment },
+  components: {
+    ArticleHeader,
+    TabMetadata,
+    TabOverview,
+  },
 
-  async asyncData({ $content, app, params }) {
+  async asyncData({ $content, app, params, error }) {
     // datasets are not localized (yet)
-    const datasets = await $content('datasets').fetch()
-    const dataset = datasets.datasets.find(
-      (dataset) => dataset.slug === params.slug
-    )
+    const data = await $content('datasets').fetch()
+    const datasets = enrichDatasets(data.datasets)
+
+    const dataset = datasets.find((dataset) => dataset.slug === params.slug)
+
+    if (!dataset) {
+      error({ statusCode: 404, message: 'Dataset not found' })
+      return
+    }
 
     // blogs
     const blogsPath = await getLocalePath({
@@ -71,7 +77,7 @@ export default {
     })
 
     const blogs = await $content(blogsPath)
-      .where({ datasets: { $contains: dataset.slug } })
+      .where({ datasets: { $contains: dataset.identifier } })
       .fetch()
 
     // projects
@@ -82,7 +88,7 @@ export default {
     })
 
     const projects = await $content(projectsPath)
-      .where({ datasets: { $contains: dataset.slug } })
+      .where({ datasets: { $contains: dataset.identifier } })
       .fetch()
 
     // Related datasets, excluding current
@@ -90,53 +96,60 @@ export default {
     projects.concat(blogs).forEach((article) => {
       article.datasets &&
         article.datasets
-          .filter((dataset) => dataset !== params.slug)
-          .forEach((dataset) => {
-            dataset in datasetCount
-              ? datasetCount[dataset]++
-              : (datasetCount[dataset] = 1)
+          .filter((ds) => ds !== dataset.identifier)
+          .forEach((ds) => {
+            ds in datasetCount ? datasetCount[ds]++ : (datasetCount[ds] = 1)
           })
     })
 
-    const relatedDatasets = datasets.datasets
-      .filter((dataset) => dataset.slug in datasetCount)
-      .sort((a, b) => datasetCount[b.slug] - datasetCount[a.slug])
+    const relatedDatasets = datasets
+      .filter((ds) => ds.identifier in datasetCount)
+      .sort((a, b) => datasetCount[b.identifier] - datasetCount[a.identifier])
+
+    // Custom markdown content for dataset
+    const mdPath = await getLocalePath({
+      $content,
+      app,
+      path: 'datasets/' + dataset.slug,
+    })
+    const page = await $content(mdPath)
+      .fetch()
+      .catch((e) => {
+        // ignore error of missing page
+      })
 
     return {
       dataset,
       blogs,
       projects,
       relatedDatasets,
+      page,
     }
   },
-  data: () => ({ icons }),
+  data: () => ({
+    icons,
+    classColors,
+    icon: icons.dataset,
+    color: classColors.dataset,
+
+    submenu: ['overview', 'metadata'],
+    activeSubmenu: null,
+  }),
   head() {
     const title = this.dataset.title
     return {
       title,
     }
   },
-  methods: {
-    createBreadCrumbs() {
-      const base = this.$router.options.base
-      return [
-        {
-          text: this.$t('home'),
-          disabled: false,
-          href: base + this.localePath('index').slice(1),
-        },
-        {
-          text: this.$t('datasets'),
-          disabled: false,
-          href: base + this.localePath('datasets').slice(1),
-        },
-        {
-          text: this.dataset.title,
-          disabled: true,
-          href: '#',
-        },
-      ]
-    },
+  mounted() {
+    // Set default submenu to hash
+    if (!this.$route.hash) {
+      window.history.replaceState(
+        null,
+        window.title,
+        this.$route.path + '#' + this.submenu[0]
+      )
+    }
   },
 }
 </script>

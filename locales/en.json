@@ -1,12 +1,21 @@
 {
   "site_name": "Open Data Lab",
   "site_author": "Sound and Vision",
-
-  "blogs": "Blogs",
   "datasets": "Datasets",
+  "datasets_description": "Our open data sets (todo: replace with visualization)",
+  "all_datasets": "All datasets",
   "projects": "Projects",
+  "projects_description": "Open data powered showcases",
+  "all_projects": "All projects",
+  "blogs": "Blog",
+  "blogs_description": "Latest news and background articles",
+  "all_blogs": "All articles",
   "records": "Records",
   "home": "Home",
   "about": "About",
-  "last_update": "Last update"
+  "about_description": "Who we are, what we do",
+  "last_update": "Last update",
+  "read_more": "Read more",
+  "metadata": "Metadata",
+  "download_metadata": "JSON-LD"
 }

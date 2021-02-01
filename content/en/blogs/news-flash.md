@@ -1,14 +1,12 @@
 ---
 title: 'Newsflash'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/1006/300/200
+image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
-  - openbeelden
-  - natuurbeelden
+  - https://www.openbeelden.nl/users/beeldengeluid
+  - https://www.openbeelden.nl/users/stichting_natuurbeelden
 ---
-
-# Dea Asiae in Quirini subtemen potentem potest
 
 ## Loqui sine adulter augusta et deceat
 

@@ -1,0 +1,26 @@
+.light-background,
+.light-background-children,
+.light-background-children .theme--light.v-card,
+.light-background.theme--light.v-tabs-items,
+.light-background.theme--light.v-tabs > .v-tabs-bar {
+  background-color: $lightBackground;
+}
+
+.todo {
+  background-image: linear-gradient(
+    45deg,
+    rgba($primary, 0.1) 25%,
+    rgba(white, 0.8) 25%,
+    rgba(white, 0.8) 50%,
+    rgba($primary, 0.1) 50%,
+    rgba($primary, 0.1) 75%,
+    rgba(white, 0.8) 75%,
+    rgba(white, 0.8) 100%
+  );
+  background-size: 56.57px 56.57px;
+  background-repeat: repeat;
+}
+
+h1 {
+  font-size: 2.15rem;
+}

@@ -1,48 +1,98 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12">
-      <div
-        class="todo grey lighten-4 px-3 py-3 mb-7"
-        :style="{ height: '80vh' }"
-      >
-        <h2 class="mb-3">{{ $t('datasets') }}</h2>
-        <LinkList
-          :links="datasets.datasets"
-          :icon="icons.dataset"
-          path="dataset-slug"
-        />
-      </div>
+  <v-row>
+    <v-col>
+      <!-- Datasets / Visualization -->
+      <v-row class="justify-center light-background my-3 pb-3">
+        <v-col class="limit-width px-3 py-4 mb-2">
+          <Heading
+            :title="$t('datasets')"
+            :description="$t('datasets_description')"
+            data-class="dataset"
+            :action-path="'datasets'"
+            :action-title="$t('all_datasets')"
+          />
 
-      <Heading :title="$t('blogs')" :icon="icons.blog" />
-
-      <v-divider class="my-5" />
-      <CardGrid :cards="blogs" path="blog-slug" row-class="justify-center" />
-
-      <Heading :title="$t('projects')" :icon="icons.project" />
-      <v-divider class="my-5" />
-      <CardGrid
-        :cards="projects"
-        path="project-slug"
-        row-class="justify-center"
-      />
-
-      <v-divider class="my-5" />
-      <v-row>
-        <v-col cols="6">
-          <v-img
-            lazy-src="https://picsum.photos/id/1016/7/4"
-            max-height="400"
-            max-width="700"
-            src="https://picsum.photos/id/1016/700/400"
-            class="float-right"
-          ></v-img>
-        </v-col>
-        <v-col cols="6">
-          <article>
-            <nuxt-content :document="page" />
-          </article>
+          <CardGrid
+            :cards="datasets"
+            path="dataset-slug"
+            data-class="dataset"
+            row-class="justify-center justify-md-start px-5"
+          />
         </v-col>
       </v-row>
+
+      <!-- Projects -->
+      <v-row class="justify-center light-background my-3 pb-3">
+        <v-col class="limit-width px-3 py-4 mb-2">
+          <Heading
+            :title="$t('projects')"
+            :description="$t('projects_description')"
+            data-class="project"
+            :action-path="'projects'"
+            :action-title="$t('all_projects')"
+          />
+
+          <CardGrid
+            :cards="projects"
+            path="project-slug"
+            data-class="project"
+            row-class="justify-center justify-md-start px-5"
+          />
+        </v-col>
+      </v-row>
+
+      <!-- Blogs -->
+      <v-row class="justify-center light-background pb-3">
+        <v-col class="limit-width px-3 py-3 mb-2">
+          <Heading
+            :title="$t('blogs')"
+            :description="$t('blogs_description')"
+            data-class="blog"
+            :action-path="'blogs'"
+            :action-title="$t('all_blogs')"
+          />
+          <CardGrid
+            :cards="blogs"
+            path="blog-slug"
+            data-class="blog"
+            row-class="justify-center justify-md-start px-5"
+          />
+        </v-col>
+      </v-row>
+
+      <!-- About -->
+      <v-row class="justify-center light-background my-3 pb-3">
+        <v-col class="limit-width mb-4">
+          <Heading
+            :title="$t('about')"
+            :description="$t('about_description')"
+          />
+
+          <v-row class="white mx-4 my-6 flex-column flex-md-row">
+            <v-col md="6" class="px-0 py-0">
+              <v-img
+                max-height="400"
+                max-width="100%"
+                width="100%"
+                :src="require(`~/assets/images/about.jpg?size=700`).src"
+                class="float-right"
+                gradient="to top right, rgba(0,138,219,0.85), rgba(0,138,219,0.2)"
+              ></v-img>
+            </v-col>
+            <v-col
+              md="6"
+              class="pa-10 d-flex flex-column justify-center align-start"
+            >
+              <nuxt-content :document="page" />
+              <v-btn color="primary" :to="localePath('about')" nuxt>
+                {{ $t('read_more') }}
+              </v-btn>
+            </v-col>
+          </v-row>
+        </v-col>
+      </v-row>
+
+      <!-- -->
     </v-col>
   </v-row>
 </template>
@@ -50,15 +100,15 @@
 <script>
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
-import LinkList from '../components/LinkList'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
+import { classColors } from '../config/theme'
+import { enrichDatasets } from '~/util/dataset'
 
 export default {
   components: {
     CardGrid,
     Heading,
-    LinkList,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
@@ -72,7 +122,7 @@ export default {
     })
     const blogs = await $content(blogsPath)
       .sortBy('createdAt', 'asc')
-      .limit(5)
+      .limit(4)
       .fetch()
 
     // projects
@@ -83,10 +133,12 @@ export default {
     })
     const projects = await $content(projectsPath)
       .sortBy('createdAt', 'asc')
-      .limit(5)
+      .limit(4)
       .fetch()
 
-    const datasets = await $content('datasets').fetch()
+    const data = await $content('datasets').fetch()
+    const datasets = enrichDatasets(data.datasets)
+
     return {
       page,
       datasets,
@@ -94,7 +146,10 @@ export default {
       projects,
     }
   },
-  data: () => ({ icons }),
+  data: () => ({
+    icons,
+    classColors,
+  }),
   head() {
     const title = this.$t('home')
     return {

@@ -1,13 +1,5 @@
 ---
-title: 'Example 2'
-subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/1002/300/200
-tags:
-datasets:
-  - openbeelden
 ---
-
-# Dea Asiae in Quirini subtemen potentem potest
 
 ## Loqui sine adulter augusta et deceat
 
@@ -16,16 +8,6 @@ tantique. Minantia tigres corpora [parvos](http://ad.io/cancer) destinat
 venabula simulavit poples ego ardentis Opheltes violentior huius natum; utque
 ipse modo lumina. Iugulare _demens simul_ se neque unde per erroresque repellit
 quamvis. Oneri [et tristis](http://pennae-temesaea.com/).
-
-## Ignes truncoque
-
-In quis, saepe revulsum. Cava novo conlapsus quaque primoque _oculos natas_, in
-cupiens, nam. Longum annis Tartara hastilia.
-
-1. Locus Agamemnona perveniunt iacebat fecit foret
-2. Non cum
-3. Hic mihi
-4. Sive cervis quaeque repulsae malis praecipitem pars
 
 ## Spectabere perdere
 

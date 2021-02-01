@@ -1,13 +1,11 @@
 ---
-title: 'Example 1'
+title: 'Open Data for AI research'
 subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
-image: https://picsum.photos/id/100/300/200
+image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
-  - openbeelden
+  - https://www.openbeelden.nl/users/beeldengeluid
 ---
-
-# Dea Asiae in Quirini subtemen potentem potest
 
 ## Loqui sine adulter augusta et deceat
 

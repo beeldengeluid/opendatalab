@@ -1,20 +1,50 @@
 <template>
-  <v-row class="justify-start">
-    <v-col v-if="icon" class="flex-grow-0">
-      <v-icon :style="{ marginTop: '5px' }">{{ icon }}</v-icon>
-    </v-col>
-    <v-col>
-      <h2>{{ title }}</h2>
-    </v-col>
-    <v-spacer />
-  </v-row>
+  <div>
+    <v-row>
+      <v-col class="flex-shrink-0">
+        <h1>{{ title }}&nbsp;<span :class="color + '--text'">/</span></h1>
+      </v-col>
+      <v-col class="d-flex justify-end align-center">
+        <slot name="actions">
+          <v-btn
+            v-if="actionTitle && actionPath"
+            :to="localePath(actionPath)"
+            nuxt
+            plain
+          >
+            {{ actionTitle }}
+            <v-icon size="20" class="ml-3" :color="color" v-text="actionIcon">
+            </v-icon>
+          </v-btn>
+        </slot>
+      </v-col>
+    </v-row>
+    <p v-if="description">{{ description }}</p>
+  </div>
 </template>
 
 <script>
+import { classColorIndex } from '../config/theme'
+
 export default {
   props: {
-    icon: { type: String, required: false, default: null },
-    title: { type: String, required: false, default: '' },
+    title: { type: String, required: true, default: '' },
+    description: { type: String, required: false, default: '' },
+    dataClass: { type: String, required: false, default: 'dataset' },
+    actionTitle: { type: String, required: false, default: '' },
+    actionPath: { type: String, required: false, default: '' },
+    actionIcon: { type: String, required: false, default: 'mdi-arrow-right' },
+  },
+  data() {
+    return {
+      color: classColorIndex[this.dataClass],
+    }
   },
 }
 </script>
+
+<style scoped lang="scss">
+p {
+  color: rgba(black, 0.5);
+}
+</style>

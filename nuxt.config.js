@@ -18,13 +18,16 @@ export default {
   },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
-  css: ['~/assets/scss/layout/index.scss'],
+  css: [
+    '~/assets/scss/vuetify/customizations.scss',
+    '~/assets/scss/layout/index.scss',
+  ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
   plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
-  components: true,
+  components: false,
 
   // Modules for dev and build (recommended) (https://go.nuxtjs.dev/config-modules)
   buildModules: [
@@ -32,6 +35,9 @@ export default {
     '@nuxtjs/eslint-module',
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
+
+    // Adapted from https://github.com/geeogi/nuxt-responsive-loader
+    '~/modules/nuxt-responsive-loader',
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -69,8 +75,13 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
-    customVariables: ['./assets/scss/vuetify/index.scss'],
+    customVariables: ['./assets/scss/vuetify/variables.scss'],
     treeShake: true,
+    defaultAssets: {
+      font: {
+        family: 'Roboto',
+      },
+    },
     theme: {
       dark: false,
       themes: {
@@ -85,14 +96,14 @@ export default {
     base: process.env.BASE_URL || '/',
   },
 
-  // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-    extractCSS: true,
-  },
-
   // https://nuxtjs.org/docs/2.x/features/loading/
   loading: {
     color: '#008adb',
     height: '5px',
+  },
+
+  // Build Configuration (https://go.nuxtjs.dev/config-build)
+  build: {
+    extractCSS: process.env.NODE_ENV === 'production',
   },
 }

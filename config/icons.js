@@ -4,4 +4,8 @@ export default {
   project: 'mdi-rocket-launch',
   blog: 'mdi-post',
   about: 'mdi-information',
+
+  organization: 'mdi-domain',
+  link: 'mdi-link-variant',
+  download: 'mdi-download',
 }

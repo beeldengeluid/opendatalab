@@ -6,7 +6,7 @@
       :cols="card.flex"
       class="mt-2 flex-grow-0"
     >
-      <Card :card="card" :path="path" />
+      <Card :card="card" :path="path" :data-class="dataClass" />
     </v-col>
   </v-row>
 </template>
@@ -19,7 +19,12 @@ export default {
   props: {
     cards: { type: Array, required: true, default: () => [] },
     path: { type: String, required: true, default: '' },
-    rowClass: { type: String, required: false, default: 'justify-center' },
+    dataClass: { type: String, required: true, default: '' },
+    rowClass: {
+      type: String,
+      required: false,
+      default: 'justify-center justify-md-start',
+    },
   },
 }
 </script>

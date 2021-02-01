@@ -1,14 +1,12 @@
 ---
 title: Welcome to the ODL blog
 subtitle: 'Longum annis Tartara hastilia.'
-image: https://picsum.photos/id/1016/300/200
+image: placeholders/placeholder-blog.jpg
 tags:
 datasets:
-  - openbeelden
-  - oorlogsbronnen
+  - https://www.openbeelden.nl/users/beeldengeluid
+  - https://www.openbeelden.nl/users/stichting_natuurbeelden
 ---
-
-# Dea Asiae in Quirini subtemen potentem potest
 
 ## Loqui sine adulter augusta et deceat
 
