@@ -2,8 +2,8 @@
   <table>
     <tbody>
       <tr v-for="(value, key) in object" :key="key">
-        <th>{{ key }}</th>
-        <td>
+        <th v-if="renderable(value)">{{ key }}</th>
+        <td v-if="renderable(value)">
           <!-- String -->
           <span v-if="typeof value == 'string'">
             <LinkText :value="value" />
@@ -20,18 +20,16 @@
           </span>
 
           <!-- Array of non-objects -->
-          <ul
-            v-else-if="
-              Array.isArray(value) &&
-              value.length > 0 &&
-              typeof value[0] != 'object'
-            "
-          >
+          <ul v-else-if="Array.isArray(value)">
             <li v-for="v in value" :key="v"><LinkText :value="v" /></li>
           </ul>
+        </td>
+
+        <td v-else colspan="2">
+          <h2 class="text-capitalize mb-3">{{ key }}</h2>
 
           <!-- Array of objects -->
-          <Fragment v-else-if="Array.isArray(value) && value.length > 0">
+          <Fragment v-if="isObjectArray(value)">
             <DataTable v-for="(v, index) in value" :key="index" :object="v" />
           </Fragment>
 
@@ -50,6 +48,11 @@ import DataTable from './DataTable'
 import LinkText from './LinkText'
 import ObjectLink from './ObjectLink'
 
+const isNonObjectArray = (value) =>
+  Array.isArray(value) && value.length > 0 && typeof value[0] !== 'object'
+const isObjectArray = (value) =>
+  Array.isArray(value) && value.length > 0 && typeof value[0] === 'object'
+
 export default {
   name: 'DataTable',
   components: { DataTable, Fragment, LinkText, ObjectLink },
@@ -60,8 +63,13 @@ export default {
       default: null,
     },
   },
+
   methods: {
     isObjectLink,
+    isNonObjectArray,
+    isObjectArray,
+    renderable: (value) =>
+      isObjectLink(value) || !isObjectArray(value) || typeof value !== 'object',
   },
 }
 </script>
