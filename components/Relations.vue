@@ -1,41 +1,14 @@
 <template>
   <v-row class="relations">
-    <!-- projects -->
-    <v-col v-if="projects && projects.length > 0">
+    <v-col v-for="item of items" :key="item.path">
       <h3>
-        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t('projects') }}
+        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t(item.title) }}
       </h3>
       <ChipList
-        :chips="projects"
-        color="secondary"
-        path="project-slug"
-        :icon="icons.project"
-      />
-    </v-col>
-
-    <!-- blogs -->
-    <v-col v-if="blogs && blogs.length > 0">
-      <h3>
-        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t('blogs') }}
-      </h3>
-      <ChipList
-        :chips="blogs"
-        color="tertiary"
-        path="blog-slug"
-        :icon="icons.blog"
-      />
-    </v-col>
-
-    <!-- related datasets -->
-    <v-col v-if="datasets && datasets.length > 0">
-      <h3>
-        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t('datasets') }}
-      </h3>
-      <ChipList
-        :chips="datasets"
-        color="primary"
-        path="dataset-slug"
-        :icon="icons.dataset"
+        :chips="item.chips"
+        :color="item.color"
+        :path="item.path"
+        :icon="item.icon"
       />
     </v-col>
   </v-row>
@@ -43,6 +16,7 @@
 
 <script>
 import icons from '../config/icons'
+import { classColorIndex } from '../config/theme'
 import ChipList from './ChipList'
 
 export default {
@@ -52,7 +26,35 @@ export default {
     blogs: { type: Array, required: false, default: null },
     datasets: { type: Array, required: false, default: null },
   },
-  data: () => ({ icons, relatedIcon: 'mdi-vector-link' }),
+  data() {
+    return {
+      icons,
+      relatedIcon: 'mdi-vector-link',
+      items: [
+        {
+          title: 'projects',
+          path: 'project-slug',
+          color: classColorIndex.project,
+          chips: this.projects,
+          icon: icons.project,
+        },
+        {
+          title: 'blogs',
+          path: 'blog-slug',
+          color: classColorIndex.blog,
+          chips: this.blogs,
+          icon: icons.blog,
+        },
+        {
+          title: 'datasets',
+          path: 'dataset-slug',
+          color: classColorIndex.dataset,
+          chips: this.datasets,
+          icon: icons.dataset,
+        },
+      ].filter((item) => item.chips && item.chips.length > 0),
+    }
+  },
 }
 </script>
 
