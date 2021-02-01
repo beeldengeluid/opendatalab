@@ -112,20 +112,17 @@
 
       <!-- Language selector -->
       <div class="language-selector">
-        <NuxtLink
+        <v-btn
           v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
           :key="locale.code"
           :to="switchLocalePath(locale.code)"
-          class="text-decoration-none"
+          class="text-decoration-none grey--text text--lighten-1 text-uppercase"
+          color="blue-grey darken-3 "
+          rounded
+          :style="{ minWidth: '36px', padding: '0' }"
         >
-          <v-avatar
-            color="blue-grey darken-3"
-            size="35"
-            class="white--text text-uppercase"
-          >
-            {{ locale.code }}
-          </v-avatar>
-        </NuxtLink>
+          {{ locale.code }}
+        </v-btn>
       </div>
     </v-app-bar>
 
