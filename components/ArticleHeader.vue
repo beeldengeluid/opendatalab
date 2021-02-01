@@ -98,7 +98,7 @@ export default {
 .article-heading {
   background-size: cover;
   background-position: center center;
-  padding: 30px 0;
+  padding: 30px 10px;
 }
 
 h1 {
