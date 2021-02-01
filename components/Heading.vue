@@ -1,24 +1,26 @@
 <template>
-  <v-row>
-    <v-col>
-      <h1>{{ title }} <span :class="color + '--text'">/</span></h1>
-      <p v-if="description">{{ description }}</p>
-    </v-col>
-    <v-col class="d-flex justify-end align-center">
-      <slot name="actions">
-        <v-btn
-          v-if="actionTitle && actionPath"
-          :to="localePath(actionPath)"
-          nuxt
-          plain
-        >
-          {{ actionTitle }}
-          <v-icon size="20" v-text="actionIcon" class="ml-3" :color="color">
-          </v-icon>
-        </v-btn>
-      </slot>
-    </v-col>
-  </v-row>
+  <div>
+    <v-row>
+      <v-col class="flex-shrink-0">
+        <h1>{{ title }}&nbsp;<span :class="color + '--text'">/</span></h1>
+      </v-col>
+      <v-col class="d-flex justify-end align-center">
+        <slot name="actions">
+          <v-btn
+            v-if="actionTitle && actionPath"
+            :to="localePath(actionPath)"
+            nuxt
+            plain
+          >
+            {{ actionTitle }}
+            <v-icon size="20" v-text="actionIcon" class="ml-3" :color="color">
+            </v-icon>
+          </v-btn>
+        </slot>
+      </v-col>
+    </v-row>
+    <p v-if="description">{{ description }}</p>
+  </div>
 </template>
 
 <script>
