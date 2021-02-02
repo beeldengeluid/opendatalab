@@ -2,7 +2,15 @@
   <div>
     <v-row>
       <v-col class="flex-shrink-0">
-        <h1>{{ title }}&nbsp;<span :class="color + '--text'">/</span></h1>
+        <h1>
+          <component
+            :is="actionPath ? 'NuxtLink' : 'span'"
+            :to="localePath(actionPath)"
+            class="text-decoration-none grey--text text--darken-4"
+          >
+            {{ title }}&nbsp;<span :class="color + '--text'">/</span>
+          </component>
+        </h1>
       </v-col>
       <v-col class="d-flex justify-end align-center">
         <slot name="actions">
