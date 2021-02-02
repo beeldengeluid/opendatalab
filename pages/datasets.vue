@@ -28,7 +28,7 @@ export default {
   }),
   head() {
     return {
-      title: this.$t(dataClass),
+      title: this.$t(dataClass + 's'),
     }
   },
 }
