@@ -19,12 +19,16 @@
               :style="{
                 textDecoration: 'none',
               }"
-              class="black--text"
+              class="black--text d-flex"
             >
+              <LogoMark
+                :style="{ transform: 'scale(0.6)', marginLeft: '-6px' }"
+              />
               <img
                 width="180"
                 src="~assets/images/odl-text-logo.svg"
                 :alt="$t('site_name')"
+                class="ml-2"
               />
             </NuxtLink>
           </v-list-item-title>
@@ -82,10 +86,12 @@
         <v-toolbar-title
           class="d-none d-md-flex align-items-center text-uppercase"
         >
+          <LogoMark />
           <img
             width="180"
             src="~assets/images/odl-text-logo.svg"
             :alt="$t('site_name')"
+            class="ml-3"
           />
         </v-toolbar-title>
       </NuxtLink>
@@ -146,8 +152,10 @@
 
 <script>
 import menu from '../config/menu'
+import LogoMark from '../components/LogoMark'
 
 export default {
+  components: { LogoMark },
   data: () => ({
     drawer: false,
     fixed: false,
