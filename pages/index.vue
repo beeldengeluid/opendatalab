@@ -2,22 +2,9 @@
   <v-row>
     <v-col>
       <!-- Datasets / Visualization -->
-      <v-row class="justify-center light-background my-3 pb-3">
-        <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading
-            :title="$t('datasets')"
-            :description="$t('datasets_description')"
-            data-class="dataset"
-            :action-path="'datasets'"
-            :action-title="$t('all_datasets')"
-          />
-
-          <CardGrid
-            :cards="datasets"
-            path="dataset-slug"
-            data-class="dataset"
-            row-class="justify-center justify-md-start px-5"
-          />
+      <v-row class="justify-center white">
+        <v-col class="pa-0">
+          <Visual :datasets="datasets" />
         </v-col>
       </v-row>
 
@@ -100,15 +87,17 @@
 <script>
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
+import Visual from '../components/visual/Visual'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
 import { classColors } from '../config/theme'
-import { enrichDatasets } from '~/util/dataset'
+import { enrichDatasets, randomDataSet } from '~/util/dataset'
 
 export default {
   components: {
     CardGrid,
     Heading,
+    Visual,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
@@ -136,7 +125,12 @@ export default {
       .limit(4)
       .fetch()
 
+    // datasets
     const data = await $content('datasets').fetch()
+    data.datasets = [
+      ...data.datasets,
+      ...Array.from(Array(25)).map((_, index) => randomDataSet({ id: index })),
+    ]
     const datasets = enrichDatasets(data.datasets)
 
     return {

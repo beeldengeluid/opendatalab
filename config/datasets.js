@@ -15,7 +15,7 @@ export const datasetStyle = {
 export const randomDatasetStyle = () => {
   const keys = Object.keys(colors)
   return {
-    color: colors[keys[Math.floor(Math.random() * keys.length)]],
+    color: colors[keys[Math.floor(Math.random() * keys.length)]].darken3,
     image: 'placeholders/placeholder-dataset.jpg',
   }
 }

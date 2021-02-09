@@ -26,6 +26,7 @@
               />
               <img
                 width="180"
+                height="44"
                 src="~assets/images/odl-text-logo.svg"
                 :alt="$t('site_name')"
                 class="ml-2"
@@ -89,9 +90,10 @@
           <LogoMark />
           <img
             width="180"
+            height="44"
             src="~assets/images/odl-text-logo.svg"
             :alt="$t('site_name')"
-            class="ml-3"
+            class="ml-4"
           />
         </v-toolbar-title>
       </NuxtLink>
@@ -101,11 +103,11 @@
       <!-- Tab menu -->
       <v-tabs v-model="activeMenu" class="d-none d-md-flex" right center-active>
         <v-tabs-slider
-          v-if="$route.slug !== home.to"
-          :key="home.to"
+          v-if="activeMenu !== 'index'"
           color="primary"
           class="v-tabs-slider-wrapper"
         />
+        <v-tab :to="localePath(home.to)" class="d-none" />
         <v-tab
           v-for="item in tabMenu"
           :key="item.to"
@@ -175,16 +177,19 @@ export default {
   },
   methods: {
     updateActiveTab() {
-      // Active menu for slug paths
-      const slug = this.$route.name
+      // Active menu for to paths
+      const to = this.$route.name
       switch (true) {
-        case slug.startsWith('blog-slug'):
+        case to.startsWith('index'):
+          this.activeMenu = 'index'
+          break
+        case to.startsWith('blog-to'):
           this.activeMenu = this.localePath('blogs')
           break
-        case slug.startsWith('dataset-slug'):
+        case to.startsWith('dataset-to'):
           this.activeMenu = this.localePath('datasets')
           break
-        case slug.startsWith('project-slug'):
+        case to.startsWith('project-to'):
           this.activeMenu = this.localePath('projects')
           break
       }
@@ -202,6 +207,10 @@ export default {
 
 .v-tab--home {
   min-width: 5px;
+}
+
+.v-tab--active {
+  background-color: rgba(white, 0.2);
 }
 
 .language-selector {

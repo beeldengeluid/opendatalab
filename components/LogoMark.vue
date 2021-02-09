@@ -45,8 +45,9 @@ export default {
         { opacity: 0.66, ...tile },
       ],
       container: {
-        width: this.size * 3 + 3 + 'px',
-        height: this.size * 3 + 3 + 'px',
+        width: this.size * 3 + 2 + 'px',
+        height: this.size * 3 + 2 + 'px',
+        borderRadius: this.size + 2 + 'px',
       },
     }
   },
@@ -69,6 +70,7 @@ export default {
   animation-iteration-count: 1;
   animation-fill-mode: both;
   transition: filter 0.3s ease-out;
+  overflow: hidden;
 
   .tile {
     position: absolute;
