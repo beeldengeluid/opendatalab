@@ -29,7 +29,7 @@ export default {
     },
   },
   mounted() {
-    console.log(this.setActiveDataset)
+    // create chart
     this.chart = new Chart(
       this.datasets,
       {
@@ -64,7 +64,7 @@ export default {
 
   .node {
     animation-name: fadeIn;
-    animation-duration: 0.5s;
+    animation-duration: 0.3s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
     cursor: pointer;
@@ -84,15 +84,16 @@ export default {
     }
 
     &.active {
+      z-index: 2;
       .border {
         opacity: 1 !important;
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
     }
 
     .node-content {
       animation-name: scaleIn;
-      animation-duration: 0.5s;
+      animation-duration: 0.3s;
       animation-iteration-count: 1;
       animation-fill-mode: both;
       user-select: none;

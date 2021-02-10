@@ -33,6 +33,7 @@ class Chart {
       .attr('viewBox', [0, 0, width, height])
       .attr('width', '100%')
       .attr('height', height)
+      .on('click', this.clickEmptySpace)
 
     const g = svg
       .append('g')
@@ -144,12 +145,19 @@ class Chart {
     this.callbacks.onHover && this.callbacks.onHover('')
   }
 
-  click = (_, node) => {
+  clickEmptySpace = () => {
+    // click callback
+    this.callbacks.onClick && this.callbacks.onClick('')
+  }
+
+  click = (event, node) => {
     this.g.selectAll('.active').classed('active', false)
     this.g.select('#node-' + node.id).classed('active', true)
 
     // click callback
     this.callbacks.onClick && this.callbacks.onClick(node.id)
+
+    event.stopPropagation()
   }
 
   buildNodes(nodes) {

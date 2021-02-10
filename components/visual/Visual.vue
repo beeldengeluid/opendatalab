@@ -12,19 +12,46 @@
     </div>
 
     <!-- Intro/details -->
-    <div v-if="activeDataset" class="details">
-      <DatasetInfo :dataset="activeDataset" />
-    </div>
+    <transition name="slideInLeft">
+      <div v-if="activeDataset" class="details">
+        <DatasetInfo :dataset="activeDataset" />
+      </div>
+    </transition>
 
     <!-- Filter -->
     <div class="filter">
-      <Tags
-        :tags="tags"
-        :filter="tagsFilter"
-        :highlight="tagsHighlight"
-        @toggle-tag="toggleTag"
-        @set-tag="setTag"
-      />
+      <!-- Filter button on mobile -->
+      <v-btn
+        class="ma-2 mb-0 d-block d-md-none"
+        fab
+        dark
+        small
+        color="primary"
+        @click.stop="showTags = !showTags"
+      >
+        <v-badge
+          v-if="tagsFilter.length > 0"
+          :content="tagsFilter.length"
+          :style="{ transform: 'translate(22px,-12px)' }"
+          color="red darken-1"
+        />
+
+        <v-icon dark>
+          {{ showTags ? 'mdi-close' : 'mdi-filter-variant' }}
+        </v-icon>
+      </v-btn>
+
+      <!-- Tags list -->
+      <transition name="slideInRight">
+        <Tags
+          v-if="showTags"
+          :tags="tags"
+          :filter="tagsFilter"
+          :highlight="tagsHighlight"
+          @toggle-tag="toggleTag"
+          @set-tag="setTag"
+        />
+      </transition>
     </div>
   </div>
 </template>
@@ -49,9 +76,10 @@ export default {
   },
   data() {
     return {
+      showTags: process.client ? window.innerWidth > 400 : true,
       width: process.client ? window.innerWidth : 800,
       height: process.client
-        ? Math.min(700, Math.max(400, window.innerHeight - 100))
+        ? Math.min(700, Math.max(400, window.innerHeight - 150))
         : 400,
       tagsFilter: [],
       tagsHighlight: [],
@@ -131,7 +159,7 @@ export default {
 $clDark: rgba(5, 37, 68, 1);
 .visual {
   position: relative;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 150px);
   width: 100%;
   max-height: 700px;
   background: rgb(11, 54, 97);
@@ -157,14 +185,10 @@ $clDark: rgba(5, 37, 68, 1);
   width: 300px;
   height: 100%;
   max-width: 100%;
-  padding: 10px 15px;
+  padding: 10px 15px 30px;
   background-color: rgba($clDark, 0.8);
   color: white;
-
-  animation-name: slideIn;
-  animation-duration: 0.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: both;
+  overflow-y: auto;
 }
 
 .filter {
@@ -174,14 +198,25 @@ $clDark: rgba(5, 37, 68, 1);
   max-width: 200px;
 }
 
-@keyframes slideIn {
-  from {
-    opacity: 0;
-    transform: translateX(-200px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+.slideInLeft-enter-active,
+.slideInLeft-leave-active {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: translateX(0);
+}
+.slideInLeft-enter,
+.slideInLeft-leave-to {
+  opacity: 0;
+  transform: translateX(-300px);
+}
+
+.slideInRight-enter-active,
+.slideInRight-leave-active {
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transform: translateX(0);
+}
+.slideInRight-enter,
+.slideInRight-leave-to {
+  opacity: 0;
+  transform: translateX(300px);
 }
 </style>
