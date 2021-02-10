@@ -13,7 +13,7 @@
       "
       nuxt
     >
-      {{ $t('explore') }}
+      {{ $t('explore_dataset') }}
     </v-btn>
   </div>
 </template>

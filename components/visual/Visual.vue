@@ -21,6 +21,7 @@
       <Tags
         :tags="tags"
         :filter="tagsFilter"
+        :highlight="tagsHighlight"
         @toggle-tag="toggleTag"
         @set-tag="setTag"
       />
@@ -53,6 +54,7 @@ export default {
         ? Math.min(700, Math.max(400, window.innerHeight - 100))
         : 400,
       tagsFilter: [],
+      tagsHighlight: [],
       activeDataset: null,
       activeId: '',
       hoverDataset: null,
@@ -90,7 +92,12 @@ export default {
       this.hoverDataset = this.datasets.find(
         (dataset) => dataset.slug === this.hoverId
       )
-      console.log(this.hoverId)
+
+      if (this.hoverDataset) {
+        this.tagsHighlight = this.hoverDataset.tags
+      } else {
+        this.tagsHighlight = []
+      }
     },
   },
   methods: {
@@ -121,6 +128,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+$clDark: rgba(5, 37, 68, 1);
 .visual {
   position: relative;
   height: calc(100vh - 100px);
@@ -131,7 +139,7 @@ export default {
     circle,
     rgba(11, 54, 97, 1) 0%,
     rgba(15, 70, 94, 1) 38%,
-    rgba(5, 37, 68, 1) 100%
+    $clDark 100%
   );
 }
 
@@ -141,16 +149,16 @@ export default {
 }
 
 .details {
+  z-index: 2;
   position: absolute;
   left: 0;
   top: 0;
   background: white;
-  width: 25%;
+  width: 300px;
   height: 100%;
-  min-width: 300px;
   max-width: 100%;
-  padding: 10px;
-  background-color: rgba(black, 0.4);
+  padding: 10px 15px;
+  background-color: rgba($clDark, 0.8);
   color: white;
 
   animation-name: slideIn;
