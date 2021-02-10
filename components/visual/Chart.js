@@ -2,7 +2,7 @@ import * as d3 from 'd3'
 import { createLayout } from './pack'
 
 class Chart {
-  constructor(datasets, options = {}) {
+  constructor(datasets, options = {}, callbacks = {}) {
     this.options = {
       width: 800,
       height: 400,
@@ -13,6 +13,8 @@ class Chart {
     }
 
     this.setOptions(options)
+
+    this.callbacks = callbacks
 
     this.init()
 
@@ -107,21 +109,47 @@ class Chart {
     })
 
     // apply data changes to d3
-    this.nodes = this.g.selectAll('.node').data(layout, ({ id }) => id)
+    const circles = this.g.selectAll('.node').data(layout, ({ id }) => id)
 
-    this.nodes.exit().remove()
+    circles.exit().remove()
 
-    const nodeEnter = this.nodes.enter()
+    const nodeEnter = circles.enter()
     this.buildNodes(nodeEnter)
 
-    this.nodes.merge(nodeEnter)
+    circles.merge(nodeEnter)
 
-    // update nodes
-    this.nodes.attr(
+    // update
+    circles.attr(
       'style',
       ({ x, y, r }) =>
         `transform:translate(${x}px,${y}px) scale(${r / (50 + padding)});`
     )
+  }
+
+  mouseOver = (_, node) => {
+    this.g.selectAll('.node').classed('dim', true)
+    this.g
+      .select('#node-' + node.id)
+      .classed('dim', false)
+      .classed('hover', true)
+
+    // hover callback
+    this.callbacks.onHover && this.callbacks.onHover(node.id)
+  }
+
+  mouseOut = (_, node) => {
+    this.g.selectAll('.node').classed('dim', false).classed('hover', false)
+
+    // hover callback
+    this.callbacks.onHover && this.callbacks.onHover('')
+  }
+
+  click = (_, node) => {
+    this.g.selectAll('.active').classed('active', false)
+    this.g.select('#node-' + node.id).classed('active', true)
+
+    // click callback
+    this.callbacks.onClick && this.callbacks.onClick(node.id)
   }
 
   buildNodes(nodes) {
@@ -130,6 +158,7 @@ class Chart {
     // get node holder
     const node = nodes
       .append('g')
+      .attr('id', ({ id }) => 'node-' + id)
       .attr('class', 'node')
       .style('transition', 'transform 0.3s ease-out')
       .attr(
@@ -137,25 +166,21 @@ class Chart {
         ({ x, y, r }) =>
           `transform:translate(${x}px,${y}px) scale(${r / (50 + padding)});`
       )
-
-    // .on('mouseover', this.hoverNode.bind(this, true))
-    // .on('mouseout', this.hoverNode.bind(this, false))
+      .on('mouseover', this.mouseOver)
+      .on('mouseout', this.mouseOut)
+      .on('click', this.click)
 
     // main node holder
-    const content = node
-      .append('g')
-      .attr('id', ({ id }) => 'node-' + id)
-      .attr(
-        'class',
-        ({ active }) => 'node-content ' + (active ? ' active' : '')
-      )
+    const content = node.append('g').attr('class', 'node-content')
 
-    // selector
+    // border
     content
       .append('circle')
-      .attr('r', () => 50 + border)
-      .style('opacity', () => 0.5)
+      .attr('class', 'border')
+      .attr('r', 50 + border)
+      .attr('pointer-events', 'none')
       .attr('fill', ({ color }) => color)
+      .style('opacity', 0.5)
 
     // circle
     content

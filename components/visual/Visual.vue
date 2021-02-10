@@ -6,14 +6,14 @@
         :datasets="filteredDatasets"
         :width="width"
         :height="height"
-        @active-dataset="setActiveDataset"
+        @active-dataset="setActive"
+        @hover-dataset="setHover"
       />
     </div>
 
     <!-- Intro/details -->
-    <div class="details">
-      <h1>Title</h1>
-      <p>Description</p>
+    <div v-if="activeDataset" class="details">
+      <DatasetInfo :dataset="activeDataset" />
     </div>
 
     <!-- Filter -->
@@ -31,11 +31,13 @@
 <script>
 import Tags from './Tags'
 import Circles from './Circles'
+import DatasetInfo from './DatasetInfo'
 
 export default {
   components: {
     Tags,
     Circles,
+    DatasetInfo,
   },
   props: {
     datasets: {
@@ -52,6 +54,9 @@ export default {
         : 400,
       tagsFilter: [],
       activeDataset: null,
+      activeId: '',
+      hoverDataset: null,
+      hoverId: '',
       filteredDatasets: this.datasets,
       tags: Object.keys(
         this.datasets.reduce((tags, dataset) => {
@@ -76,6 +81,17 @@ export default {
                 this.tagsFilter.some((tag) => dataset.tags.includes(tag))
             )
     },
+    activeId() {
+      this.activeDataset = this.datasets.find(
+        (dataset) => dataset.slug === this.activeId
+      )
+    },
+    hoverId() {
+      this.hoverDataset = this.datasets.find(
+        (dataset) => dataset.slug === this.hoverId
+      )
+      console.log(this.hoverId)
+    },
   },
   methods: {
     toggleTag(tag) {
@@ -92,8 +108,13 @@ export default {
         this.tagsFilter = [tag]
       }
     },
-    setActiveDataset(dataset) {
-      this.activeDataset = dataset
+    setActive(id) {
+      this.activeId = this.activeId === id ? '' : id
+    },
+    setHover(id) {
+      if (this.hoverId !== id) {
+        this.hoverId = id
+      }
     },
   },
 }
@@ -124,7 +145,18 @@ export default {
   left: 0;
   top: 0;
   background: white;
-  width: 200px;
+  width: 25%;
+  height: 100%;
+  min-width: 300px;
+  max-width: 100%;
+  padding: 10px;
+  background-color: rgba(black, 0.4);
+  color: white;
+
+  animation-name: slideIn;
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: both;
 }
 
 .filter {
@@ -132,5 +164,16 @@ export default {
   right: 0;
   top: 0;
   max-width: 200px;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-200px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 </style>

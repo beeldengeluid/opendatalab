@@ -29,10 +29,22 @@ export default {
     },
   },
   mounted() {
-    this.chart = new Chart(this.datasets, {
-      width: this.width,
-      height: this.height,
-    })
+    console.log(this.setActiveDataset)
+    this.chart = new Chart(
+      this.datasets,
+      {
+        width: this.width,
+        height: this.height,
+      },
+      {
+        onClick: (dataset) => {
+          this.$emit('active-dataset', dataset)
+        },
+        onHover: (dataset) => {
+          this.$emit('hover-dataset', dataset)
+        },
+      }
+    )
   },
 }
 </script>
@@ -55,11 +67,27 @@ export default {
     animation-duration: 0.5s;
     animation-iteration-count: 1;
     animation-fill-mode: both;
-    user-select: none;
+    cursor: pointer;
+
     transition: transform 0.3s ease-out;
 
-    &:hover {
-      opacity: 0.2;
+    &.dim {
+      .node-content {
+        opacity: 0.9;
+      }
+    }
+
+    &.hover {
+      .border {
+        opacity: 0.9 !important;
+      }
+    }
+
+    &.active {
+      .border {
+        opacity: 1 !important;
+        transform: scale(1.05);
+      }
     }
 
     .node-content {
@@ -67,6 +95,12 @@ export default {
       animation-duration: 0.5s;
       animation-iteration-count: 1;
       animation-fill-mode: both;
+      user-select: none;
+      transition: opacity 2s ease-out;
+
+      .border {
+        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+      }
     }
   }
 }
