@@ -5,6 +5,11 @@ export default {
   // Target (https://go.nuxtjs.dev/config-target)
   target: 'static',
 
+  // Server
+  server: {
+    host: process.env.HOST || 'localhost',
+  },
+
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
     titleTemplate: '%s - Open Data Lab',
