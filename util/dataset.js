@@ -65,7 +65,7 @@ export const randomDataSet = ({ id, name, contentSize }) => {
         inLanguage: ['nl-NL'],
         datePublished: '2010-01-01T08:51',
         dateModified: '2021-01-19T08:52',
-        contentSize: contentSize || Math.random() * 1200 + id * 133,
+        contentSize: contentSize || Math.round(Math.random() * 1200 + id * 133),
       },
     ],
     tags: ['public_domain', 'linked data', 'api', 'oai-pmh'].filter(
