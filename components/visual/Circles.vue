@@ -1,11 +1,47 @@
 <template>
-  <svg id="circles-container" width="100%" height="100%" />
+  <div class="circles">
+    <panZoom
+      selector=".zoomable"
+      :options="{
+        minZoom: 0.5,
+        maxZoom: 3,
+        boundsPadding: 0.2,
+        initialX: width / 2,
+        initialY: height / 2,
+        initialZoom: 1,
+      }"
+    >
+      <div
+        class="zoomable"
+        :style="{
+          width: '100%',
+          height: height + 'px',
+        }"
+      >
+        <transition-group name="node">
+          <Node
+            v-for="node in layout"
+            :key="node.id"
+            :node="node"
+            :active="activeId === node.id"
+            :dim="hoverId && hoverId !== node.id ? true : false"
+            @hover="nodeHover"
+            @click="nodeClick"
+          />
+        </transition-group>
+      </div>
+    </panZoom>
+  </div>
 </template>
 
 <script>
-import Chart from './Chart'
+import { createLayout } from './pack'
+import Node from './Node'
 
 export default {
+  components: {
+    Node,
+  },
   props: {
     datasets: {
       type: Array,
@@ -22,29 +58,49 @@ export default {
       required: true,
       default: 400,
     },
-  },
-  watch: {
-    datasets() {
-      this.chart.setData(this.datasets)
+    activeId: {
+      type: String,
+      required: false,
+      default: '',
+    },
+    hoverId: {
+      type: String,
+      required: false,
+      default: '',
     },
   },
-  mounted() {
-    // create chart
-    this.chart = new Chart(
-      this.datasets,
-      {
-        width: this.width,
-        height: this.height,
-      },
-      {
-        onClick: (dataset) => {
-          this.$emit('active-dataset', dataset)
-        },
-        onHover: (dataset) => {
-          this.$emit('hover-dataset', dataset)
-        },
-      }
-    )
+  computed: {
+    layout() {
+      const { width, height } = this
+
+      // prepare node data
+      const nodes = this.datasets.map((dataset, index) => ({
+        id: dataset.slug,
+        dataset,
+        color: dataset.color,
+        value:
+          dataset.distribution?.length > 0
+            ? dataset.distribution[0].contentSize
+            : 0,
+      }))
+
+      // calculate circle pack layout
+      const layout = createLayout({
+        nodes,
+        width,
+        height,
+      })
+
+      return layout
+    },
+  },
+  methods: {
+    nodeClick(id) {
+      this.$emit('active-dataset', id)
+    },
+    nodeHover(id) {
+      this.$emit('hover-dataset', id)
+    },
   },
 }
 </script>
@@ -53,75 +109,38 @@ export default {
 /*! purgecss start ignore */
 @import '../../assets/scss/vuetify/customizations';
 
-#circles-container {
+.circles {
+  font-family: $heading-font-family;
+  color: white;
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
+  overflow: hidden;
+  user-select: none;
+  outline: none;
 
-  font-family: $heading-font-family;
+  * {
+    outline: none;
+  }
 
-  .node {
-    animation-name: fadeIn;
-    animation-duration: 0.3s;
-    animation-iteration-count: 1;
-    animation-fill-mode: both;
-    cursor: pointer;
-
-    transition: transform 0.3s ease-out;
-
-    &.dim {
-      .node-content {
-        opacity: 0.9;
-      }
+  .vue-pan-zoom-scene {
+    > div {
+      transition: transform 0.2s ease-out;
     }
+  }
 
-    &.hover {
-      .border {
-        opacity: 0.9 !important;
-      }
-    }
+  .node-leave-active {
+    transition: opacity 0.2s ease-out;
+  }
 
-    &.active {
-      z-index: 2;
-      .border {
-        opacity: 1 !important;
-        transform: scale(1.03);
-      }
-    }
+  .node-enter {
+    opacity: 0 !important;
+  }
 
-    .node-content {
-      animation-name: scaleIn;
-      animation-duration: 0.3s;
-      animation-iteration-count: 1;
-      animation-fill-mode: both;
-      user-select: none;
-      transition: opacity 2s ease-out;
-
-      .border {
-        transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-      }
-    }
+  .node-leave-to {
+    opacity: 0 !important;
   }
 }
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
-}
-/*! purgecss end ignore */
 </style>

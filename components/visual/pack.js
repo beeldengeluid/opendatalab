@@ -3,11 +3,19 @@
 
 const scaleValue = (v) => Math.pow(Math.log(v), 2)
 
-export const createLayout = ({ nodes, width, height }) => {
+export const createLayout = ({ nodes, width, height, padding = 2 }) => {
   nodes.forEach((d) => {
     d.r = scaleValue(d.value)
   })
-  return rectPack(nodes, width, height)
+  const layout = rectPack(nodes, width, height)
+  const halfWidth = width / 2
+  const halfHeight = height / 2
+  layout.forEach((node) => {
+    node.x += halfWidth
+    node.y += halfHeight
+    node.r -= padding
+  })
+  return layout
 }
 
 function scoreRectangle(node, width, height) {

@@ -2,7 +2,10 @@
   <v-row class="relations">
     <v-col v-for="item of items" :key="item.path">
       <h3>
-        <v-icon dense>{{ relatedIcon }}</v-icon> {{ $t(item.title) }}
+        <v-icon dense color="blue-grey lighten-2" class="mr-2">{{
+          relatedIcon
+        }}</v-icon>
+        {{ $t(item.title) }}
       </h3>
       <ChipList
         :chips="item.chips"

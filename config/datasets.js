@@ -14,8 +14,12 @@ export const datasetStyle = {
 
 export const randomDatasetStyle = () => {
   const keys = Object.keys(colors)
+  // remove last
+  keys.pop()
+  const index = keys[Math.floor(Math.random() * keys.length)]
+
   return {
-    color: colors[keys[Math.floor(Math.random() * keys.length)]].darken3,
+    color: colors[index].darken3 || '#000000',
     image: 'placeholders/placeholder-dataset.jpg',
   }
 }

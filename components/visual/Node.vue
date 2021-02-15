@@ -1,0 +1,182 @@
+<template>
+  <div
+    :class="{ node: true, dim: dim, active: active }"
+    :style="{
+      transform: `translate(${node.x - node.r}px,${node.y - node.r}px)`,
+      width: node.r * 2 + 'px',
+      height: node.r * 2 + 'px',
+      fontSize: 3 + node.r / 7 + 'px',
+    }"
+    @click.stop="onClick"
+    @touchstart="onTouchStart"
+    @touchmove="onTouchMove"
+    @touchend="onTouchEnd"
+    @mouseenter.stop="onStartHover"
+    @mouseleave.stop="onStopHover"
+  >
+    <div class="inner">
+      <div class="border" :style="{ backgroundColor: node.color }"></div>
+
+      <div
+        class="content"
+        :style="{
+          backgroundImage: getImageOverlayCSS(
+            node.dataset.image
+              ? require(`~/assets/images/${node.dataset.image}?size=300`).src
+              : '',
+            node.color
+          ),
+        }"
+      >
+        <span>{{ node.dataset.name }}</span>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import { getImageOverlayCSS, getRGBAColor } from '../../util/color'
+
+export default {
+  name: 'Node',
+  props: {
+    node: {
+      type: Object,
+      required: true,
+      default: () => ({}),
+    },
+    dim: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+    active: {
+      type: Boolean,
+      required: false,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      touchStart: null,
+      touchActive: false,
+      touchClick: false,
+    }
+  },
+  methods: {
+    getImageOverlayCSS,
+    getRGBAColor,
+    onTouchStart(e) {
+      if (!this.touchActive && e.touches?.length === 1) {
+        this.touchStart = { x: e.touches[0].screenX, y: e.touches[0].screenY }
+        this.touchClick = true
+        this.touchActive = true
+      } else {
+        this.touchClick = false
+      }
+    },
+    onTouchMove(e) {
+      if (this.touchClick && e.touches?.length === 1) {
+        const diff = { x: e.touches[0].screenX, y: e.touches[0].screenY }
+        const dx = diff.x - this.touchStart.x
+        const dy = diff.y - this.touchStart.y
+
+        if (Math.sqrt(dx * dx + dy * dy) > 5) {
+          this.touchClick = false
+        }
+      }
+    },
+    onTouchEnd(e) {
+      if (this.touchActive && e.touches?.length === 0) {
+        this.touchActive = false
+        if (this.touchClick) {
+          this.$emit('click', this.node.id)
+        }
+      }
+      this.touchClick = false
+    },
+    onClick() {
+      console.log('click')
+      this.$emit('click', this.node.id)
+    },
+    onStartHover() {
+      this.$emit('hover', this.node.id)
+    },
+    onStopHover() {
+      this.$emit('hover', '')
+    },
+  },
+}
+</script>
+
+<style lang="scss">
+.node {
+  position: absolute;
+  border-radius: 100%;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  cursor: pointer;
+
+  &:hover {
+    .inner {
+      .border {
+        opacity: 0.6;
+      }
+    }
+  }
+
+  &.dim {
+    opacity: 0.8;
+  }
+
+  &.active {
+    opacity: 1 !important;
+    .inner {
+      .border {
+        opacity: 0.8;
+      }
+    }
+  }
+
+  .inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.2s ease-out;
+
+    .border {
+      transition: opacity 1s ease-out;
+      opacity: 0.5;
+      border-radius: 50%;
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .content {
+      position: absolute;
+      background-size: cover;
+      background-position: center center;
+      border-radius: 50%;
+      width: calc(100% - 12px);
+      height: calc(100% - 12px);
+      left: 6px;
+      top: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-transform: uppercase;
+      text-align: center;
+      user-select: none;
+      padding: 10px;
+      font-weight: bold;
+      text-shadow: 0.5px 0.5px 1px rgba(black, 0.3);
+      line-height: 1.2em;
+      color: white;
+    }
+  }
+}
+</style>

@@ -84,7 +84,7 @@ export default {
       animation-iteration-count: infinite;
       @for $i from 1 through 100 {
         &:nth-child(#{$i}) {
-          animation-delay: #{random(100) / 200}s;
+          animation-delay: #{random(100) / -200}s;
           animation-duration: #{0.1 + random(100) / 50}s;
           filter: brightness(#{0.5 + random(100) / 100})
             hue-rotate(#{random(160)}deg);

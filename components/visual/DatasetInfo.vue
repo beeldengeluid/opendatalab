@@ -3,7 +3,7 @@
     <v-img
       v-if="dataset.image"
       position="top center"
-      width="300px"
+      width="100%"
       max-width="100%"
       height="200px"
       :src="require(`~/assets/images/${dataset.image}?size=300`).src"

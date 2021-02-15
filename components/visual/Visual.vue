@@ -6,6 +6,8 @@
         :datasets="filteredDatasets"
         :width="width"
         :height="height"
+        :active-id="activeId"
+        :hover-id="hoverId"
         @active-dataset="setActive"
         @hover-dataset="setHover"
       />
@@ -15,6 +17,12 @@
     <transition name="slideInLeft">
       <div v-if="activeDataset" class="details">
         <DatasetInfo :dataset="activeDataset" />
+        <div
+          class="close-button d-flex justify-center align-center d-md-none"
+          @click.stop="hideDetails"
+        >
+          <v-icon dark> mdi-close </v-icon>
+        </div>
       </div>
     </transition>
 
@@ -135,6 +143,10 @@ export default {
       } else {
         this.tagsFilter = [...this.tagsFilter, tag]
       }
+
+      if (this.tagsFilter.length === this.tags.length) {
+        this.tagsFilter = []
+      }
     },
     setTag(tag) {
       if (this.tagsFilter.includes(tag)) {
@@ -145,11 +157,25 @@ export default {
     },
     setActive(id) {
       this.activeId = this.activeId === id ? '' : id
+      if (this.activeId) {
+        this.scrollToTop()
+      }
+    },
+    hideDetails() {
+      this.setActive('')
     },
     setHover(id) {
       if (this.hoverId !== id) {
         this.hoverId = id
       }
+    },
+    scrollToTop() {
+      process.client &&
+        window.scrollTo({
+          top: 0,
+          left: 0,
+          behavior: 'smooth',
+        })
     },
   },
 }
@@ -157,6 +183,7 @@ export default {
 
 <style lang="scss" scoped>
 $clDark: rgba(5, 37, 68, 1);
+
 .visual {
   position: relative;
   height: calc(100vh - 150px);
@@ -189,6 +216,18 @@ $clDark: rgba(5, 37, 68, 1);
   background-color: rgba($clDark, 0.8);
   color: white;
   overflow-y: auto;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
+  .close-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50px;
+    height: 50px;
+    background-color: rgba($clDark, 0.8);
+  }
 }
 
 .filter {
