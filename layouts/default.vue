@@ -19,17 +19,15 @@
               :style="{
                 textDecoration: 'none',
               }"
-              class="black--text d-flex"
+              class="black--text d-flex align-center"
             >
-              <LogoMark
-                :style="{ transform: 'scale(0.6)', marginLeft: '-6px' }"
-              />
+              <LogoMark :size="10" />
               <img
-                width="180"
-                height="44"
+                width="160"
+                height="39"
                 src="~assets/images/odl-text-logo.svg"
                 :alt="$t('site_name')"
-                class="ml-2"
+                class="ml-3"
               />
             </NuxtLink>
           </v-list-item-title>
@@ -41,6 +39,7 @@
 
       <v-divider></v-divider>
 
+      <!-- Menu -->
       <v-list v-model="activeMenu">
         <v-list-item
           v-for="item in menu"
@@ -56,6 +55,29 @@
           <v-list-item-content>
             <v-list-item-title class="text-uppercase">
               <h4>{{ $t(item.title) }}</h4>
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+      <v-divider></v-divider>
+
+      <!-- Locales -->
+      <v-list>
+        <v-list-item
+          v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
+          :key="locale.code"
+          :to="switchLocalePath(locale.code)"
+          nuxt
+          router
+          exact
+        >
+          <v-list-item-action>
+            <v-icon>mdi-earth</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title class="text-uppercase">
+              <h4>{{ locale.code }}</h4>
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
@@ -119,7 +141,7 @@
       </v-tabs>
 
       <!-- Language selector -->
-      <div class="language-selector">
+      <div class="language-selector d-none d-lg-block">
         <v-btn
           v-for="locale of $i18n.locales.filter((l) => l.code !== $i18n.locale)"
           :key="locale.code"

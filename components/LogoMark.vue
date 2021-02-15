@@ -1,5 +1,5 @@
 <template>
-  <div :style="container" class="logo-mark">
+  <div :style="container" class="logo-mark flex-shrink-0">
     <div
       v-for="(tile, index) of tiles"
       :key="index"
