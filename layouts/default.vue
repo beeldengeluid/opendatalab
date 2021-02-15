@@ -168,8 +168,59 @@
       :absolute="!fixed"
       class="blue-grey darken-4 white--text"
       app
-      :style="{ height: '400px' }"
+      :style="{ minHeight: '400px' }"
     >
+      <v-row>
+        <!-- Column left -->
+        <v-col>
+          <NuxtLink
+            :to="localePath('index')"
+            :style="{
+              textDecoration: 'none',
+              color: 'white',
+            }"
+            class="ml-3 d-flex"
+          >
+            <LogoMark />
+            <img
+              width="180"
+              height="44"
+              src="~assets/images/odl-text-logo.svg"
+              :alt="$t('site_name')"
+              class="ml-3"
+            />
+          </NuxtLink>
+        </v-col>
+
+        <!-- Column mid -->
+        <v-col> </v-col>
+
+        <!-- Column right -->
+        <v-col>
+          <!-- Footer menu -->
+          <v-list
+            v-model="activeMenu"
+            class="blue-grey darken-4"
+            color="primary"
+          >
+            <v-list-item
+              v-for="item in menu"
+              :key="item.to"
+              :to="localePath(item.to)"
+              nuxt
+              router
+              exact
+              dark
+            >
+              <v-list-item-content>
+                <v-list-item-title class="text-uppercase white--text">
+                  <h4>{{ $t(item.title) }}</h4>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-col>
+      </v-row>
     </v-footer>
   </v-app>
 </template>

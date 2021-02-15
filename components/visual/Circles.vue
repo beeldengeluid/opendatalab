@@ -79,6 +79,9 @@ export default {
       this.updateLayout()
     },
   },
+  mounted() {
+    this.updateLayout()
+  },
   methods: {
     updateLayout() {
       const { width, height } = this
@@ -109,9 +112,6 @@ export default {
     nodeHover(id) {
       this.$emit('hover-dataset', id)
     },
-  },
-  mounted() {
-    this.updateLayout()
   },
 }
 </script>
