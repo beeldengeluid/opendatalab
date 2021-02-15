@@ -25,7 +25,14 @@ export const enrichDatasets = (datasets) => {
   return datasets.map((dataset) => enrichDataset(dataset))
 }
 
-export const enrichProps = ['title', 'subtitle', 'slug', 'image', 'color']
+export const enrichProps = [
+  'title',
+  'subtitle',
+  'slug',
+  'image',
+  'color',
+  'tags',
+]
 
 export const stripEnrichments = (dataset) => filterObject(dataset, enrichProps)
 
