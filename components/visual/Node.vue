@@ -96,7 +96,6 @@ export default {
       this.touchClick = false
     },
     onClick() {
-      console.log('click')
       this.$emit('click', this.node.id)
     },
     onStartHover() {
