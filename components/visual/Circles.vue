@@ -69,8 +69,18 @@ export default {
       default: '',
     },
   },
-  computed: {
-    layout() {
+  data() {
+    return {
+      layout: [],
+    }
+  },
+  watch: {
+    datasets() {
+      this.updateLayout()
+    },
+  },
+  methods: {
+    updateLayout() {
       const { width, height } = this
 
       // prepare node data
@@ -91,16 +101,17 @@ export default {
         height,
       })
 
-      return layout
+      this.layout = layout
     },
-  },
-  methods: {
     nodeClick(id) {
       this.$emit('active-dataset', id)
     },
     nodeHover(id) {
       this.$emit('hover-dataset', id)
     },
+  },
+  mounted() {
+    this.updateLayout()
   },
 }
 </script>
