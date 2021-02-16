@@ -71,7 +71,7 @@ export const randomDataSet = ({ id, name, contentSize }) => {
         contentSize: contentSize || Math.round(Math.random() * 1200 + id * 133),
       },
     ],
-    tags: ['public_domain', 'linked data', 'api', 'oai-pmh'].filter(
+    tags: ['public domain', 'linked data', 'api', 'oai-pmh'].filter(
       () => Math.random() > 0.4
     ),
   }

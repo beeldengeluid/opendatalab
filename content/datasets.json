@@ -36,8 +36,7 @@
           "dateModified": "2021-01-19T08:52",
           "contentSize": 12345
         }
-      ],
-      "tags": ["oai-pmh", "public_domain"]
+      ]
     },
     {
       "@context": {
@@ -75,8 +74,7 @@
           "dateModified": "2021-01-19T08:52",
           "contentSize": 1234
         }
-      ],
-      "tags": ["oai-pmh", "cc by-sa 3.0"]
+      ]
     }
   ]
 }
