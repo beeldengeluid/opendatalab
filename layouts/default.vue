@@ -198,11 +198,7 @@
         <!-- Column right -->
         <v-col>
           <!-- Footer menu -->
-          <v-list
-            v-model="activeMenu"
-            class="blue-grey darken-4"
-            color="primary"
-          >
+          <v-list v-model="activeMenu" class="blue-grey darken-4" color="white">
             <v-list-item
               v-for="item in menu"
               :key="item.to"
