@@ -2,7 +2,7 @@
 tags:
   - public domain
   - api
-color: red.base
+color: green.base
 ---
 
 ## Loqui sine adulter augusta et deceat
