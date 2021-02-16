@@ -7203,10 +7203,10 @@ number-is-nan@^1.0.0:
   resolved "https://registry.yarnpkg.com/number-is-nan/-/number-is-nan-1.0.1.tgz#097b602b53422a522c1afb8790318336941a011d"
   integrity sha1-CXtgK1NCKlIsGvuHkDGDNpQaAR0=
 
-nuxt-i18n@^6.18.0:
-  version "6.18.0"
-  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.18.0.tgz#e15d2fece238d03445366208dec017c43b203ff5"
-  integrity sha512-38pkBKyXC0UbI7KeBqD5XnKABtBXai1KzhQ/TL0fnlFgrLfrVpDnnnAEyAtfWpGyYOoVBqPB1yNnmqmhA5eitg==
+nuxt-i18n@^6.20.1:
+  version "6.20.1"
+  resolved "https://registry.yarnpkg.com/nuxt-i18n/-/nuxt-i18n-6.20.1.tgz#a4247315d835e0d24cca162a5794fdc779d1a7d6"
+  integrity sha512-ZI0WsuxroqULJ0BcbR+PXY7nZJ/vUcaUeCz9AxDjoHNzWAJQdlgsdhmdD1V+u5GtDSMqUkDp3gI+dLQ2n7eOjg==
   dependencies:
     "@babel/parser" "^7.5.5"
     "@babel/traverse" "^7.5.5"
