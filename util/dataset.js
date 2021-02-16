@@ -1,9 +1,9 @@
 import slugify from 'slugify'
-import { datasetStyle, randomDatasetStyle } from '../config/datasets'
+import colors from 'vuetify/es5/util/colors'
 import { filterObject } from './objects'
 
 export const enrichDataset = (dataset) => {
-  // fields
+  // Props
   dataset.title = dataset.name
   dataset.subtitle = dataset.description
   dataset.slug = slugify(dataset.identifier.replace(/[.:/]/g, ' '), {
@@ -11,12 +11,8 @@ export const enrichDataset = (dataset) => {
     strict: true,
   })
 
-  // styling
-  if (dataset.identifier in datasetStyle) {
-    Object.assign(dataset, datasetStyle[dataset.identifier])
-  } else {
-    Object.assign(dataset, randomDatasetStyle())
-  }
+  // Random styling by default
+  Object.assign(dataset, randomDatasetStyle())
 
   return dataset
 }
@@ -79,4 +75,28 @@ export const randomDataSet = ({ id, name, contentSize }) => {
       () => Math.random() > 0.4
     ),
   }
+}
+
+export const randomDatasetStyle = () => {
+  const keys = Object.keys(colors)
+  // remove last (shades, different format)
+  keys.pop()
+  const index = keys[Math.floor(Math.random() * keys.length)]
+
+  return {
+    color: colors[index].darken3 || '#000000',
+    image: 'placeholders/placeholder-dataset.jpg',
+  }
+}
+
+export const parseColor = (color) => {
+  if (!color) {
+    return '#000000'
+  }
+  if (color.startsWith('#') || color.startsWith('rgb')) {
+    return color
+  }
+  return (
+    color.split('.').reduce((current, prop) => current[prop], colors) || color
+  )
 }

@@ -28,7 +28,7 @@
           ),
         }"
       >
-        <span>{{ node.dataset.name }}</span>
+        <span>{{ node.dataset.title }}</span>
       </div>
     </div>
   </div>

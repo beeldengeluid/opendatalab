@@ -1,8 +1,9 @@
 ---
+color: green.base
+image: datasets/openbeelden_natuurbeelden.jpg
 tags:
   - public domain
   - api
-color: green.base
 ---
 
 ## Loqui sine adulter augusta et deceat

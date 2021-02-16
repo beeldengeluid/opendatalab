@@ -91,7 +91,7 @@ import Visual from '../components/visual/Visual'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
 import { classColors } from '../config/theme'
-import { enrichDatasets, randomDataSet } from '~/util/dataset'
+import { enrichDatasets, randomDataSet, parseColor } from '~/util/dataset'
 
 export default {
   components: {
@@ -131,7 +131,31 @@ export default {
       ...data.datasets,
       ...Array.from(Array(25)).map((_, index) => randomDataSet({ id: index })),
     ]
+
+    // enrich datasets with helper properties
     const datasets = enrichDatasets(data.datasets)
+
+    // extend datasets with frontmatter
+    for (let i = 0, len = data.datasets.length; i < len; i++) {
+      const dataset = data.datasets[i]
+
+      // Custom markdown content for dataset
+      const mdPath = await getLocalePath({
+        $content,
+        app,
+        path: 'datasets/' + dataset.slug,
+      })
+      const page = await $content(mdPath)
+        .fetch()
+        .catch((e) => {
+          // ignore error of missing page
+        })
+
+      if (page) {
+        // assign page props to dataset, parse color vars (e.g. red.base)
+        Object.assign(dataset, page, { color: parseColor(page.color) })
+      }
+    }
 
     return {
       page,

@@ -48,7 +48,7 @@ import ArticleHeader from '../../components/ArticleHeader'
 import { getLocalePath } from '../../util/contentFallback'
 import icons from '../../config/icons'
 import { classColors } from '../../config/theme'
-import { enrichDatasets } from '~/util/dataset'
+import { enrichDatasets, parseColor } from '~/util/dataset'
 
 export default {
   components: {
@@ -117,6 +117,11 @@ export default {
       .catch((e) => {
         // ignore error of missing page
       })
+
+    if (page) {
+      // assign page props to dataset, parse color vars (e.g. red.base)
+      Object.assign(dataset, page, { color: parseColor(page.color) })
+    }
 
     return {
       dataset,

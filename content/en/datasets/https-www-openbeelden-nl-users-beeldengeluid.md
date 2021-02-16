@@ -1,8 +1,10 @@
 ---
+# title: Override dataset title
+color: red.base
+image: datasets/openbeelden_beeldengeluid.jpg
 tags:
   - public domain
   - api
-color: red.base
 ---
 
 ## Loqui sine adulter augusta et deceat
