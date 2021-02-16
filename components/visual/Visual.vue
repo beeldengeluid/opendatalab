@@ -15,8 +15,55 @@
 
     <!-- Intro/details -->
     <transition name="slideInLeft">
+      <!-- Dataset info -->
       <div v-if="activeDataset" class="details">
         <DatasetInfo :dataset="activeDataset" />
+        <div
+          class="close-button d-flex justify-center align-center d-md-none"
+          @click.stop="hideDetails"
+        >
+          <v-icon dark> mdi-close </v-icon>
+        </div>
+      </div>
+
+      <!-- Intro -->
+      <div v-else class="details d-none d-md-block">
+        <div class="intro mt-2">
+          <h2 class="my-3">Welcome to the playground!</h2>
+          <p>
+            The Open Data Lab offers you information, example projects and the
+            latest articles about the open datasets of Sound and Vision.
+          </p>
+          <!-- Stats -->
+          <div
+            :style="{ fontSize: '0.8em' }"
+            class="text-uppercase grey--text lighten-4 title-font pb-4"
+          >
+            <div
+              v-for="(stat, index) of stats"
+              :key="index"
+              :style="{
+                lineHeight: '2.4em',
+                overflow: 'hidden',
+                whiteSpace: 'nowrap',
+                textOverflow: 'ellipsis',
+              }"
+            >
+              <v-icon
+                size="17"
+                color="grey lighten-4"
+                class="pb-0 mr-2"
+                v-text="stat.icon"
+              >
+              </v-icon>
+              <strong> {{ stat.text }} </strong>
+            </div>
+          </div>
+
+          <v-btn :to="localePath('datasets')" nuxt color="primary">
+            All datasets
+          </v-btn>
+        </div>
         <div
           class="close-button d-flex justify-center align-center d-md-none"
           @click.stop="hideDetails"
@@ -106,6 +153,18 @@ export default {
           return tags
         }, {})
       ),
+      stats: [
+        { icon: 'mdi-database', text: '25 datasets' },
+        {
+          icon: 'mdi-file-document-multiple',
+          text: '999999 records',
+        },
+        {
+          icon: 'mdi-calendar-range',
+          // TODO: replace with real data
+          text: '1899 - 2020',
+        },
+      ],
     }
   },
   watch: {
