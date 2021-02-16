@@ -29,11 +29,12 @@
       <!-- Intro -->
       <div v-else class="details d-none d-md-block">
         <div class="intro mt-2">
-          <h2 class="my-3">Welcome to the playground!</h2>
+          <!-- Intro text -->
+          <h2 class="my-3">{{ $t('intro_title') }}</h2>
           <p>
-            The Open Data Lab offers you information, example projects and the
-            latest articles about the open datasets of Sound and Vision.
+            {{ $t('intro_text') }}
           </p>
+
           <!-- Stats -->
           <div
             :style="{ fontSize: '0.8em' }"
@@ -60,8 +61,9 @@
             </div>
           </div>
 
+          <!-- Button -->
           <v-btn :to="localePath('datasets')" nuxt color="primary">
-            All datasets
+            {{ $t('all_datasets') }}
           </v-btn>
         </div>
         <div
