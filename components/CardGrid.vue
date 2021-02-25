@@ -4,7 +4,7 @@
       v-for="card in cards"
       :key="card.slug"
       :cols="card.flex"
-      class="mt-2 flex-grow-0"
+      class="mt-2 flex-md-grow-0"
     >
       <Card :card="card" :path="path" :data-class="dataClass" />
     </v-col>

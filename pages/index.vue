@@ -2,22 +2,9 @@
   <v-row>
     <v-col>
       <!-- Datasets / Visualization -->
-      <v-row class="justify-center light-background my-3 pb-3">
-        <v-col class="limit-width px-3 py-4 mb-2">
-          <Heading
-            :title="$t('datasets')"
-            :description="$t('datasets_description')"
-            data-class="dataset"
-            :action-path="'datasets'"
-            :action-title="$t('all_datasets')"
-          />
-
-          <CardGrid
-            :cards="datasets"
-            path="dataset-slug"
-            data-class="dataset"
-            row-class="justify-center justify-md-start px-5"
-          />
+      <v-row class="justify-center white">
+        <v-col class="pa-0">
+          <Visual :datasets="datasets" />
         </v-col>
       </v-row>
 
@@ -100,15 +87,17 @@
 <script>
 import CardGrid from '../components/CardGrid'
 import Heading from '../components/Heading'
+import Visual from '../components/visual/Visual'
 import { getLocalePath } from '../util/contentFallback'
 import icons from '../config/icons'
 import { classColors } from '../config/theme'
-import { enrichDatasets } from '~/util/dataset'
+import { enrichDatasets, randomDataSet, parseColor } from '~/util/dataset'
 
 export default {
   components: {
     CardGrid,
     Heading,
+    Visual,
   },
   async asyncData({ $content, app }) {
     const homePath = await getLocalePath({ $content, app, path: 'home' })
@@ -136,8 +125,37 @@ export default {
       .limit(4)
       .fetch()
 
+    // datasets
     const data = await $content('datasets').fetch()
+    data.datasets = [
+      ...data.datasets,
+      ...Array.from(Array(25)).map((_, index) => randomDataSet({ id: index })),
+    ]
+
+    // enrich datasets with helper properties
     const datasets = enrichDatasets(data.datasets)
+
+    // extend datasets with frontmatter
+    for (let i = 0, len = data.datasets.length; i < len; i++) {
+      const dataset = data.datasets[i]
+
+      // Custom markdown content for dataset
+      const mdPath = await getLocalePath({
+        $content,
+        app,
+        path: 'datasets/' + dataset.slug,
+      })
+      const page = await $content(mdPath)
+        .fetch()
+        .catch((e) => {
+          // ignore error of missing page
+        })
+
+      if (page) {
+        // assign page props to dataset, parse color vars (e.g. red.base)
+        Object.assign(dataset, page, { color: parseColor(page.color) })
+      }
+    }
 
     return {
       page,

@@ -20,5 +20,8 @@
   "last_update": "Last update",
   "read_more": "Read more",
   "metadata": "Metadata",
-  "download_metadata": "JSON-LD"
+  "download_metadata": "JSON-LD",
+  "explore_dataset": "Explore dataset",
+  "intro_title": "Welcome to the playground!",
+  "intro_text": "The Open Data Lab offers you information, example projects and the latest articles about the open datasets of Sound and Vision."
 }

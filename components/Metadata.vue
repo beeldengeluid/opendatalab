@@ -33,6 +33,7 @@ export default {
 <style lang="scss">
 .metadata-table-wrapper {
   font-size: 0.9em;
+  overflow-x: auto;
   table {
     border-collapse: collapse;
     margin-top: 0;
