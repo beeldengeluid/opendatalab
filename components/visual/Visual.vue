@@ -14,58 +14,62 @@
     </div>
 
     <!-- Intro/details -->
-    <transition name="detailsIntro">
+    <transition name="detailsIntro" mode="out-in">
       <!-- Dataset info -->
-      <div v-if="activeDataset" :key="activeDataset" class="details">
-        <DatasetInfo :dataset="activeDataset" />
-        <div
-          class="close-button d-flex justify-center align-center d-md-none"
-          @click.stop="hideDetails"
-        >
-          <v-icon dark> mdi-close </v-icon>
-        </div>
-      </div>
-
-      <!-- Intro -->
-      <div v-else class="details d-none d-md-block">
-        <div class="intro mt-2">
-          <!-- Intro text -->
-          <h2 class="my-3">{{ $t('intro_title') }}</h2>
-          <p>
-            {{ $t('intro_text') }}
-          </p>
-
-          <!-- Stats -->
+      <div :class="{ details: true, 'd-none d-md-block': !activeDataset }">
+        <transition name="detailsContent" mode="out-in">
           <div
-            :style="{ fontSize: '0.8em' }"
-            class="text-uppercase grey--text lighten-4 title-font pb-4"
+            v-if="activeDataset"
+            :key="activeDataset.slug"
+            style="{position:'absolute','left': 0,top:0}"
           >
-            <div
-              v-for="(stat, index) of stats"
-              :key="index"
-              :style="{
-                lineHeight: '2.4em',
-                overflow: 'hidden',
-                whiteSpace: 'nowrap',
-                textOverflow: 'ellipsis',
-              }"
-            >
-              <v-icon
-                size="17"
-                color="grey lighten-4"
-                class="pb-0 mr-2"
-                v-text="stat.icon"
-              >
-              </v-icon>
-              <strong> {{ stat.text }} </strong>
-            </div>
+            <DatasetInfo :dataset="activeDataset" />
           </div>
 
-          <!-- Button -->
-          <v-btn :to="localePath('datasets')" nuxt color="primary">
-            {{ $t('all_datasets') }}
-          </v-btn>
-        </div>
+          <!-- Intro -->
+          <div v-else :key="'intro'" class="d-none d-md-block">
+            <div class="intro mt-2">
+              <!-- Intro text -->
+              <h2 class="my-3">{{ $t('intro_title') }}</h2>
+              <p>
+                {{ $t('intro_text') }}
+              </p>
+
+              <!-- Stats -->
+              <div
+                :style="{ fontSize: '0.8em' }"
+                class="text-uppercase grey--text lighten-4 title-font pb-4"
+              >
+                <div
+                  v-for="(stat, index) of stats"
+                  :key="index"
+                  :style="{
+                    lineHeight: '2.4em',
+                    overflow: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                  }"
+                >
+                  <v-icon
+                    size="17"
+                    color="grey lighten-4"
+                    class="pb-0 mr-2"
+                    v-text="stat.icon"
+                  >
+                  </v-icon>
+                  <strong> {{ stat.text }} </strong>
+                </div>
+              </div>
+
+              <!-- Button -->
+              <v-btn :to="localePath('datasets')" nuxt color="primary">
+                {{ $t('all_datasets') }}
+              </v-btn>
+            </div>
+          </div>
+        </transition>
+
+        <!-- Mobile close button -->
         <div
           class="close-button d-flex justify-center align-center d-md-none"
           @click.stop="hideDetails"
@@ -300,10 +304,20 @@ $clDark: rgba(5, 37, 68, 1);
 
 .detailsIntro-enter-active,
 .detailsIntro-leave-active {
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition: opacity 0.1s ease-out, transform 0.1s ease-out;
 }
 .detailsIntro-enter,
 .detailsIntro-leave-to {
+  opacity: 0;
+}
+
+.detailsContent-enter-active,
+.detailsContent-leave-active {
+  transform: translateX(0);
+  transition: opacity 0.1s ease-out;
+}
+.detailsContent-enter,
+.detailsContent-leave-to {
   opacity: 0;
 }
 
