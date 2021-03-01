@@ -1,5 +1,10 @@
 <template>
-  <div :style="container" class="logo-mark flex-shrink-0">
+  <div
+    :style="container"
+    class="logo-mark flex-shrink-0"
+    @mouseenter="onMouseEnter"
+    @mouseleave="onMouseLeave"
+  >
     <div
       v-for="(tile, index) of tiles"
       :key="index"
@@ -10,6 +15,8 @@
 </template>
 
 <script>
+import { getRandomColor } from '~/util/color'
+
 export default {
   props: {
     size: {
@@ -58,6 +65,18 @@ export default {
         top: Math.floor(index / 3) * (this.size + 1) + 'px',
       }
     },
+    onMouseEnter() {
+      this.tiles = this.tiles.map((tile) => ({
+        ...tile,
+        backgroundColor: getRandomColor(),
+      }))
+    },
+    onMouseLeave() {
+      this.tiles = this.tiles.map((tile) => ({
+        ...tile,
+        backgroundColor: this.color,
+      }))
+    },
   },
 }
 </script>
@@ -74,7 +93,7 @@ export default {
 
   .tile {
     position: absolute;
-    transition: opacity 1.3s ease-out;
+    transition: opacity 1.3s ease-out, background-color 0.6s ease-out;
   }
 
   &:hover {
@@ -82,12 +101,10 @@ export default {
     .tile {
       animation-name: blink;
       animation-iteration-count: infinite;
-      @for $i from 1 through 100 {
+      @for $i from 1 through 9 {
         &:nth-child(#{$i}) {
           animation-delay: #{random(100) / -200}s;
           animation-duration: #{0.1 + random(100) / 50}s;
-          filter: brightness(#{0.5 + random(100) / 100})
-            hue-rotate(#{random(160)}deg);
         }
       }
     }
