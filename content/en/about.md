@@ -1,6 +1,10 @@
 ---
-title: About
+title: About the Lab
 ---
+
+This is how I would describe the lab: **Awesome**
+
+This is how we previously did it:
 
 Lorem markdownum perdidit ad loco occallescere dextrum more est, pabula
 tantique. Minantia tigres corpora [parvos](http://ad.io/cancer) destinat
