@@ -3,7 +3,7 @@
 
 const scaleValue = (v) => Math.pow(Math.log(v), 2)
 
-export const createLayout = ({ nodes, width, height, padding = 2 }) => {
+export const createLayout = ({ nodes, width, height, padding = 1 }) => {
   nodes.forEach((d) => {
     d.r = scaleValue(d.value)
   })

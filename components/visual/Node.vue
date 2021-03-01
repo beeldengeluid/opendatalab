@@ -112,19 +112,25 @@ export default {
 .node {
   position: absolute;
   border-radius: 100%;
-  transition: opacity 0.3s ease-out, transform 0.3s ease-out;
+  transition: opacity 0.3s ease-out, transform 0.3s ease-out,
+    filter 0.3s ease-out;
   cursor: pointer;
+  // render on gpu, prevent glitches
+  filter: brightness(1.01);
+  transform: translateZ(1px);
 
   &:hover {
     .inner {
+      filter: brightness(1.05);
       .border {
+        transform: scale(1.05);
         opacity: 0.6;
       }
     }
   }
 
   &.dim {
-    opacity: 0.8;
+    filter: brightness(0.9);
   }
 
   &.active {
@@ -142,10 +148,11 @@ export default {
     top: 0;
     width: 100%;
     height: 100%;
-    transition: transform 0.2s ease-out;
+    transition: transform 1.4s ease-out;
+    transform: translateZ(1px);
 
     .border {
-      transition: opacity 1s ease-out;
+      transition: opacity 1s ease-out, transform 1.4s ease-out;
       opacity: 0.5;
       border-radius: 50%;
       width: 100%;
