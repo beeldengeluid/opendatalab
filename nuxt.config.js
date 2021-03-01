@@ -134,4 +134,7 @@ export default {
   build: {
     extractCSS: process.env.NODE_ENV === 'production',
   },
+
+  // Watch asset files (prevent manual reload when adding new assets)
+  watch: ['~/assets/images/*.*'],
 }
