@@ -155,15 +155,16 @@ export default {
       top: 0;
     }
 
+    $borderSize: 8px;
     .content {
       position: absolute;
       background-size: cover;
       background-position: center center;
       border-radius: 50%;
-      width: calc(100% - 12px);
-      height: calc(100% - 12px);
-      left: 6px;
-      top: 6px;
+      width: calc(100% - #{$borderSize});
+      height: calc(100% - #{$borderSize});
+      left: $borderSize/2;
+      top: $borderSize/2;
       display: flex;
       align-items: center;
       justify-content: center;
