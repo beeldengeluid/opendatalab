@@ -14,9 +14,9 @@
     </div>
 
     <!-- Intro/details -->
-    <transition name="slideInLeft">
+    <transition name="detailsIntro">
       <!-- Dataset info -->
-      <div v-if="activeDataset" class="details">
+      <div v-if="activeDataset" class="details" :key="activeDataset">
         <DatasetInfo :dataset="activeDataset" />
         <div
           class="close-button d-flex justify-center align-center d-md-none"
@@ -298,15 +298,13 @@ $clDark: rgba(5, 37, 68, 1);
   max-width: 200px;
 }
 
-.slideInLeft-enter-active,
-.slideInLeft-leave-active {
+.detailsIntro-enter-active,
+.detailsIntro-leave-active {
   transition: opacity 0.3s ease-out, transform 0.3s ease-out;
-  transform: translateX(0);
 }
-.slideInLeft-enter,
-.slideInLeft-leave-to {
+.detailsIntro-enter,
+.detailsIntro-leave-to {
   opacity: 0;
-  transform: translateX(-300px);
 }
 
 .slideInRight-enter-active,
