@@ -1,6 +1,6 @@
 import slugify from 'slugify'
-import colors from 'vuetify/es5/util/colors'
 import { filterObject } from './objects'
+import { getRandomColor } from './color'
 
 export const enrichDataset = (dataset) => {
   // Props
@@ -78,25 +78,8 @@ export const randomDataSet = ({ id, name, contentSize }) => {
 }
 
 export const randomDatasetStyle = () => {
-  const keys = Object.keys(colors)
-  // remove last (shades, different format)
-  keys.pop()
-  const index = keys[Math.floor(Math.random() * keys.length)]
-
   return {
-    color: colors[index].darken3 || '#000000',
+    color: getRandomColor(),
     image: 'placeholders/placeholder-dataset.jpg',
   }
-}
-
-export const parseColor = (color) => {
-  if (!color) {
-    return '#000000'
-  }
-  if (color.startsWith('#') || color.startsWith('rgb')) {
-    return color
-  }
-  return (
-    color.split('.').reduce((current, prop) => current[prop], colors) || color
-  )
 }

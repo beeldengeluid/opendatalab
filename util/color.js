@@ -1,3 +1,5 @@
+import colors from 'vuetify/es5/util/colors'
+
 export const hexToRGB = (hex) => {
   const bigint = parseInt(hex.startsWith('#') ? hex.slice(1) : hex, 16)
   return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255]
@@ -25,3 +27,24 @@ export const getOverlayGradientCSS = (hex, opacity = 0.85) =>
   ' 100%, ' +
   getRGBAColor(hex, opacity) +
   ' 100%)'
+
+export const getRandomColor = () => {
+  const keys = Object.keys(colors)
+  // remove last (shades, different format)
+  keys.pop()
+  const index = keys[Math.floor(Math.random() * keys.length)]
+
+  return colors[index].darken3 || '#000000'
+}
+
+export const parseColor = (color) => {
+  if (!color) {
+    return '#000000'
+  }
+  if (color.startsWith('#') || color.startsWith('rgb')) {
+    return color
+  }
+  return (
+    color.split('.').reduce((current, prop) => current[prop], colors) || color
+  )
+}
