@@ -1,5 +1,5 @@
 ---
-title: About
+title: About the Lab!
 ---
 
 Lorem markdownum perdidit ad loco occallescere dextrum more est, pabula
