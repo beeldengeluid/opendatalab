@@ -18,11 +18,7 @@
       <!-- Dataset info -->
       <div :class="{ details: true, 'd-none d-md-block': !activeDataset }">
         <transition name="detailsContent" mode="out-in">
-          <div
-            v-if="activeDataset"
-            :key="activeDataset.slug"
-            style="{position:'absolute','left': 0,top:0}"
-          >
+          <div v-if="activeDataset" :key="activeDataset.slug">
             <DatasetInfo :dataset="activeDataset" />
           </div>
 
