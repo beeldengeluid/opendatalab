@@ -21,3 +21,5 @@ Markdown:
 - is used across many textual interfaces, from Slack messages to Readme files on Github
 
 [Aaron Swartz](https://en.wikipedia.org/wiki/Aaron_Swartz) and [John Gruber](https://daringfireball.net/) created the Markdown language in 2004.
+
+nog een paragraaf toevoegen :)
