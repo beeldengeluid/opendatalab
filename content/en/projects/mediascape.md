@@ -1,16 +1,23 @@
 ---
-title: 'Mediascape'
-subtitle: 'In quis, saepe revulsum. Cava novo conlapsus quaque primoque, in cupiens, nam.'
+title: Mediascape
+subtitle: Finding happiness in audiovisual archives without searching for it
 image: placeholders/placeholder-dataset.jpg
 tags:
 datasets:
   - https://www.openbeelden.nl/users/beeldengeluid
 ---
 
-## Loqui sine adulter augusta et deceat
+# Hi! I’m a heading 1
 
-Lorem markdownum perdidit ad loco occallescere dextrum more est, pabula
-tantique. Minantia tigres corpora [parvos](http://ad.io/cancer) destinat
-venabula simulavit poples ego ardentis Opheltes violentior huius natum; utque
-ipse modo lumina. Iugulare _demens simul_ se neque unde per erroresque repellit
-quamvis. Oneri [et tristis](http://pennae-temesaea.com/).
+## and I'm a heading 2!
+
+This is a paragraph. It consists of multiple sentences. 
+
+Look at that spacing!
+
+Markdown:
+- is readable and writable to humans and machines
+- serves as input to Static Site Generators, and is compatible with many Content Management Systems
+- is used across many textual interfaces, from Slack messages to Readme files on Github
+
+[Aaron Swartz](https://en.wikipedia.org/wiki/Aaron_Swartz) and [John Gruber](https://daringfireball.net/) created the Markdown language in 2004.
