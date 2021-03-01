@@ -16,7 +16,7 @@
     <!-- Intro/details -->
     <transition name="detailsIntro">
       <!-- Dataset info -->
-      <div v-if="activeDataset" class="details" :key="activeDataset">
+      <div v-if="activeDataset" :key="activeDataset" class="details">
         <DatasetInfo :dataset="activeDataset" />
         <div
           class="close-button d-flex justify-center align-center d-md-none"
