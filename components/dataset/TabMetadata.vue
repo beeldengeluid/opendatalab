@@ -22,7 +22,7 @@
 import icons from '../../config/icons'
 import Metadata from '../Metadata'
 import { stripEnrichments, enrichProps } from '../../util/dataset'
-import { filterObject } from '../../util/objects'
+import { stripObject } from '../../util/objects'
 import { download } from '../../util/download'
 
 // Properties added by markdown loader
@@ -48,7 +48,7 @@ export default {
   data() {
     return {
       icons,
-      filteredDataset: filterObject(this.dataset, [
+      filteredDataset: stripObject(this.dataset, [
         ...enrichProps,
         ...markdownProps,
         '@context',

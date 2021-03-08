@@ -1,5 +1,5 @@
 import slugify from 'slugify'
-import { filterObject } from './objects'
+import { stripObject } from './objects'
 import { getRandomColor } from './color'
 
 export const enrichDataset = (dataset) => {
@@ -30,7 +30,7 @@ export const enrichProps = [
   'tags',
 ]
 
-export const stripEnrichments = (dataset) => filterObject(dataset, enrichProps)
+export const stripEnrichments = (dataset) => stripObject(dataset, enrichProps)
 
 export const randomDataSet = ({ id, name, contentSize }) => {
   return {
