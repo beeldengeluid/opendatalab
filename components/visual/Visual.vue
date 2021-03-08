@@ -187,6 +187,7 @@ export default {
   },
   watch: {
     tagsFilter() {
+      // Filtered datasets
       this.filteredDatasets =
         this.tagsFilter.length === 0
           ? this.datasets
@@ -195,6 +196,11 @@ export default {
                 dataset.tags &&
                 this.tagsFilter.some((tag) => dataset.tags.includes(tag))
             )
+      // Active dataset from filtered datasets
+      if (!this.filteredDatasets.includes(this.activeDataset)) {
+        this.activeDataset = null
+        this.activeId = ''
+      }
     },
     activeId() {
       this.activeDataset = this.datasets.find(
