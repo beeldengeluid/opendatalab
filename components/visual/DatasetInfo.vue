@@ -93,9 +93,11 @@ export default {
         {
           icon: 'mdi-file-document-multiple',
           text:
-            (this.dataset.distribution?.length
-              ? this.dataset.distribution[0].contentSize
-              : '-') +
+            new Intl.NumberFormat().format(
+              this.dataset.distribution?.length
+                ? this.dataset.distribution[0].contentSize
+                : '-'
+            ) +
             ' ' +
             this.$t('records'),
         },

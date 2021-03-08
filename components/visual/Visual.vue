@@ -155,19 +155,35 @@ export default {
           return tags
         }, {})
       ),
-      stats: [
-        { icon: 'mdi-database', text: '25 datasets' },
+    }
+  },
+  computed: {
+    stats() {
+      return [
+        {
+          icon: 'mdi-database',
+          text: this.filteredDatasets.length + ' datasets',
+        },
         {
           icon: 'mdi-file-document-multiple',
-          text: '999999 records',
+          text:
+            new Intl.NumberFormat().format(
+              this.filteredDatasets.reduce(
+                (sum, dataset) =>
+                  dataset.distribution?.length
+                    ? sum + dataset.distribution[0].contentSize
+                    : sum,
+                0
+              )
+            ) + ' records',
         },
         {
           icon: 'mdi-calendar-range',
           // TODO: replace with real data
           text: '1899 - 2020',
         },
-      ],
-    }
+      ]
+    },
   },
   watch: {
     tagsFilter() {
