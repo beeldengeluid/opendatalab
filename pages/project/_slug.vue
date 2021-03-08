@@ -3,8 +3,8 @@
 </template>
 
 <script>
-import ArticlePage from '../../components/ArticlePage'
-import { createArticleSlugPage } from '../../util/articleSlugPage'
+import ArticlePage from '~/components/ArticlePage'
+import { createArticleSlugPage } from '~/util/articleSlugPage'
 
 export default createArticleSlugPage({
   source: 'projects',

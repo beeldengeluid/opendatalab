@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import icons from '../config/icons'
-import { classColorIndex } from '../config/theme'
+import icons from '~/config/icons'
+import { classColorIndex } from '~/config/theme'
 import ChipList from './ChipList'
 
 export default {

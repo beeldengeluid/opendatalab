@@ -118,7 +118,7 @@ export default {
 
 <style lang="scss">
 /*! purgecss start ignore */
-@import '../../assets/scss/vuetify/customizations';
+@import '~/assets/scss/vuetify/customizations';
 
 .circles {
   font-family: $heading-font-family;

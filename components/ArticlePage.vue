@@ -43,8 +43,8 @@
 </template>
 
 <script>
-import { formatDate } from '../util/date'
-import { classColorIndex } from '../config/theme'
+import { formatDate } from '~/util/date'
+import { classColorIndex } from '~/config/theme'
 import Relations from './Relations'
 import PrevNext from './PrevNext'
 import ArticleHeader from './ArticleHeader'

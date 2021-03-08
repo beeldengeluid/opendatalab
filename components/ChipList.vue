@@ -32,8 +32,8 @@
 </template>
 
 <script>
-import theme from '../config/theme'
-import { getImageOverlayCSS } from '../util/color'
+import theme from '~/config/theme'
+import { getImageOverlayCSS } from '~/util/color'
 
 export default {
   props: {

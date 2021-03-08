@@ -43,7 +43,7 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
-import { isObjectLink } from '../util/objectLink'
+import { isObjectLink } from '~/util/objectLink'
 import DataTable from './DataTable'
 import LinkText from './LinkText'
 import ObjectLink from './ObjectLink'

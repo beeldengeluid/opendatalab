@@ -35,9 +35,9 @@
   </v-tab-item>
 </template>
 <script>
-import icons from '../../config/icons'
-import { classColors } from '../../config/theme'
 import Relations from '../Relations'
+import icons from '~/config/icons'
+import { classColors } from '~/config/theme'
 
 export default {
   components: { Relations },

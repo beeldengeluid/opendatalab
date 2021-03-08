@@ -61,10 +61,10 @@
 </template>
 
 <script>
-import { formatDate } from '../util/date'
-import { getRGBAColor } from '../util/color'
-import icons from '../config/icons'
-import { classColors, classColorIndex } from '../config/theme'
+import { formatDate } from '~/util/date'
+import { getRGBAColor } from '~/util/color'
+import icons from '~/config/icons'
+import { classColors, classColorIndex } from '~/config/theme'
 
 export default {
   props: {

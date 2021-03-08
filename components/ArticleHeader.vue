@@ -50,8 +50,8 @@
 </template>
 
 <script>
-import { classColorIndex, classColors } from '../config/theme'
-import { getDarkenedImageOverlayCSS } from '../util/color'
+import { classColorIndex, classColors } from '~/config/theme'
+import { getDarkenedImageOverlayCSS } from '~/util/color'
 
 export default {
   props: {

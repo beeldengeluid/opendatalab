@@ -222,8 +222,8 @@
 </template>
 
 <script>
-import menu from '../config/menu'
-import LogoMark from '../components/LogoMark'
+import menu from '~/config/menu'
+import LogoMark from '~/components/LogoMark'
 
 export default {
   components: { LogoMark },

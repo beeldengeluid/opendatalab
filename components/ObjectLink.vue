@@ -6,8 +6,8 @@
 </template>
 
 <script>
-import { isObjectLink } from '../util/objectLink'
-import icons from '../config/icons'
+import { isObjectLink } from '~/util/objectLink'
+import icons from '~/config/icons'
 
 export default {
   props: {

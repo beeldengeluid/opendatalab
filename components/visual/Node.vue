@@ -35,7 +35,7 @@
 </template>
 
 <script>
-import { getImageOverlayCSS, getRGBAColor } from '../../util/color'
+import { getImageOverlayCSS, getRGBAColor } from '~/util/color'
 
 export default {
   name: 'Node',

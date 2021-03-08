@@ -13,7 +13,7 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
-import { isUrl } from '../util/url'
+import { isUrl } from '~/util/url'
 
 export default {
   components: { Fragment },

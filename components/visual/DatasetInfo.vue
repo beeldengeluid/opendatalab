@@ -68,8 +68,8 @@
 </template>
 
 <script>
-import { getRGBAColor } from '../../util/color'
-import { classColors } from '../../config/theme'
+import { getRGBAColor } from '~/util/color'
+import { classColors } from '~/config/theme'
 
 export default {
   props: {

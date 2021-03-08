@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import { getLocalePath } from '../util/contentFallback'
-import icons from '../config/icons'
-import HeaderPage from '../components/HeaderPage'
-import Heading from '../components/Heading'
+import { getLocalePath } from '~/util/contentFallback'
+import icons from '~/config/icons'
+import HeaderPage from '~/components/HeaderPage'
+import Heading from '~/components/Heading'
 
 export default {
   components: { HeaderPage, Heading },

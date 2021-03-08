@@ -85,12 +85,12 @@
 </template>
 
 <script>
-import CardGrid from '../components/CardGrid'
-import Heading from '../components/Heading'
-import Visual from '../components/visual/Visual'
-import { getLocalePath } from '../util/contentFallback'
-import icons from '../config/icons'
-import { classColors } from '../config/theme'
+import CardGrid from '~/components/CardGrid'
+import Heading from '~/components/Heading'
+import Visual from '~/components/visual/Visual'
+import { getLocalePath } from '~/util/contentFallback'
+import icons from '~/config/icons'
+import { classColors } from '~/config/theme'
 import { enrichDatasets, randomDataSet } from '~/util/dataset'
 import { parseColor } from '~/util/color'
 

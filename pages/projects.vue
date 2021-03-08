@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import CardPage from '../components/CardPage'
-import { getLocalePath } from '../util/contentFallback'
+import CardPage from '~/components/CardPage'
+import { getLocalePath } from '~/util/contentFallback'
 
 const dataClass = 'project'
 

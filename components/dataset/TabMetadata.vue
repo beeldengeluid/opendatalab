@@ -19,11 +19,11 @@
   </v-tab-item>
 </template>
 <script>
-import icons from '../../config/icons'
 import Metadata from '../Metadata'
-import { stripEnrichments, enrichProps } from '../../util/dataset'
-import { stripObject } from '../../util/objects'
-import { download } from '../../util/download'
+import icons from '~/config/icons'
+import { stripEnrichments, enrichProps } from '~/util/dataset'
+import { stripObject } from '~/util/objects'
+import { download } from '~/util/download'
 
 // Properties added by markdown loader
 const markdownProps = [

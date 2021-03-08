@@ -1,5 +1,5 @@
-import en from '../locales/en.json'
-import nl from '../locales/nl.json'
+import en from '~/locales/en.json'
+import nl from '~/locales/nl.json'
 
 export default {
   locale: 'en',

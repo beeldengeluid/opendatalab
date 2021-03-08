@@ -32,7 +32,7 @@
 </template>
 
 <script>
-import { classColorIndex } from '../config/theme'
+import { classColorIndex } from '~/config/theme'
 
 export default {
   props: {

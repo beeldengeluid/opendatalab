@@ -42,12 +42,12 @@
 </template>
 
 <script>
-import TabOverview from '../../components/dataset/TabOverview'
-import TabMetadata from '../../components/dataset/TabMetadata'
-import ArticleHeader from '../../components/ArticleHeader'
-import { getLocalePath } from '../../util/contentFallback'
-import icons from '../../config/icons'
-import { classColors } from '../../config/theme'
+import TabOverview from '~/components/dataset/TabOverview'
+import TabMetadata from '~/components/dataset/TabMetadata'
+import ArticleHeader from '~/components/ArticleHeader'
+import { getLocalePath } from '~/util/contentFallback'
+import icons from '~/config/icons'
+import { classColors } from '~/config/theme'
 import { enrichDatasets } from '~/util/dataset'
 import { parseColor } from '~/util/color'
 

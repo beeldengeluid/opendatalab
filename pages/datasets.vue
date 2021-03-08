@@ -8,8 +8,8 @@
 </template>
 
 <script>
-import CardPage from '../components/CardPage'
-import { enrichDatasets, randomDataSet } from '../util/dataset'
+import CardPage from '~/components/CardPage'
+import { enrichDatasets, randomDataSet } from '~/util/dataset'
 
 const dataClass = 'dataset'
 
