@@ -7,8 +7,6 @@
         v-if="article.image"
         position="top center"
         width="930px"
-        height="420px"
-        max-height="66vw"
         class="header-image"
         :src="require(`~/assets/images/${article.image}?size=930`).src"
         :srcset="
