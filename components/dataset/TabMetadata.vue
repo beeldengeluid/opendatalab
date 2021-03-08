@@ -25,6 +25,17 @@ import { stripEnrichments, enrichProps } from '../../util/dataset'
 import { filterObject } from '../../util/objects'
 import { download } from '../../util/download'
 
+// Properties added by markdown loader
+const markdownProps = [
+  'toc',
+  'body',
+  'dir',
+  'path',
+  'extension',
+  'createdAt',
+  'updatedAt',
+]
+
 export default {
   components: { Metadata },
   props: {
@@ -39,12 +50,12 @@ export default {
       icons,
       filteredDataset: filterObject(this.dataset, [
         ...enrichProps,
+        ...markdownProps,
         '@context',
         '@type',
         '@id',
         'name',
         'description',
-        'toc',
       ]),
     }
   },
