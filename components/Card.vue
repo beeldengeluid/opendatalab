@@ -22,7 +22,7 @@
       max-width="100%"
       max-height="180px"
       position="top center"
-      :src="require(`~/assets/images/${card.image}?size=400`).src"
+      :src="image"
       :gradient="
         color
           ? 'to top right, ' +
@@ -89,6 +89,10 @@ export default {
       icon: icons[this.dataClass],
       color: classColors[this.dataClass],
       rippleClass: classColorIndex[this.dataClass] + '--text',
+      image: this.card.image
+        ? require(`~/assets/images/${this.card.image}?size=400`).src
+        : require(`~/assets/images/placeholders/placeholder-generic.jpg?size=400`)
+            .src,
     }
   },
   methods: {
