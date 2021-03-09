@@ -16,7 +16,10 @@
     <!-- Intro/details -->
     <transition name="detailsIntro" mode="out-in">
       <!-- Dataset info -->
-      <div :class="{ details: true, 'd-none d-md-block': !activeDataset }">
+      <div
+        v-if="showInfo"
+        :class="{ details: true, 'd-none d-md-block': !activeDataset }"
+      >
         <transition name="detailsContent" mode="out-in">
           <div v-if="activeDataset" :key="activeDataset.slug">
             <DatasetInfo :dataset="activeDataset" />
@@ -133,7 +136,8 @@ export default {
   },
   data() {
     return {
-      showTags: process.client ? window.innerWidth > 400 : true,
+      showInfo: false,
+      showTags: false,
       width: process.client ? window.innerWidth : 800,
       height: process.client
         ? Math.min(700, Math.max(400, window.innerHeight - 150))
@@ -218,6 +222,15 @@ export default {
         this.tagsHighlight = []
       }
     },
+  },
+  mounted() {
+    // show tags on large screens
+    if (window.innerWidth > 400) {
+      this.showTags = true
+    }
+
+    // always show info on mount
+    this.showInfo = true
   },
   methods: {
     toggleTag(tag) {
