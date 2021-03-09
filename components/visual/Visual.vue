@@ -225,7 +225,7 @@ export default {
   },
   mounted() {
     // show tags on large screens
-    if (window.innerWidth > 400) {
+    if (window.innerWidth > 500) {
       this.showTags = true
     }
 
@@ -315,6 +315,9 @@ $clDark: rgba(5, 37, 68, 1);
 
   @media (max-width: 500px) {
     width: 100%;
+    position: fixed;
+    height: calc(100vh - 50px);
+    top: 55px;
   }
   .close-button {
     position: absolute;
@@ -323,6 +326,11 @@ $clDark: rgba(5, 37, 68, 1);
     width: 50px;
     height: 50px;
     background-color: rgba($clDark, 0.8);
+
+    @media (max-width: 500px) {
+      position: fixed;
+      top: 55px;
+    }
   }
 }
 
