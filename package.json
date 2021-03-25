@@ -26,7 +26,7 @@
     "nuxt": "^2.15.3",
     "vue-fragment": "^1.5.2",
     "nuxt-i18n": "^6.20.6",
-    "slugify": "^1.4.7",
+    "slugify": "^1.5.0",
     "vue-panzoom": "^1.1.4"
   },
   "devDependencies": {
