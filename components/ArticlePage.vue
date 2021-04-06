@@ -43,11 +43,11 @@
 </template>
 
 <script>
-import { formatDate } from '~/util/date'
-import { classColorIndex } from '~/config/theme'
+import ArticleHeader from './ArticleHeader'
 import Relations from './Relations'
 import PrevNext from './PrevNext'
-import ArticleHeader from './ArticleHeader'
+import { formatDate } from '~/util/date'
+import { classColorIndex } from '~/config/theme'
 
 export default {
   components: { Relations, PrevNext, ArticleHeader },

@@ -18,9 +18,9 @@
 </template>
 
 <script>
+import ChipList from './ChipList'
 import icons from '~/config/icons'
 import { classColorIndex } from '~/config/theme'
-import ChipList from './ChipList'
 
 export default {
   components: { ChipList },

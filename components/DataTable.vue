@@ -43,10 +43,10 @@
 
 <script>
 import { Fragment } from 'vue-fragment'
-import { isObjectLink } from '~/util/objectLink'
+import ObjectLink from './ObjectLink'
 import DataTable from './DataTable'
 import LinkText from './LinkText'
-import ObjectLink from './ObjectLink'
+import { isObjectLink } from '~/util/objectLink'
 
 const isNonObjectArray = (value) =>
   Array.isArray(value) && value.length > 0 && typeof value[0] !== 'object'
