@@ -103,8 +103,7 @@ export default {
 
   // Vuetify module configuration (https://go.nuxtjs.dev/config-vuetify)
   vuetify: {
-    customVariables: ['./assets/scss/vuetify/variables.scss'],
-    treeShake: true,
+    customVariables: ['./assets/scss/vuetify/variables.scss'],    
     defaultAssets: {
       font: {
         family: 'Roboto',
