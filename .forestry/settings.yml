@@ -4,6 +4,10 @@ auto_deploy: false
 admin_path: "/static/admin"
 webhook_url: 
 sections:
+- type: document
+  path: content/en/about.md
+  label: About EN
+  match: "**/*"
 - type: directory
   path: content/en/projects
   label: Projects
