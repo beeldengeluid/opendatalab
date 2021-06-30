@@ -1,13 +1,38 @@
 ---
-label: Dataset
+label: Data set
 hide_body: false
 fields:
-- type: text
-  name: color
-  label: color
 - type: file
   name: image
-  label: image
+  label: Image
+  config:
+    maxSize: 2
+  description: Used as thumbnail on the visualisation
 - type: list
   name: tags
-  label: tags
+  label: Tags
+- name: color
+  type: select
+  default: []
+  config:
+    required: false
+    options:
+    - red.base
+    - pink.base
+    - purple.base
+    - indigo.base
+    - blue.base
+    - teal.base
+    - green.base
+    - lime.base
+    - yellow.base
+    - amber.base
+    - orange.base
+    - brown.base
+    source:
+      type: simple
+      section: 
+      file: 
+      path: 
+  label: Color
+  description: Color to be used in home page visualisation
