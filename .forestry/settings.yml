@@ -4,9 +4,6 @@ auto_deploy: false
 admin_path: "/static/admin"
 webhook_url: 
 sections:
-- type: document
-  path: content/en/about.md
-  label: About EN
 - type: directory
   path: content/en/projects
   label: Projects
@@ -27,6 +24,9 @@ sections:
   label: Blog Posts EN
   create: documents
   match: "**/*.md"
+- type: document
+  path: content/en/about.md
+  label: About EN
 upload_dir: static/uploads
 public_path: "/uploads"
 front_matter_path: ''
