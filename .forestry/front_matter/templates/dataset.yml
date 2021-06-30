@@ -1,0 +1,13 @@
+---
+label: Dataset
+hide_body: false
+fields:
+- type: text
+  name: color
+  label: color
+- type: file
+  name: image
+  label: image
+- type: list
+  name: tags
+  label: tags
