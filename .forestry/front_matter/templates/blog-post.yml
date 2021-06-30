@@ -4,16 +4,27 @@ hide_body: false
 fields:
 - type: text
   name: title
-  label: title
+  label: Title
+  config:
+    required: true
 - type: text
   name: subtitle
-  label: subtitle
+  label: Subtitle
 - type: file
   name: image
-  label: image
+  label: Image
+  description: An image for the blog post's thumbnail and header, preferably landscape
+    orientation, max 2MB
+  config:
+    maxSize: 2
 - type: text
   name: tags
-  label: tags
+  label: Tags
 - type: list
   name: datasets
-  label: datasets
+  label: Datasets
+  config:
+    use_select: true
+    source:
+      type: pages
+      section: data-sets
